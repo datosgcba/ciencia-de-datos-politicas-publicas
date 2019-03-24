@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ciencia de Datos para Gente Sociable</title>
+  <meta name="description" content="Ciencia de Datos para Gente Sociable">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ciencia de Datos para Gente Sociable" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="bitsandbricks/datos_sociables" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ciencia de Datos para Gente Sociable" />
+  
+  
+  
+
+<meta name="author" content="Antonio Vazquez Brust">
+
+
+<meta name="date" content="2019-01-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="que-es-la-ciencia-de-datos.html">
+<link rel="next" href="poniendo-los-datos-en-forma.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ciencia de Datos para gente sociable</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>¿Para quién es esto?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#antes-de-empezar"><i class="fa fa-check"></i>Antes de empezar</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> ¿Qué es la ciencia de datos?</a><ul>
+<li class="chapter" data-level="1.1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html#que-significa-hacer-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué significa hacer ciencia de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html"><i class="fa fa-check"></i><b>2</b> Una presentación a toda marcha de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#nuestro-primer-proyecto-en-r"><i class="fa fa-check"></i><b>2.1</b> Nuestro primer proyecto en R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#a-investigar-cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.1.1</b> A investigar: ¿Cual es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#crear-un-proyecto-en-rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Crear un proyecto en RStudio</a></li>
+<li class="chapter" data-level="2.1.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#escribiendo-un-script"><i class="fa fa-check"></i><b>2.1.3</b> Escribiendo un script</a></li>
+<li class="chapter" data-level="2.1.4" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cargar-los-datos"><i class="fa fa-check"></i><b>2.1.4</b> Cargar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#visualizacion-la-exploracion-grafica-de-la-informacion"><i class="fa fa-check"></i><b>2.2</b> Visualización: la exploración gráfica de la información</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#haciendo-mapas"><i class="fa fa-check"></i><b>2.2.1</b> Haciendo mapas</a></li>
+<li class="chapter" data-level="2.2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#agregando-datos"><i class="fa fa-check"></i><b>2.2.2</b> Agregando datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#el-veredicto-final"><i class="fa fa-check"></i><b>2.3</b> El veredicto final</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cuál es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html"><i class="fa fa-check"></i><b>3</b> Poniendo los datos en forma</a><ul>
+<li class="chapter" data-level="3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#primeros-pasos-al-examinar-un-conjunto-de-datos-nuevo"><i class="fa fa-check"></i><b>3.1</b> Primeros pasos al examinar un conjunto de datos nuevo</a></li>
+<li class="chapter" data-level="3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#cruzando-variables-la-operacion-join"><i class="fa fa-check"></i><b>3.2</b> Cruzando variables: la operación <code>join</code></a></li>
+<li class="chapter" data-level="3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#transformando-los-datos"><i class="fa fa-check"></i><b>3.3</b> Transformando los datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#seleccionar-columnas-con-select"><i class="fa fa-check"></i><b>3.3.1</b> Seleccionar columnas con <code>select()</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#filtrar-filas-con-filter"><i class="fa fa-check"></i><b>3.3.2</b> Filtrar filas con <code>filter()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#ordenar-filas-con-arrange"><i class="fa fa-check"></i><b>3.3.3</b> Ordenar filas con <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#agregar-nuevas-variables-con-mutate"><i class="fa fa-check"></i><b>3.3.4</b> Agregar nuevas variables con <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#extraer-sumarios-con-summarise"><i class="fa fa-check"></i><b>3.3.5</b> Extraer sumarios con <code>summarise()</code></a></li>
+<li class="chapter" data-level="3.3.6" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#bonus-el-operador-pipe"><i class="fa fa-check"></i><b>3.3.6</b> ¡BONUS! El operador “pipe”: <code>%&gt;%</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualizacion.html"><a href="visualizacion.html"><i class="fa fa-check"></i><b>4</b> Visualización</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualizacion.html"><a href="visualizacion.html#una-buena-visualizacion-para-empezar-el-scatterplot"><i class="fa fa-check"></i><b>4.1</b> Una buena visualización para empezar: el <em>scatterplot</em></a></li>
+<li class="chapter" data-level="4.2" data-path="visualizacion.html"><a href="visualizacion.html#ajustando-color-y-tamano"><i class="fa fa-check"></i><b>4.2</b> Ajustando color y tamaño</a></li>
+<li class="chapter" data-level="4.3" data-path="visualizacion.html"><a href="visualizacion.html#facetado"><i class="fa fa-check"></i><b>4.3</b> Facetado</a></li>
+<li class="chapter" data-level="4.4" data-path="visualizacion.html"><a href="visualizacion.html#graficos-de-barras"><i class="fa fa-check"></i><b>4.4</b> Gráficos de barras</a></li>
+<li class="chapter" data-level="4.5" data-path="visualizacion.html"><a href="visualizacion.html#histogramas"><i class="fa fa-check"></i><b>4.5</b> Histogramas</a></li>
+<li class="chapter" data-level="4.6" data-path="visualizacion.html"><a href="visualizacion.html#preparando-una-visualizacion-para-compartir"><i class="fa fa-check"></i><b>4.6</b> Preparando una visualización para compartir</a></li>
+<li class="chapter" data-level="4.7" data-path="visualizacion.html"><a href="visualizacion.html#otras-visualizaciones"><i class="fa fa-check"></i><b>4.7</b> Otras visualizaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html"><i class="fa fa-check"></i><b>5</b> Modelado estadístico</a><ul>
+<li class="chapter" data-level="5.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-numerica"><i class="fa fa-check"></i><b>5.1.1</b> Regresión con una variable numérica</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#revolviendo-los-residuos"><i class="fa fa-check"></i><b>5.1.2</b> Revolviendo los residuos</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-categorica"><i class="fa fa-check"></i><b>5.1.3</b> Regresión con una variable categórica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-multiples-variables"><i class="fa fa-check"></i><b>5.2</b> Regresión con múltiples variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html"><i class="fa fa-check"></i><b>6</b> Información geográfica y mapas</a><ul>
+<li class="chapter" data-level="6.1" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#los-datos-georreferenciados"><i class="fa fa-check"></i><b>6.1</b> Los datos georreferenciados</a></li>
+<li class="chapter" data-level="6.2" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#formatos-de-archivo"><i class="fa fa-check"></i><b>6.2</b> Formatos de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#explorando-un-archivo-con-informacion-geografica"><i class="fa fa-check"></i><b>6.3</b> Explorando un archivo con información geográfica</a></li>
+<li class="chapter" data-level="6.4" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#visualizando-informacion-geografica"><i class="fa fa-check"></i><b>6.4</b> Visualizando información geográfica</a></li>
+<li class="chapter" data-level="6.5" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#volcando-en-el-mapa-informacion-de-multiples-fuentes"><i class="fa fa-check"></i><b>6.5</b> Volcando en el mapa información de múltiples fuentes</a></li>
+<li class="chapter" data-level="6.6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#combinando-capas-geograficas"><i class="fa fa-check"></i><b>6.6</b> Combinando capas geográficas</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ciencia de Datos para Gente Sociable</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="una-presentacion-a-toda-marcha-de-r" class="section level1">
+<h1><span class="header-section-number">Capítulo 
+2</span> Una presentación a toda marcha de R</h1>
+<p><code>R</code> es un lenguaje de programación especializado en análisis y visualización de datos. Es un producto de código abierto, lo cual significa que cualquier persona puede usarlo y modificarlo sin pagar licencias ni costos de adquisición de ningún tipo.</p>
+<p>Expertos de todo el mundo colaboran en forma activa con el proyecto, no sólo desarrollando el lenguaje en sí (llamado “R base”), sino también extendiéndolo con nuevas habilidades que pueden ser incorporadas por los usuarios finales en forma de “paquetes” instalables.</p>
+<p>La calidad del lenguaje en sí, de los paquetes instalables que le agregan un sinfín de funciones (desde algoritmos de inteligencia artificial hasta mapas interactivos) y de la comunidad de usuarios que comparte información en foros y blogs, ha hecho de R uno de los lenguajes de programación más populares del mundo. En el campo del análisis de datos, es la herramienta por excelencia en muchas universidades, empresas de tecnología, y redacciones de periodismo de datos.</p>
+<div id="nuestro-primer-proyecto-en-r" class="section level2">
+<h2><span class="header-section-number">2.1</span> Nuestro primer proyecto en R</h2>
+<p>A continuación reproduciremos un ejercicio paso a paso, para ilustrar la potencia de una herramienta de análisis como R. Que nadie se preocupe si algunas de las operaciones parecen no tener sentido, o resultan arbitrarias. ¡Es normal! Nadie aprende un lenguaje en 10 minutos, sea R o esperanto. La idea es tener exposición temprana a un caso de uso interesante, usando datos reales. Y que nos sirva como motivación para practicar luego ejercicios básicos que son muy necesarios pero, a veces, no tan emocionantes.</p>
+<div id="a-investigar-cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> A investigar: ¿Cual es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</h3>
+<p>Buenos Aires es una ciudad que desde hace décadas presenta una <a href="https://elpais.com/internacional/2016/10/16/argentina/1476629610_416732.html">marcada polarización</a> entre sus barrios del sur, relativamente menos desarrollados, y los del norte donde el nivel socioeconómico y la calidad de vida son mayores.</p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="imagenes/noticia_caba.jpg" alt="Artículo en la edición online de El País" width="100%" />
+<p class="caption">
+Figura 2.1: Artículo en la edición online de El País
+</p>
+</div>
+<p>Uno de los aspectos más lamentables de la disparidad norte-sur, y sin duda de los que más polémica y acusaciones cruzadas ha generado, es la diferencia en la tasa de mortalidad infantil de acuerdo a la región de la ciudad.</p>
+<p>¿Qué tan grande es esa diferencia? ¿Cómo se distribuye geográficamente?</p>
+<p>Vamos a utilizar R para responder esas preguntas y visualizar los resultados de nuestro análisis, utilizando como fuente cifras oficiales publicada por la ciudad.</p>
+</div>
+<div id="crear-un-proyecto-en-rstudio" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Crear un proyecto en RStudio</h3>
+<p>El primer paso es ejecutar RStudio, que ya deberíamos tener disponible en nuestro sistema.</p>
+<p>Una vez abierta la interfaz gráfica, creamos un proyecto nuevo, cliqueando en <code>File -&gt; New Project... -&gt; New Directory -&gt;  New Project</code>. En la ventana que surge, elegir un nombre para el proyecto (por ejemplo, “Practicando R”) y finalizar la operación cliqueando en <code>Create project</code>.</p>
+<p>Utilizar proyectos nos permite continuar otro día desde donde dejamos la tarea al terminar una sesión. Es sólo cuestión de recuperar el proyecto deseado la próxima vez que abrimos RStudio, cliqueando en <code>File -&gt; Recent Projects -&gt; &quot;nombre de mi proyecto&quot;</code>.</p>
+<p>Por ahora, sigamos trabajando. Vamos a crear un “script”. Un script, como su nombre en inglés lo indica, es un guión; una serie de pasos que escribimos para que nuestra computadora ejecute en secuencia. Cliqueamos en <code>File -&gt; New File -&gt; R Script</code>. De inmediato se abre una ventana con un editor de texto. ¡Ahora empieza la acción!</p>
+</div>
+<div id="escribiendo-un-script" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Escribiendo un script</h3>
+<p>Aprovechemos para dar un nombre a los áreas que vemos en RStudio:</p>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="imagenes/Interfaz_RStudio.jpg" alt="La interfaz de RStudio" width="100%" />
+<p class="caption">
+Figura 2.2: La interfaz de RStudio
+</p>
+</div>
+<p>Vamos a escribir nuestro código (las instrucciones que <code>R</code> entiende) en el panel de edición. Los resultados van a aparecer en la consola (cuando se trate de texto) o en el panel de salida (cuando produzcamos gráficos)</p>
+<p>Por ejemplo, podemos escribir el panel de edición la instrucción para mostrar el resultado de una operación matemático:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">144</span>)</code></pre></div>
+<p><code>sqrt()</code> es una <em>función</em>. En el mundo de la programación, las funciones son secuencias de código ya listas para usar, que realizan tareas útiles. Por ejemplo, mostrar algo en pantalla. En nuestro caso, completamos la función con algo más: un <em>parámetro</em>, pues así se le llama a los valores que una función espera de parte del usuario para saber que hacer. La función print espera que le demos un número para el cual calcular su raíz cuadrada (<em>square root</em> en inglés), y eso hicimos: le pasamos cómo parámetro <code>144</code>, un número. Los parámetros siempre se escriben entre paréntesis, a continuación del nombre de la función.</p>
+<p>Ahora vamos a aprender la combinación de teclas más importante al usar RStudio: <code>Ctrl</code> + <code>Enter</code>. Presionar <code>Ctrl</code> + <code>Enter</code> al terminar de escribir una instrucción hace que RStudio la ejecute de inmediato, y espere en la siguiente instrucción, si la hubiera.</p>
+<p>Cambien podemos buscar una línea que deseemos ejecutar, posicionando el cursor de texto (que luce como una barra vertical que titila, en el panel de edición) sobre ella. Si a continuación pulsamos <code>Ctrl</code> + <code>Enter</code>, la línea será ejecutada y el cursor se moverá sólo hasta la siguiente línea, listo para repetir el proceso.</p>
+<p>La modalidad de ejecución línea por línea es muy útil para lo que se llama “análisis interactivo”. Uno ejecuta un comando, observa el resultado, y en base a eso decide su próxima acción: cambiar parámetros e intentarlo de nuevo, dar por buenos los resultados y usarlos para una tarea subsiguiente… etc.</p>
+<p>Por ejemplo, si escribimos las siguientes líneas:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">144</span>)
+
+mensaje &lt;-<span class="st"> &quot;Hola mundo&quot;</span>
+
+mensaje</code></pre></div>
+<p>…y posicionamos el cursor en cualquier posición de la primera línea, para luego pulsar <code>Ctrl</code> + <code>Enter</code> tres veces, veremos que las instrucciones son ejecutadas línea a línea.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">144</span>)</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mensaje &lt;-<span class="st"> &quot;Hola mundo&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mensaje</code></pre></div>
+<pre><code>## [1] &quot;Hola mundo&quot;</code></pre>
+<p>Dos de ellas (la primera y la última) mostraron una salida en pantalla, y la del medio, no. Esto es porque algunas funciones entregan algo como resultado algo -un número, un texto, un gráfico, u otros tipos de salida que ya veremos- mientras que otras hacen su tarea silenciosamente sin expresar nada. En este caso, la función silenciosa fue la de asignación: <code>mensaje &lt;- &quot;Hola mundo&quot;</code> es una instrucción que le pide a R que cree una variable llamada “mensaje” (o que la encuentre si ya existe) y que le asigne como valor el texto “Hola mundo”. ¿Cómo sabemos que la instrucción se llevó a cabo, a pesar de no producir una salida? En general, es un tema de confianza. Si una instrucción no genera un mensaje de error, si es silenciosa, se asume que pudo cumplir su cometido. En este caso, además lo hemos verificado. La línea final, <code>mensaje</code> pide a R que busque la variable, y muestre en pantalla su contenido (esa es una característica muy práctica del lenguaje: para saber el contenido de una variable, basta con escribirla y ejecutar la línea). Y al hacerlo, comprobamos que la variable contiene precisamente lo que hemos tipeado.</p>
+<p>De paso, hay que mencionar que la creación y manipulación de variables es un concepto clave en programación. Trabajar con variables nos permite almacenar valores para usarlos después, además de hacer nuestro código más fácil de leer y compartir con otros, en especial cuando usamos nombre de variable auto-explicativos. Como ejemplo de ésto ultimo comparemos</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">8</span> <span class="op">*</span><span class="st"> </span><span class="dv">6</span>
+x</code></pre></div>
+<pre><code>## [1] 48</code></pre>
+<p>… con</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ancho_habitacion_m &lt;-<span class="st"> </span><span class="dv">8</span>
+profundiad_habitacion_m &lt;-<span class="st"> </span><span class="dv">6</span>
+superficie_habitacion_m2 &lt;-<span class="st"> </span>ancho_habitacion_m <span class="op">*</span><span class="st"> </span>profundiad_habitacion_m
+
+superficie_habitacion_m2</code></pre></div>
+<pre><code>## [1] 48</code></pre>
+<p>En su resultado ambas expresiones son iguales, dado que producen lo mismo. Pero la segunda esta escrita de una forma mucho más clara para un ser humano, que hace más fácil interpretar su lógica… ¡está calculando la superficie en metros cuadrados de una habitación!. Es muy importante escribir nuestro código de la forma más explícita posible, aunque requiera tipear un poco más. Con ello, le hacemos la vida más fácil a otras personas que interpreten nuestros programas. Y también a nosotros mismos en el futuro, cuando debamos lidiar con un programa que escribimos tiempo atrás y del que a duras penas recordamos su lógica.</p>
+<p>A todo esto… ¿no se suponía que íbamos a investigar la mortalidad infantil en la Ciudad de Buenos Aires?. Suficiente introducción… ¡allá vamos!</p>
+</div>
+<div id="cargar-los-datos" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Cargar los datos</h3>
+<p>Vamos a cargar datos de mortalidad infantil, por comuna de la ciudad, en el año 2016, publicados por la <a href="http://www.estadisticaciudad.gob.ar/eyc/?p=67358">Dirección General de Estadística y Censos</a> de Buenos Aires. El formato original de los datos es “.xls” (planilla de hojas de cálculo). Yo lo he convertido a .csv (“comma separated values”) un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas… es posible abrir un archivo .csv hasta con el <a href="https://es.wikipedia.org/wiki/Bloc_de_notas">humilde block de notas</a>. Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama <code>read.csv</code>. La usamos así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mortalidad &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/mortalidad_infantil_caba_2016.csv&#39;</span>)</code></pre></div>
+<p>Obsérvese que los datos están alojados en un servidor de internet (accesibles vía <strong><a href="https://bitsandbricks" class="uri">https://bitsandbricks</a>…</strong>). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, <code>mortalidad</code>, sólo hace falta escribir su nombre:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mortalidad</code></pre></div>
+<pre><code>##    Comuna Tasa2016
+## 1       1      9.5
+## 2       2      3.6
+## 3       3      8.0
+## 4       4     11.9
+## 5       5      8.5
+## 6       6      2.4
+## 7       7      8.5
+## 8       8      9.7
+## 9       9     10.1
+## 10     10      3.6
+## 11     11      6.2
+## 12     12      7.1
+## 13     13      4.5
+## 14     14      3.2
+## 15     15      6.4</code></pre>
+<p>Vemos que la tabla tiene 15 filas (una por <a href="https://es.wikipedia.org/wiki/Comunas_de_la_ciudad_de_Buenos_Aires">cada comuna de la ciudad</a>) y 7 columnas (una que indica la comuna, y 6 con los valores de mortalidad para cada año entre 2010 y 2017).</p>
+<p>En R, las tablas son llamadas <code>dataframes</code>. El dataframe es el objeto por excelencia del análisis de datos. En concepto, es muy similar a una tabla de excel; al fin y al cabo, ambos formatos guardan información en celdas identificadas por fila y columna.</p>
+<p>Algunas funciones útiles para explorar un dataframe que no conocemos son <code>dim()</code>, que nos da las dimensiones del dataframe (cantidad de filas y columnas), <code>names()</code> que nos dice como se llaman sus columnas (que en general representan variables), y <code>head()</code> que nos permite echar un vistazo rápido al contenido, mostrando sólo las seis primeras filas (ésto es útil porque con frecuencia trabajamos con dataframes que contienen miles o millones de filas, con lo que no tiene sentido tratar de volcar todas en pantalla).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(mortalidad)</code></pre></div>
+<pre><code>## [1] 15  2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mortalidad)</code></pre></div>
+<pre><code>## [1] &quot;Comuna&quot;   &quot;Tasa2016&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mortalidad)</code></pre></div>
+<pre><code>##   Comuna Tasa2016
+## 1      1      9.5
+## 2      2      3.6
+## 3      3      8.0
+## 4      4     11.9
+## 5      5      8.5
+## 6      6      2.4</code></pre>
+</div>
+</div>
+<div id="visualizacion-la-exploracion-grafica-de-la-informacion" class="section level2">
+<h2><span class="header-section-number">2.2</span> Visualización: la exploración gráfica de la información</h2>
+<p>Ahora es vamos a pisar el acelerador. Insisto: nadie debe preocuparse si algunos conceptos parecen ser demasiado complejos. En las próximas secciones practicaremos de forma gradual las técnicas que vamos a usar ahora, y todo tendrá sentido -¡lo prometo!. Pero antes, seamos un poquito irresponsables con el poder de R y empleemos un arsenal sofisticado de herramientas para ver de que somos capaces.</p>
+<p>En la introducción hablamos de los paquetes, conjuntos de programas que extienden la funcionalidad de R. Vamos a cargar uno de los paquetes más usados, <code>tidyverse</code>. Tidyverse incluye una gran cantidad de funciones diseñadas por y para practicantes de la ciencia de datos. Estas funciones comparten una filosofía y una sintaxis común, por lo que al aprender una en cierto modo aprendemos a usar todas. El valor que aportan es que, sin dudas, ayudan a realizar de manera más fácil las tareas típicas de la ciencia de datos: importar, limpiar, comprender y comunicar datos.</p>
+<p>Si acabamos de instalar R y RStudio, el paquete aún no estará disponible en nuestro sistema. Para instalarlo, usamos la función <code>install.packages()</code> y le pasamos el nombre del paquete deseado, “tidyverse”, entre comillas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>De aquí en más, podremos activar el conjunto de funciones que provee <code>tidyverse</code> cada vez que queramos. Para eso, lo invocamos con la función <code>library()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>… y listo para usar. La razón por la cual activamos tidyverse es que en este momento nos vienen bien dos de sus funciones: <code>mutate()</code> para modificar valores, y <code>ggplot()</code> para hacer gráficos.</p>
+<p>Bien, llega la hora de los gráficos. Vamos a llamar a la función <code>ggplot()</code>, una auténtica navaja suiza para la visualización.</p>
+<p>Por ejemplo, veamos a cuanto asciende la tasa de mortalidad infantil en cada comuna durante 2016:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(Comuna), <span class="dt">y =</span> Tasa2016))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-19-1.png" width="1050" /></p>
+<p>Para realizar una visualización con ésta herramienta, siempre se comienza con la función ggplot(), que crea un eje de coordenadas sobre el cual se pueden agregar capas. El primer parámetro que recibe ggplot() es el dataset que queremos usar para el gráfico; en nuestro caso, ggplot(mortalidad). Ejecutar sólo ggplot(mortalidad) nos devuelve un gráfico vacío; la gracia está en agregar una o más capas especificando cómo queremos mostrar los datos. Estas capas se agregan con un signo <code>+</code>.</p>
+<p>En nuestro ejemplo, <code>geom_col()</code> crea columnas cuya posición en el eje de las x depende de la variable “Comuna”, mientas que la altura (posición en el eje de las y) depende del valor de la variable “Tasa2016”. Existen muchas funciones de tipo “geom_XXX”, que agregan distintas clases de capas al gráfico: geom_point, geom_polygon, geom_text y muchos, muchos más que iremos viendo más adelante.</p>
+<p>Cada función “geom_” toma como parámetro un conjunto de definiciones “estéticas” que le indican una variable a graficar (“mortalidad” en nuestro caso), cómo (color, tamaño, etc) y dónde (posición x, posición y del eje). Estos parámetros van siempre dentro de una función auxiliar, <code>aes()</code>. En nuestro ejemplo, “geom_line(aes(x = año, y = mortalidad, group = Comuna, color = factor(Comuna)))”.</p>
+<p>No se preocupen que iremos practicando el uso de ggplot, y su uso se volverá familiar.</p>
+<p>En cuanto al gráfico que hemos creado, podemos observar que entre las 15 comunas en la ciudad, la tasa de mortalidad tiene un rango que va de un poco menos de 2,5 a un poco más de 12,5 (esto es, muertes antes del año de vida por cada 10.000 nacimientos).</p>
+<p>Pero no se distingue aquello que queríamos comprender: la diferencia entre el norte y el sur de la ciudad. Necesitamos contexto geográfico.</p>
+<div id="haciendo-mapas" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Haciendo mapas</h3>
+<p>Vamos a presentar un paquete más, el último para éste capítulo: <code>sf</code>. Quizás algunos tengan experiencia con sistemas de información geográfica (GIS por sus siglas en inglés), al estilo de <a href="https://qgis.org/en/site/">QGIS</a> o <a href="https://www.arcgis.com/features/index.html">ArcGIS</a>, que permiten crear, manipular y combinar archivos con datos espaciales para producir mapas que pueden ser simples o en extremo sofisticados. En R, el paquete <code>sf</code> brinda herramientas que permiten realizar tares similares.</p>
+<p>Nuestro objetivo es obtener un mapa de la ciudad de Buenos Aires con sus comunas.</p>
+<p>Primero, instalamos <code>sf</code> en caso de que aún no lo hayamos hecho.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</code></pre></div>
+<p>Vale la pena insistir: Sólo es necesario instalar los paquetes una vez. De aquí en más, cada vez que querramos echar mano a las funciones incluidas en <code>sf</code>, sólo necesitamos activarlo pues ya estará listo en nuestro sistema. Pedimos a R que active el paquete así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
+<p>Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato <a href="https://es.wikipedia.org/wiki/GeoJSON"><em>geojson</em></a>, un estándar de representación de datos geográficos que es fácil de usar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comunas &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/CABA_comunas.geojson&#39;</span>)</code></pre></div>
+<pre><code>## Reading layer `CABA_comunas&#39; from data source `https://bitsandbricks.github.io/data/CABA_comunas.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 15 features and 4 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -58.53152 ymin: -34.70529 xmax: -58.33514 ymax: -34.52754
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Al igual que cuando usamos <code>read.csv()</code> para leer un archivo .csv y cargarlo como un dataframe, el comando <code>st_read()</code> hace lo propio con archivos de información geográfica, conocidos en la jerga como “shapefiles”. El resultado también es un dataframe, por lo cual podemos practicar el uso de las funciones que ya aprendimos, como dim(), names() y head().</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(comunas)</code></pre></div>
+<pre><code>## [1] 15  5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(comunas)</code></pre></div>
+<pre><code>## [1] &quot;barrios&quot;   &quot;perimetro&quot; &quot;area&quot;      &quot;comunas&quot;   &quot;geometry&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(comunas)</code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -58.4627 ymin: -34.6625 xmax: -58.33514 ymax: -34.56935
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##                                                                        barrios
+## 1 CONSTITUCION - MONSERRAT - PUERTO MADERO -  RETIRO - SAN NICOLAS - SAN TELMO
+## 2                                                                     RECOLETA
+## 3                                                    BALVANERA - SAN CRISTOBAL
+## 4                           BARRACAS - BOCA - NUEVA POMPEYA - PARQUE PATRICIOS
+## 5                                                              ALMAGRO - BOEDO
+## 6                                                                    CABALLITO
+##   perimetro     area comunas                       geometry
+## 1  35572.65 17802807       1 MULTIPOLYGON (((-58.36854 -...
+## 2  21246.61  6140873       2 MULTIPOLYGON (((-58.39521 -...
+## 3  10486.26  6385991       3 MULTIPOLYGON (((-58.41192 -...
+## 4  36277.44 21701236       4 MULTIPOLYGON (((-58.3552 -3...
+## 5  12323.47  6660526       5 MULTIPOLYGON (((-58.41287 -...
+## 6  10990.96  6851029       6 MULTIPOLYGON (((-58.43061 -...</code></pre>
+<p>Podemos ver que el dataframe contiene 15 filas y 5 columnas. Una fila por comuna (es razonable!) y 5 columnas: “barrios”, “perímetro”, “area”, “comunas” y “geometry”. Nuestro vistazo mediante head() permite asumir que “barrios” informa los barrios que componen cada comuna, mientras que perímetro y área informan sobre las dimensiones del polígono cubierto por cada comuna. La columna “geometry” aparece en todos los dataframes de tipo espacial, y es la que contiene los datos con sus coordenadas geográficas.</p>
+<p>Y hablando de coordenadas, generar un mapa a partir de un dataframe espacial creado por sf es muy fácil con la ayuda de ggplot</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comunas) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-24-1.png" width="1050" /></p>
+<p>Si queremos agregar una leyenda al mapa que identifique cada comuna con su número, usamos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comunas) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> comunas))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-25-1.png" width="1050" /></p>
+<p>Dentro de “aes()” usé el parámetro “fill” (relleno en inglés) para pedirle a ggplot que llene cada polígono con un color distinto de acuerdo al campo “comunas”.</p>
+<p>Aprovechando que tenemos un mapa, deberíamos clasificar las comunas entre las que pertenecen al norte y las que pertenecen al sur de la ciudad. No hay una línea divisoria oficial, pero la traza de la Avenida Rivadavia suele ser tomada como frontera: Rivadavia es la <a href="https://www.clarin.com/ediciones-anteriores/avenida-rivadaviaun-largo-recorrido-contrastes_0_B1reo181CYe.html">“divisoria simbólica del Norte y el Sur de la Ciudad, con sus diferencias de desarrollo”</a></p>
+<p>Por esas casualidades de la vida, tengo un archivo geográfico que contiene la línea que dibuja a avenida Rivadavia al atravesar la ciudad. Lo bajamos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rivadavia &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/avenida_rivadavia.geojson&#39;</span>)</code></pre></div>
+<pre><code>## Reading layer `avenida_rivadavia&#39; from data source `https://bitsandbricks.github.io/data/avenida_rivadavia.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 1 feature and 1 field
+## geometry type:  LINESTRING
+## dimension:      XY
+## bbox:           xmin: -58.53014 ymin: -34.63946 xmax: -58.37017 ymax: -34.60711
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Y lo proyectamos sobre el mapa, como una capa adicional del gráfico de ggplot que definimos antes:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comunas) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> comunas)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> rivadavia, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-27-1.png" width="1050" /></p>
+<p>La identificación por colores no hace fácil reconocer con rapidez que número corresponde a cada comuna; es un recurso que funciona mejor con menos categorías que nuestras 15. Podríamos arreglarlo, por ejemplo evitando la codificación por color, y dibujando una etiqueta con número dibujada sobre cada comuna. ¡Pero no en este momento! En aras de la sencillez, vamos a aguzar la vista y tomar nota de cuales comunas tienen gran parte de su territorio al sur de la Avenida Rivadavia. Según mi interpretación, son las comunas 1, 3, 4, 5, 7, 8 y 9. (Hay que admitir que la comuna 1 parece estar repartida en partes más o menos iguales, pero vamos a dejársela al sur en forma arbitraria para no complicar el ejercicio).</p>
+</div>
+<div id="agregando-datos" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Agregando datos</h3>
+<p>En este punto necesitamos una manera de “etiquetar” cada comuna con el punto cardinal que le toca “Norte” o “Sur”. La forma más rápida es crear una lista con los atributos, y agregarla a nuestro dataframe como una nueva columna.</p>
+<p>Podemos armar una sucesión de 15 “etiquetas” según el punto cardinal que le toca a cada comuna. El comando en R que “une” valores en conjunto se llama <code>c()</code> (viene de “combine”, “combinar”), y permite definir una lista de valores. Mejor dicho, un “vector” de valores; en el mundo de la programación, se usa la palabra vector cuando se combinan elementos del mismo tipo, y “lista” cuando se combina una variedad de clases: en el mismo conjunto números, textos, y otros tipos de objeto más complejos. Por ahora, no nos preocupemos por eso.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nueva_columna &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Sur&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>, <span class="st">&quot;Norte&quot;</span>)
+
+nueva_columna</code></pre></div>
+<pre><code>##  [1] &quot;Sur&quot;   &quot;Norte&quot; &quot;Sur&quot;   &quot;Sur&quot;   &quot;Sur&quot;   &quot;Norte&quot; &quot;Sur&quot;   &quot;Sur&quot;  
+##  [9] &quot;Sur&quot;   &quot;Norte&quot; &quot;Norte&quot; &quot;Norte&quot; &quot;Norte&quot; &quot;Norte&quot; &quot;Norte&quot;</code></pre>
+<p>Ya podemos agregar nuestra nueva columna usando una función que ya vimos, mutate(). En el dataframe, vamos a ponerle a nuestra nueva columna un nombre descriptivo, “ubicación” :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comunas &lt;-<span class="st"> </span><span class="kw">mutate</span>(comunas, <span class="dt">ubicacion =</span> nueva_columna)</code></pre></div>
+<p>Verifiquemos el resultado:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(comunas)</code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 5 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -58.4627 ymin: -34.6625 xmax: -58.33514 ymax: -34.56935
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##                                                                        barrios
+## 1 CONSTITUCION - MONSERRAT - PUERTO MADERO -  RETIRO - SAN NICOLAS - SAN TELMO
+## 2                                                                     RECOLETA
+## 3                                                    BALVANERA - SAN CRISTOBAL
+## 4                           BARRACAS - BOCA - NUEVA POMPEYA - PARQUE PATRICIOS
+## 5                                                              ALMAGRO - BOEDO
+## 6                                                                    CABALLITO
+##   perimetro     area comunas ubicacion                       geometry
+## 1  35572.65 17802807       1       Sur MULTIPOLYGON (((-58.36854 -...
+## 2  21246.61  6140873       2     Norte MULTIPOLYGON (((-58.39521 -...
+## 3  10486.26  6385991       3       Sur MULTIPOLYGON (((-58.41192 -...
+## 4  36277.44 21701236       4       Sur MULTIPOLYGON (((-58.3552 -3...
+## 5  12323.47  6660526       5       Sur MULTIPOLYGON (((-58.41287 -...
+## 6  10990.96  6851029       6     Norte MULTIPOLYGON (((-58.43061 -...</code></pre>
+<p>Y en el mapa:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comunas) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> ubicacion)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> rivadavia, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-31-1.png" width="1050" /></p>
+<p>Todo en orden. Ahora hagamos lo mismo con el dataframe de mortalidad, aprovechando que lista las comunas en el mismo orden (del 1 al 15) y por lo tanto podemos “pegarle” el mismo vector de etiquetas con ubicación que ya preparamos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mortalidad &lt;-<span class="st"> </span><span class="kw">mutate</span>(mortalidad, ubicación =<span class="st"> </span>nueva_columna)
+                         
+<span class="kw">head</span>(mortalidad)</code></pre></div>
+<pre><code>##   Comuna Tasa2016 ubicación
+## 1      1      9.5       Sur
+## 2      2      3.6     Norte
+## 3      3      8.0       Sur
+## 4      4     11.9       Sur
+## 5      5      8.5       Sur
+## 6      6      2.4     Norte</code></pre>
+</div>
+</div>
+<div id="el-veredicto-final" class="section level2">
+<h2><span class="header-section-number">2.3</span> El veredicto final</h2>
+<p>Habrán notado que llegar hasta aquí tomó una buena cantidad de operaciones. En contraste, lo que estamos a punto de hacer -responder la pregunta inicial- va a ser mucho más breve. Esa vendría a ser la lección central de éste capítulo: la mayor parte del tiempo empleado en la labor de la ciencia de datos se insume en la poco glamorosa tarea de recopilar, limpiar y combinar los registros necesarios para el análisis. Como consuelo, podemos pensar en que el esfuerzo necesario para llegar a este punto nos ha dado un conocimiento de los datos (su estructura, sus limitaciones, su potencial) que no teníamos antes.</p>
+<p>Aprovechemos entonces nuestra data limpia y ordenada, para producir un mapa que señale con color el nivel de mortalidad. Armamos un ggplot con una capa que muestra las comunas, cuyo color interior (“fill”) depende del valor de la mortalidad. Le sumamos una capa con la traza de la Avenida Rivadavia, nuestra referencia de posición, y por último definimos la paleta de colores a usar en el <em>fill</em>, eligiendo una llamada “Spectral”, que va del azul al rojo y es muy usada cuando se quiere resaltar la divergencia de una variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comunas) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> mortalidad<span class="op">$</span>Tasa2016)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> rivadavia, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;Spectral&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-33-1.png" width="1050" /></p>
+<p>Para una comparación visual más precisa entre los valores de cada comuna, le pedimos a ggplot un gráfico de barras, con la capa <code>geom_col()</code>. En las variables estéticas, definimos que la posición de las barras en el eje de las x estará dada por el número de cada comuna, la altura de las barras (eje y) será dada por su tasa de mortalidad, y su color de relleno (fill) dependerá de su ubicación geográfica.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mortalidad) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Comuna, <span class="dt">y =</span> Tasa2016, <span class="dt">fill =</span> ubicación)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mortalidad infantil en la Ciudad Autónoma de Buenos Aires&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;Año 2016&quot;</span>,
+         <span class="dt">y =</span> <span class="st">&quot;tasa&quot;</span>) </code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-34-1.png" width="1050" /></p>
+<p>Por último, usamos a R de calculadora. Separamos las comunas en dos dataframes distintos según su ubicación, con el comando <code>filter()</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comunas_al_sur &lt;-<span class="st"> </span><span class="kw">filter</span>(mortalidad, ubicación <span class="op">==</span><span class="st"> &quot;Sur&quot;</span>)
+
+comunas_al_norte &lt;-<span class="st"> </span><span class="kw">filter</span>(mortalidad, ubicación <span class="op">==</span><span class="st"> &quot;Norte&quot;</span>)</code></pre></div>
+<p>… y calculamos la diferencia entre el promedio de mortalidad de unas y otras.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(comunas_al_sur<span class="op">$</span>Tasa2016) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(comunas_al_norte<span class="op">$</span>Tasa2016)</code></pre></div>
+<pre><code>## [1] 2.044788</code></pre>
+<div id="cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> ¿Cuál es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</h3>
+<p>En base a lo que descubrimos, vamos a responder en forma sucinta.</p>
+<ul>
+<li><p>En el año 2016, la tasa de mortalidad infantil en todo los barrios del sur es más alta que en cualquier de los del norte.</p></li>
+<li><p>Para los nacidos en 2016 de padres que viven en el sur de la ciudad, la posibilidad de morir antes del primer año es, en promedio, el doble que la de aquellos con padres que residen al norte.</p></li>
+</ul>
+<p>Por supuesto, con esto no puede darse por cerrado el tema; hay muchas facetas que deberíamos analizar para comenzar a entender un fenómeno social de tal complejidad. Por ejemplo, ¿Cómo es la evolución en el tiempo de la brecha norte/sur - se mantiene igual, decrece, aumenta? ¿Qué otros factores están correlacionados con la disparidad, más allá del geográfico?</p>
+<p>En los siguientes capítulos practicaremos varias técnicas que nos permitirán profundizar nuestros análisis, en la nunca finalizada misión de entender un poco más.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="que-es-la-ciencia-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="poniendo-los-datos-en-forma.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["ciencia_de_datos_para_gente_sociable.pdf", "ciencia_de_datos_para_gente_sociable.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

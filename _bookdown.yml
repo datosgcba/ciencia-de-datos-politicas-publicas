@@ -1,0 +1,24 @@
+book_filename: "ciencia_de_datos_para_gente_sociable"
+chapter_name: "Capítulo \n"
+output_dir: docs
+delete_merged_file: true
+repo: https://github.com/bitsandbricks/datos_sociables
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Equación '
+    thm: 'Theorem '
+    lem: 'Lemma '
+    def: 'Definition '
+    cor: 'Corollary '
+    prp: 'Proposition '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    proof: 'Proof. '
+    remark: 'Remark. '
+    solution: 'Solution. '
+  ui:
+    edit: Edit
+    chapter_name: ''
+

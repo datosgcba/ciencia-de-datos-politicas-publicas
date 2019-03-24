@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ciencia de Datos para Gente Sociable</title>
+  <meta name="description" content="Ciencia de Datos para Gente Sociable">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ciencia de Datos para Gente Sociable" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="bitsandbricks/datos_sociables" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ciencia de Datos para Gente Sociable" />
+  
+  
+  
+
+<meta name="author" content="Antonio Vazquez Brust">
+
+
+<meta name="date" content="2019-01-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="modelado-estadistico.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ciencia de Datos para gente sociable</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>¿Para quién es esto?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#antes-de-empezar"><i class="fa fa-check"></i>Antes de empezar</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> ¿Qué es la ciencia de datos?</a><ul>
+<li class="chapter" data-level="1.1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html#que-significa-hacer-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué significa hacer ciencia de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html"><i class="fa fa-check"></i><b>2</b> Una presentación a toda marcha de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#nuestro-primer-proyecto-en-r"><i class="fa fa-check"></i><b>2.1</b> Nuestro primer proyecto en R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#a-investigar-cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.1.1</b> A investigar: ¿Cual es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#crear-un-proyecto-en-rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Crear un proyecto en RStudio</a></li>
+<li class="chapter" data-level="2.1.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#escribiendo-un-script"><i class="fa fa-check"></i><b>2.1.3</b> Escribiendo un script</a></li>
+<li class="chapter" data-level="2.1.4" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cargar-los-datos"><i class="fa fa-check"></i><b>2.1.4</b> Cargar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#visualizacion-la-exploracion-grafica-de-la-informacion"><i class="fa fa-check"></i><b>2.2</b> Visualización: la exploración gráfica de la información</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#haciendo-mapas"><i class="fa fa-check"></i><b>2.2.1</b> Haciendo mapas</a></li>
+<li class="chapter" data-level="2.2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#agregando-datos"><i class="fa fa-check"></i><b>2.2.2</b> Agregando datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#el-veredicto-final"><i class="fa fa-check"></i><b>2.3</b> El veredicto final</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cuál es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html"><i class="fa fa-check"></i><b>3</b> Poniendo los datos en forma</a><ul>
+<li class="chapter" data-level="3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#primeros-pasos-al-examinar-un-conjunto-de-datos-nuevo"><i class="fa fa-check"></i><b>3.1</b> Primeros pasos al examinar un conjunto de datos nuevo</a></li>
+<li class="chapter" data-level="3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#cruzando-variables-la-operacion-join"><i class="fa fa-check"></i><b>3.2</b> Cruzando variables: la operación <code>join</code></a></li>
+<li class="chapter" data-level="3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#transformando-los-datos"><i class="fa fa-check"></i><b>3.3</b> Transformando los datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#seleccionar-columnas-con-select"><i class="fa fa-check"></i><b>3.3.1</b> Seleccionar columnas con <code>select()</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#filtrar-filas-con-filter"><i class="fa fa-check"></i><b>3.3.2</b> Filtrar filas con <code>filter()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#ordenar-filas-con-arrange"><i class="fa fa-check"></i><b>3.3.3</b> Ordenar filas con <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#agregar-nuevas-variables-con-mutate"><i class="fa fa-check"></i><b>3.3.4</b> Agregar nuevas variables con <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#extraer-sumarios-con-summarise"><i class="fa fa-check"></i><b>3.3.5</b> Extraer sumarios con <code>summarise()</code></a></li>
+<li class="chapter" data-level="3.3.6" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#bonus-el-operador-pipe"><i class="fa fa-check"></i><b>3.3.6</b> ¡BONUS! El operador “pipe”: <code>%&gt;%</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualizacion.html"><a href="visualizacion.html"><i class="fa fa-check"></i><b>4</b> Visualización</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualizacion.html"><a href="visualizacion.html#una-buena-visualizacion-para-empezar-el-scatterplot"><i class="fa fa-check"></i><b>4.1</b> Una buena visualización para empezar: el <em>scatterplot</em></a></li>
+<li class="chapter" data-level="4.2" data-path="visualizacion.html"><a href="visualizacion.html#ajustando-color-y-tamano"><i class="fa fa-check"></i><b>4.2</b> Ajustando color y tamaño</a></li>
+<li class="chapter" data-level="4.3" data-path="visualizacion.html"><a href="visualizacion.html#facetado"><i class="fa fa-check"></i><b>4.3</b> Facetado</a></li>
+<li class="chapter" data-level="4.4" data-path="visualizacion.html"><a href="visualizacion.html#graficos-de-barras"><i class="fa fa-check"></i><b>4.4</b> Gráficos de barras</a></li>
+<li class="chapter" data-level="4.5" data-path="visualizacion.html"><a href="visualizacion.html#histogramas"><i class="fa fa-check"></i><b>4.5</b> Histogramas</a></li>
+<li class="chapter" data-level="4.6" data-path="visualizacion.html"><a href="visualizacion.html#preparando-una-visualizacion-para-compartir"><i class="fa fa-check"></i><b>4.6</b> Preparando una visualización para compartir</a></li>
+<li class="chapter" data-level="4.7" data-path="visualizacion.html"><a href="visualizacion.html#otras-visualizaciones"><i class="fa fa-check"></i><b>4.7</b> Otras visualizaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html"><i class="fa fa-check"></i><b>5</b> Modelado estadístico</a><ul>
+<li class="chapter" data-level="5.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-numerica"><i class="fa fa-check"></i><b>5.1.1</b> Regresión con una variable numérica</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#revolviendo-los-residuos"><i class="fa fa-check"></i><b>5.1.2</b> Revolviendo los residuos</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-categorica"><i class="fa fa-check"></i><b>5.1.3</b> Regresión con una variable categórica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-multiples-variables"><i class="fa fa-check"></i><b>5.2</b> Regresión con múltiples variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html"><i class="fa fa-check"></i><b>6</b> Información geográfica y mapas</a><ul>
+<li class="chapter" data-level="6.1" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#los-datos-georreferenciados"><i class="fa fa-check"></i><b>6.1</b> Los datos georreferenciados</a></li>
+<li class="chapter" data-level="6.2" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#formatos-de-archivo"><i class="fa fa-check"></i><b>6.2</b> Formatos de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#explorando-un-archivo-con-informacion-geografica"><i class="fa fa-check"></i><b>6.3</b> Explorando un archivo con información geográfica</a></li>
+<li class="chapter" data-level="6.4" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#visualizando-informacion-geografica"><i class="fa fa-check"></i><b>6.4</b> Visualizando información geográfica</a></li>
+<li class="chapter" data-level="6.5" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#volcando-en-el-mapa-informacion-de-multiples-fuentes"><i class="fa fa-check"></i><b>6.5</b> Volcando en el mapa información de múltiples fuentes</a></li>
+<li class="chapter" data-level="6.6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#combinando-capas-geograficas"><i class="fa fa-check"></i><b>6.6</b> Combinando capas geográficas</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ciencia de Datos para Gente Sociable</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="informacion-geografica-y-mapas" class="section level1">
+<h1><span class="header-section-number">Capítulo 
+6</span> Información geográfica y mapas</h1>
+<p>Hemos llegado al capítulo final, dedicado al análisis y visualización de información geográfica. Aquí incursionaremos en el dominio de los <em>SIG</em> (“Sistemas de Información Geográfica”) también conocidos como <em>GIS</em> por sus siglas en inglés.</p>
+<p>Hasta hace poco tiempo, labores como la producción de mapas y el análisis espacial estaban reservadas para especialistas, debido a la complejidad de las tareas y al alto costo de producción y adquisición de datos geográficos. Pero durante las dos últimas décadas la tecnología digital cambió el panorama. Una dramática caída en el costo asociado a adquirir y procesar información geográfica (pensemos en satélites y computadoras multiplicándose y bajando de precio) dio paso al mapa digital como herramienta universal. El consumo de sofisticados mapas y otros productos geográficos se volvió masivo y cotidiano, con Google Maps como el exponente más conocido. Apenas había pasado la novedad de disponer de mapas en alta resolución de todo el mundo accesibles al instante desde nuestros escritorios, cuando la llegada de los <em>smartphones</em> popularizó el acceso en cualquier momento y lugar.</p>
+<p>El mismo proceso que nos convirtió a todos en consumidores constantes de información geográfica también nos da la oportunidad de ser los productores. Sin dudas, hacer mapas se ha vuelto más fácil que nunca antes. Existen cada vez más repositorios con información georreferenciada de acceso publico -datasets que incluyen información precisa sobre su ubicación geográfica. Al mismo tiempo, maduran y se hacen más fáciles de usar las herramientas para análisis y visualización espacial.</p>
+<p>En los procesos sociales, el “dónde” suele ser un aspecto clave. Es central para quienes estudiamos -por ejemplo- las ciudades o las dinámicas de la política, siempre tan arraigadas a lo territorial. Esto vuelve al mapa una de las herramientas de visualización más importantes que podemos emplear.</p>
+<p>En R contamos con varios paquete de funciones que permiten manipular información espacial con facilidad. A continuación vamos a aprender a combinarlos con las herramientas que ya hemos aprendido, para hacer análisis geográfico y crear nuestros propios mapas.</p>
+<div id="los-datos-georreferenciados" class="section level2">
+<h2><span class="header-section-number">6.1</span> Los datos georreferenciados</h2>
+<p>El atributo que distingue a los datos georreferenciados, lo que los hace merecer ese nombre, es que representan ubicaciones exactas sobre la superficie de la Tierra. Representar en forma precisa una posición sobre la superficie terrestre es un todo un reto. Para empezar, la Tierra tiene una forma irregular. A pesar de cómo solemos imaginarla y dibujarla, no es una esfera perfecta sino que está “achatada” en los polos, dificultando la matemática necesaria para comparar posiciones y medir distancias. Luego, está el problema de cómo mostrar sobre papel impreso, o en una pantalla digital, -superficies planas- rasgos geográficos que pertenecen a una superficie tridimensional esférica. La solución a estos problemas toma la forma de sistemas de coordenadas de referencia (<em>CRS</em> por sus siglas en inglés), y de proyecciones cartográficas.</p>
+<p>Los CRS son un sistema de números que definen ubicaciones sobre la superficie de la Tierra; funcionan como direcciones. El tipo de CRS más conocido es el que usa latitud y longitud, para definir posiciones en los ejes norte-sur y este-oeste.</p>
+<p>Las proyecciones cartográficas son instrucciones para traducir a un plano la disposición de puntos ubicados en la esfera terrestre. Algo así como las instrucciones para dibujar en dos dimensiones las disposición de fronteras, accidentes geográficos, calles o cualquier otro objeto que se extiende sobre la superficie curva del planeta. Como en toda traducción, hay algo que se pierde en el proceso. Todo los mapas “mienten”, en el sentido en que presentan una versión distorsionada de la superficie de terrestre. Esto es inevitable; no existe forma de pasar de la esfera al plano sin distorsionar la forma, la superficie, la distancia o la dirección de los rasgo geográficos. Existen muchísimas proyecciones distintas, cada una pensada para minimizar alguno de los tipos de distorsión, o para encontrar una solución de compromiso que los balancee.</p>
+<div class="figure"><span id="fig:unnamed-chunk-143"></span>
+<img src="imagenes/proyecciones.png" alt="Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)" width="100%" />
+<p class="caption">
+Figura 6.1: Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)
+</p>
+</div>
+<p>La proyección más famosa es la Mercator, diseñada para asistir la navegación marítima y en uso desde el siglo XVI. Su fuerte es que no distorsiona las direcciones, por lo que permite fijar el rumbo de navegación consultando el mapa. Su principal problema es que produce una distorsión notable en las áreas cercanas a los polos: Groenlandia aparenta el mismo tamaño que toda África, cuando en realidad tiene sólo un quinceavo de su superficie. Por esa razón perdió la proyección popularidad en el siglo XX cuando comenzaron a preferirse proyecciones que respetan las áreas, como las de la Figura 6.1. Sin embargo, en el siglo XXI la proyección Mercator recuperó protagonismo. Google la eligió para sus mapas en línea, y por razones de compatibilidad otros proveedores de mapas digitales la adoptaron también. Así, y para inconsolable irritación de los geógrafos, Mercator se convirtió en el estándar de facto para aplicaciones geográficas en la web.</p>
+<div class="figure"><span id="fig:unnamed-chunk-144"></span>
+<img src="imagenes/Mercator-proj.png" alt="La inescapable proyección Mercator (cortesía Jecowa)" width="100%" />
+<p class="caption">
+Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
+</p>
+</div>
+<p>En la práctica, si trabajamos en forma frecuente con archivos georreferenciados vamos a sufrir tarde o temprano de problemas de coordenadas o proyección. El más común de ellos: tener una fuentes de datos geográficos que no podemos comparar con otras, porque desconocemos el sistema de coordenadas que se usó para crearla; es decir, no podemos saber a que posición sobre el planeta corresponde cada observación en los datos.</p>
+</div>
+<div id="formatos-de-archivo" class="section level2">
+<h2><span class="header-section-number">6.2</span> Formatos de archivo</h2>
+<p>Otro problema asociado a trabajar con datos geográficos es el de los formatos de archivo. El formato más común es el denominado “shapefile”, inventado por la empresa ESRI (los creadores del software ArcGIS). Es un formato incómodo porque guarda la información en varios archivos distintos, que suelen ser combinados en un archivo .zip para su distribución. Un inconveniente aún mayor es que los nombres de las variables en un shapefile deben tener 10 caracteres o menos, lo que facilita el uso de abreviaturas ininteligibles. A pesar de éstos y otros detrimentos, el formato es tan común que se ha vuelto sinónimo de archivo con información geográfica, y resiste a pesar de los esfuerzos por reemplazarlo con alternativas más modernas. Una de ellas es “GeoJSON”, un estándar abierto que corrige los dos inconvenientes mencionados antes. Para nuestros ejercicios usaremos datos geográficos en esta último formato.</p>
+</div>
+<div id="explorando-un-archivo-con-informacion-geografica" class="section level2">
+<h2><span class="header-section-number">6.3</span> Explorando un archivo con información geográfica</h2>
+<p>Como hemos hecho antes, practicaremos con datos tomados del portal de datos abiertos de la Ciudad de Buenos Aires. En esta ocasión se trata de los radios censales de la ciudad. Los radios censales son particiones de la superficie de la ciudad que contienen una cantidad similar de hogares. Fueron definidos por el Instituto Nacional de Estadística y Censos (INDEC) para facilitar la labor durante la jornada del Censo Nacional de Población que se realiza cada diez años. La idea es asignar a cada censista un radio censal, estimando que puede recorrer todos los hogares incluidos durante el día. Los radios censales son la unidad de análisis espacial por excelencia, debido a que combinan alta granularidad con abundante información asociada de acceso público, producida como resultado del Censo.</p>
+<p>A trabajar entonces. Si no lo hicimos aún, carguemos las librerías <code>sf</code> y <code>tidyverse</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)
+<span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Y leemos los datos directo desde internet:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">radios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;https://bitsandbricks.github.io/data/CABA_rc.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `CABA_rc&#39; from data source `https://bitsandbricks.github.io/data/CABA_rc.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 3554 features and 8 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -58.53092 ymin: -34.70574 xmax: -58.33455 ymax: -34.528
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Dediquemos un momento para describir la información que apareció al leer el archivo.</p>
+<ul>
+<li><code>Simple feature collection with 3554 features and 8 fields</code>: Cargamos una colección de “simple features” (entidades geométricas en la jerga de la cartografía digital), compuesta por 3554 rasgos y 8 campos, que se traduce como 3554 observaciones/filas con 8 variables/columnas.</li>
+<li><code>geometry type:  MULTIPOLYGON</code>: los archivos con información geográfica contienen colecciones de puntos, de líneas, o de polígonos. En éste caso son polígonos; tiene sentido para la información que esperamos, que es la de la superficie de Buenos Aires dividida en sus radios censales.</li>
+<li><code>dimension:      XY</code>: la información es “plana”, en dos dimensiones X e Y. No incluye información de alturas, que estaría en la dimensión Z. Es lo típico, rara vez trabajaremos con archivos tridimensionales.</li>
+<li><code>bbox:           xmin: -58.53092 ymin: -34.70574 xmax: -58.33455 ymax: -34.528</code>: nos da cuatro valores que forman una “caja” (<em>bounding box</em>), el rectángulo que contiene todos los datos. Estos valores son la latitud mínima, la longitud mínima, la latitud máxima y la longitud máxima del conjunto de datos. Sólo es útil cuando tenemos mucha práctica y ya reconocemos lugares por sus coordenadas.</li>
+<li><code>epsg (SRID):    4326</code> y <code>proj4string:    +proj=longlat +datum=WGS84 +no_defs</code> significan lo mismo, que nuestros datos usan el sistema de coordenadas WGS84, también conocido por su código EPSG 4326 . Es el mismo que usan los sistemas GPS, Google Maps, y las aplicaciones de internet en general. Es importante prestar atención al sistemas de coordenadas, o CRS, ya que para comparar datos geográficos de distintas fuentes todas deben usar el mismo.</li>
+</ul>
+<p>Como con cualquier otro dataset, comenzamos nuestra exploración pidiendo su resumen:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(radios)</code></pre></div>
+<pre><code>##     RADIO_ID          BARRIO         COMUNA       POBLACION     
+##  1_1_1  :   1   PALERMO  : 295   1      : 329   Min.   :   0.0  
+##  1_10_1 :   1   CABALLITO: 215   13     : 305   1st Qu.: 646.2  
+##  1_10_10:   1   RECOLETA : 198   14     : 295   Median : 786.0  
+##  1_10_11:   1   BALVANERA: 191   3      : 254   Mean   : 813.2  
+##  1_10_12:   1   FLORES   : 183   4      : 252   3rd Qu.: 928.0  
+##  1_10_13:   1   BELGRANO : 170   7      : 250   Max.   :3945.0  
+##  (Other):3548   (Other)  :2302   (Other):1869                   
+##    VIVIENDAS         HOGARES        HOGARES_NBI        AREA_KM2       
+##  Min.   :   0.0   Min.   :   0.0   Min.   :  0.00   Min.   :0.004468  
+##  1st Qu.: 311.2   1st Qu.: 259.0   1st Qu.:  2.00   1st Qu.:0.018626  
+##  Median : 377.0   Median : 310.0   Median :  6.00   Median :0.035548  
+##  Mean   : 401.4   Mean   : 323.6   Mean   : 19.35   Mean   :0.057350  
+##  3rd Qu.: 462.0   3rd Qu.: 371.0   3rd Qu.: 23.00   3rd Qu.:0.062847  
+##  Max.   :1405.0   Max.   :1093.0   Max.   :403.00   Max.   :3.804422  
+##                                                                       
+##           geometry   
+##  MULTIPOLYGON :3554  
+##  epsg:4326    :   0  
+##  +proj=long...:   0  
+##                      
+##                      
+##                      
+## </code></pre>
+<p>Podemos sacar en limpio varias cosas. RADIO_ID, por su nombre, debe ser el código que identifica cada radio censal. Tenemos columnas representando barrio y comuna de cada radio. Tenemos una columna para la población, y vemos que así como algún radio está deshabitado, el más poblado alcanza los 3945 habitantes. En cantidad de viviendas, el máximo es de 1405, y el de hogares 1093: eso significa que existe al menos un radio censal donde hay viviendas desocupadas; tomamos nota para revisarlo luego. “HOGARES_NBI” representa la cantidad de hogares donde se registró que al menos una de las necesidades básicas no estaba satisfecha, con mínimo de 0 por radio, y máximo nada menos que de 403. También tenemos una columna con el área en km^2, que muestra que en general los radios censales abarcan alrededor de medio kilómetro cuadrado, pero existe alguno que es casi 8 veces mayor al promedio. Por último queda la columna <code>geometry</code>, que contiene una serie de puntos que permiten trazar la silueta de cada radio (sus polígonos). Nosotros no vamos a prestarle atención, pero para R es fundamental, ya que le permite proyectar mapas y hacer cálculos geométricos cuando se lo pidamos.</p>
+</div>
+<div id="visualizando-informacion-geografica" class="section level2">
+<h2><span class="header-section-number">6.4</span> Visualizando información geográfica</h2>
+<p>La visualización de información geográfica por excelencia es el mapa, ¡por supuesto!</p>
+<p>Nuestro aliado <code>ggplot()</code> se encarga de ello.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-148-1.png" width="1050" /></p>
+<p>Ademas de encontrarnos con la reconocible silueta de la ciudad, comprobamos lo que el resumen de la data había sugerido: la mayoría de los radios censales tiene un tamaño similar, pero existe un puñado que es considerablemente más extenso que el promedio. Los “mega radios” seguramente corresponden a zonas poco habitadas, por lo que se asume que un censista puede terminar de encuestar a todos los residentes en un día.</p>
+<p>Podemos analizar eso mismo: ¿cuántas viviendas hay por radio?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> VIVIENDAS)) </code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-149-1.png" width="1050" /></p>
+<p>EL grosor de la línea que traza las fronteras entre radios hace difícil determinar el color de relleno. Esto suele pasar cuando se grafica información geográfica intrincada como la de los radios censales. Una solución es definir el color de la línea como <code>NA</code>, que para <code>ggplot</code> significa “ninguno”. Lo hacemos así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> POBLACION), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-150-1.png" width="1050" /></p>
+<p>Así esta mejor. Nótese que definimos el color por fuera de <code>aes()</code>. Cuando queremos asignar un valor fijo a alguno de los atributos estéticos (y no dependiente de una variable) siempre va fuera de la función <code>aes()</code>.</p>
+<p>En cuanto al gráfico, observamos que los radios censales más grandes tienden a ser poco poblados, con algunas excepciones, en particular el gran radio censal al oeste. ¿A qué barrio corresponde?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> BARRIO), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-151-1.png" width="1050" /></p>
+<p>Hemos logrado otro de nuestros gráficos ilegibles, intentando mostrar demasiadas variables categóricas a la vez. Una forma de resolver el dilema es filtrando los datos para aislar los casos de interés. Del menú de visualizaciones que aprendimos en el capítulo 2, podemos elegir el histograma para mostrar la distribución de tamaños de nuestros radios censales.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">x =</span> AREA_KM2))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-152-1.png" width="1050" /></p>
+<p>Cómo había anticipado el resumen vía <code>summary()</code>, la gran mayoría de los radios tiene menos de medio km^2. Unos pocos superan los 2 km^2, así que vamos a aislar esos para saber a que barrio corresponden.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">filtrados &lt;-<span class="st"> </span>radios <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(AREA_KM2 <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) 
+
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> filtrados, <span class="kw">aes</span>(<span class="dt">fill =</span> BARRIO)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Radios censales de mayo tamaño&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-153-1.png" width="1050" /> Nuestro gran radio censal al este, con población considerable, corresponde a Puerto Madero.</p>
+<p>Llevemos ahora nuestra atención al tema de la cantidad de viviendas superando a la de hogares. Tal situación implica que hay una tasa de vacancia alta en el radio censal. Podemos verla en el mapa graficando la intensidad de la relación entre viviendas y hogares, expresándola como la división de una por otra.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> VIVIENDAS<span class="op">/</span>HOGARES), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-154-1.png" width="1050" /></p>
+<p>Hay un radio censal que parece brillar, destacándose entre los demás. ¿Dónde está? Esta vez lo resolvemos en forma analítica en lugar de visual, usando los verbos de transformación de datos. Vamos a definir una variable nueva, con la tasa entre viviendas y hogares que ya usamos para el gráfico. Luego vamos a ordenar el dataframe por orden descendiente de la tasa, y usando <code>head()</code> nos quedamos sólo con los primeros valores, que corresponden a los más altos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">radios <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">viv_vs_hogares =</span> VIVIENDAS <span class="op">/</span><span class="st"> </span>HOGARES) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(viv_vs_hogares)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">head</span>()</code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -58.38038 ymin: -34.62205 xmax: -58.35869 ymax: -34.60085
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##   RADIO_ID        BARRIO COMUNA POBLACION VIVIENDAS HOGARES HOGARES_NBI
+## 1  1_13_15 PUERTO MADERO      1         0         6       0           0
+## 2   1_13_3 PUERTO MADERO      1        45       473      20           0
+## 3   1_9_19   SAN NICOLAS      1       119       405      61           6
+## 4  1_12_10   SAN NICOLAS      1       296       629     101           1
+## 5  1_12_12   SAN NICOLAS      1       499       471      90          17
+## 6   1_9_15   SAN NICOLAS      1       238       608     118          13
+##     AREA_KM2 viv_vs_hogares                       geometry
+## 1 0.07899011            Inf MULTIPOLYGON (((-58.36131 -...
+## 2 0.05698617      23.650000 MULTIPOLYGON (((-58.36094 -...
+## 3 0.06236044       6.639344 MULTIPOLYGON (((-58.37606 -...
+## 4 0.04438025       6.227723 MULTIPOLYGON (((-58.37879 -...
+## 5 0.03108456       5.233333 MULTIPOLYGON (((-58.37879 -...
+## 6 0.03287564       5.152542 MULTIPOLYGON (((-58.37473 -...</code></pre>
+<p>Otra vez Puerto Madero, que contiene un radio censal con una vacancia notable, el segundo de la lista: con 473 viviendas disponibles, se asentaron allí sólo 20 hogares. El que se llevó el primer puesto, también en Puerto Madero, obtuvo una tasa de “Inf”, o infinito. Esto ocurre porque allí tenemos 0 hogares, y al dividir por esa cantidad no se obtiene un número. Conociendo al barrio, podemos sospechar que la especulación inmobiliaria es la causa de las viviendas vacías. El resto de los radios censales del ranking corresponde a San Nicolás, el barrio más céntrico de la ciudad, donde la gran cantidad de departamentos dedicados a uso comercial o profesional explicaría la baja cantidad de hogares.</p>
+<p>Algo importante que no hemos mencionado aún es la importancia de “normalizar” las variables antes de mostrarlas en un mapa. Con esto me refiero a que, en general, no interesan tanto los valores absolutos sino puestos en contexto. Ejemplos típicos:</p>
+<ul>
+<li>En lugar de mostrar “número de crímenes por barrio” es más instructivo mostrar el número de crímenes per cápita; de lo contrario es de esperar que los lugares más poblados siempre estén a la cabeza, lo cual no agrega demasiada información.<br />
+</li>
+<li>En lugar de mostrar “cantidad de habitantes por radio censal”, suele preferirse mostrar la densidad de población, es decir la cantidad de habitantes dividida por la extensión del área. Los mapas de densidad muestran mucho mejor la distribución espacial de la población.</li>
+</ul>
+<p>Con nuestros datos, podemos visualizar la densidad de la población así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> POBLACION<span class="op">/</span>AREA_KM2), <span class="dt">color =</span> <span class="ot">NA</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Densidad de población&quot;,</span>
+<span class="st">         subtitle = &quot;</span>Ciudad Autónoma de Buenos Aires<span class="st">&quot;,</span>
+<span class="st">         fill = &quot;</span>hab<span class="op">/</span>km2<span class="st">&quot;)</span></code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-156-1.png" width="1050" /></p>
+<p>Este último gráfico representa de forma mucho mas precisa la distribución de habitantes en la ciudad, haciendo saltar a la vista los núcleos con mayor densidad de población. De paso, aprendimos un truco nuevo: agregando <code>scale_fill_viridis_c()</code> le pedimos a <code>ggplot</code> que utilice la escala de colores conocida como “viridis”, diseñada por expertos en visualización para ser fácil de leer… y lucir bien.</p>
+</div>
+<div id="volcando-en-el-mapa-informacion-de-multiples-fuentes" class="section level2">
+<h2><span class="header-section-number">6.5</span> Volcando en el mapa información de múltiples fuentes</h2>
+<p>En algunos casos, un archivo con información geográfica contiene todos los datos que necesitamos. Pero lo habitual es que el archivo sólo brinde la ubicación y fronteras de nuestras unidades de análisis, de manera que necesitamos agregarle los datos que hemos obtenido de otras fuentes y queremos proyectar en un mapa.</p>
+<p>En el capítulo 2 aprendimos a usar la función <code>left_join()</code> para combinar tablas. Dado que los datos espaciales cargados vía <code>sf()</code> son dataframes -tablas-, podemos usarla para agregar variables a nuestros radios censales. Por ejemplo, las del dataset de interacciones de la ciudadanía con la ciudad.</p>
+<p>Lo cargamos,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv&quot;</span>)</code></pre></div>
+<p>y recordamos que sus variables son:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(atencion_ciudadano)</code></pre></div>
+<pre><code>## [1] &quot;PERIODO&quot;         &quot;RUBRO&quot;           &quot;TIPO_PRESTACION&quot; &quot;BARRIO&quot;         
+## [5] &quot;total&quot;           &quot;COMUNA&quot;          &quot;AÑO&quot;             &quot;MES&quot;</code></pre>
+<p>Un momento. Las variables que identifican el lugar de un reclamo son las de barrio y comuna, pero la unidad de análisis de nuestro archivo espacial es el radio censal. ¿Cómo podemos cruzar los datos? Por suerte para nosotros, el dataset con los radios censales incluye columnas con barrio y comuna, así que las podemos usar para el cruce. Si no dispusiéramos de esa información, hubiéramos tenido que tomar el camino largo. Este consiste en conseguir un archivo espacial que contenga los límites de los barrios (o comunas) y hacer una operación llamada <em>spatial join</em> para cruzar los datos en base a sus coordenadas geográficas. La “unión espacial” permite poner condiciones como “unir los datos X con los datos Y en caso de que X esté <em>adentro</em> de Y”. Nosotros no vamos a necesitar recurrir a un <em>spatial join</em>, pero es bueno saber que la opción existe (la función es <code>st_join()</code>) en caso de que la necesitemos en el futuro.</p>
+<p>Para poder cruzar las tablas de atención ciudadana y la de datos espaciales, necesitamos que la unidad de observación (la entidad que representa cada fila) sea la misma. Cómo el dataset de atención es el menos detallado a nivel espacial, corresponde hacer un agregado de los radios censales para calcular sus datos a nivel barrio o comuna. Vamos con los barrios, usando a nuestros viejos amigos <code>group_by</code> y <code>summary</code>.</p>
+<p>Recordemos los nombres de columna de <code>radios</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(radios)</code></pre></div>
+<pre><code>## [1] &quot;RADIO_ID&quot;    &quot;BARRIO&quot;      &quot;COMUNA&quot;      &quot;POBLACION&quot;   &quot;VIVIENDAS&quot;  
+## [6] &quot;HOGARES&quot;     &quot;HOGARES_NBI&quot; &quot;AREA_KM2&quot;    &quot;geometry&quot;</code></pre>
+<p>Todas las unidades numéricas representan valores absolutos (no proporciones) así que es fácil pasarlas a un agregado por barrio; basta con sumarlas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_geo &lt;-<span class="st"> </span>radios <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(BARRIO) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">POBLACION =</span> <span class="kw">sum</span>(POBLACION),
+              <span class="dt">VIVIENDAS =</span> <span class="kw">sum</span>(VIVIENDAS),
+              <span class="dt">HOGARES =</span> <span class="kw">sum</span>(HOGARES),
+              <span class="dt">HOGARES_NBI =</span> <span class="kw">sum</span>(HOGARES_NBI),
+              <span class="dt">AREA_KM2 =</span> <span class="kw">sum</span>(AREA_KM2))</code></pre></div>
+<p>Y esto es lo lindo de trabajar con datos geográficos en forma de tabla: la columna <code>geometry</code>, la que guarda la información espacial, se crea en forma automática al hacer el <code>summarise</code>, y contiene la fronteras de la unidad de agregación - los barrios.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-161-1.png" width="1050" /></p>
+<p>Como efecto secundario de la operación (que en la jerga del <em>GIS</em> se conoce como “disolver polígonos”) podemos ver algunas líneas internas que han quedado como residuo de la unión de los radios censales. Es un problema muy común al trabajar con datos geográficos, dependiendo de la calidad de la fuente. Por suerte, en este caso el pequeño desperfecto no afecta nuestros planes. En pos de la prolijidad, podríamos realizar un ajuste fino y eliminar esas líneas internas, ya que hay varias técnicas para ello. Pero la complejidad de la tarea haría demasiado larga la explicación, así que vamos a dejarlo así… un recordatorio de que al trabajar con datos “reales” pasan estas cosas.</p>
+<p>Ahora hagamos también un agregado por barrio de los datos de atención al ciudadano,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_por_barrio &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(BARRIO) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">total =</span> <span class="kw">sum</span>(total))
+
+<span class="kw">head</span>(atencion_por_barrio)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   BARRIO    total
+##   &lt;chr&gt;     &lt;int&gt;
+## 1 &quot; &quot;        5722
+## 2 AGRONOMIA  9604
+## 3 ALMAGRO   54190
+## 4 BALVANERA 49540
+## 5 BARRACAS  31752
+## 6 BELGRANO  56522</code></pre>
+<p>Ya tenemos las piezas necesarias: dos datasets con una columna en común que los relaciona (“BARRIO”) permitiendo cruzar los datos. Queremos conservar todas las observaciones del dataset geográfico, agregando los datos contenidos en el dataset de atención en donde la variable BARRIO sea la misma.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_geo &lt;-<span class="st"> </span>barrios_geo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(atencion_por_barrio)</code></pre></div>
+<p>¡Ahora podemos hacer un mapa de cantidad de contactos por barrio!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> total))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-164-1.png" width="1050" /></p>
+<p>Tal como habíamos verificado cuando hicimos la exploración del dataset en el capítulo 2, en los barrios céntricos se registra la mayoría de los contactos. Podemos mejorar un poco el mapa, normalizando los datos para mostrar valores per cápita.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> total<span class="op">/</span>POBLACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Contactos a atención ciudadana per cápita&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;Barrios de Ciudad Autónoma de Buenos Aires&quot;</span>,
+         <span class="dt">fill =</span> <span class="st">&quot;contactos/habitante&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-165-1.png" width="1050" /></p>
+<p>Normalizar los datos hace evidente que los barrios son parejos en su grado de demanda por habitante, exceptuando los casos salientes que mencionamos antes.</p>
+<p>Hasta ahora hemos mostrado sobre un mapa variables numéricas, pero es igual de fácil representar variables categóricas. Imaginemos que quisiéramos mostrar el principal rubro por el cual se comunican los ciudadanos en cada barrio.</p>
+<p>Usando los verbos de transformación que conocemos, la receta sería:</p>
+<ol style="list-style-type: decimal">
+<li>Agrupar los datos por barrio y por rubro</li>
+<li>Crear un resumen con el total de contactos por rubro en cada barrio</li>
+<li>Por cada grupo, filtrar los datos para conservar sólo el rubro que tiene la cantidad más grande de contactos</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_por_barrio_principal_rubro &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(BARRIO, RUBRO) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">contactos =</span> <span class="kw">sum</span>(total)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(contactos <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(contactos))
+
+<span class="kw">head</span>(atencion_por_barrio_principal_rubro)</code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   BARRIO [6]
+##   BARRIO    RUBRO              contactos
+##   &lt;chr&gt;     &lt;fct&gt;                  &lt;int&gt;
+## 1 &quot; &quot;       REGISTRO CIVIL          5004
+## 2 AGRONOMIA SANEAMIENTO URBANO      4691
+## 3 ALMAGRO   SANEAMIENTO URBANO     22429
+## 4 BALVANERA SANEAMIENTO URBANO     16840
+## 5 BARRACAS  SANEAMIENTO URBANO     10138
+## 6 BELGRANO  SANEAMIENTO URBANO     21060</code></pre>
+<p>Como funciona esta cadena de verbos?</p>
+<ol style="list-style-type: decimal">
+<li><p><code>group_by()</code> agrupa los datos por barrio, y para cada barrio agrupa los datos por rubro.</p></li>
+<li><p><code>summarise()</code> “pela” una capa de agrupamiento, la más externa que es rubro, y deja para cada barrio una sola fila por rubro, con la suma de sus totales.</p></li>
+<li><p>El paso final en la cadena de transformación, <code>filter(contactos == max(contactos))</code> funciona porque todos los verbos de transformación respetan el agrupamiento. Es decir, si los datos fueron agrupados en forma previa, la función <code>filter()</code> aísla la fila con la cantidad máxima de contactos en cada uno de los grupos. En este caso, el agrupamiento que le llega a <code>filter()</code> es sólo por “BARRIOS”, porque la función <code>summarise()</code> borró la capa “RUBRO”. Resultado final: por cada barrio, una única fila que contiene el rubro que sumó más contactos</p></li>
+</ol>
+<p>Agregamos la información al dataset geográfico vía <code>left_join()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_geo &lt;-<span class="st"> </span>barrios_geo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(atencion_por_barrio_principal_rubro)</code></pre></div>
+<p>Y mostramos el rubro principal por barrio en un mapa</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> RUBRO)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Principal categoría de las solicitudes/reclamos&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-168-1.png" width="1050" /></p>
+</div>
+<div id="combinando-capas-geograficas" class="section level2">
+<h2><span class="header-section-number">6.6</span> Combinando capas geográficas</h2>
+<p>Comentamos al principio de capítulo que los archivos con datos espaciales pueden representar áreas (polígonos), líneas o puntos. Hasta ahora hemos hecho mapas con polígonos, pero según el caso podríamos querer mostrar otros tipos de geometría.</p>
+<p>Un ámbito donde es común utilizar toda la variedad de geometrías es el transporte: Polígonos para representar distritos, líneas para el recorrido de un sistema de transporte, y puntos para la ubicación de las estaciones.</p>
+<p>Una vez más, el portal de datos abiertos de la Ciudad de Buenos Aires nos provee los datos necesarios para practicar. De allí he descargado, y preparado para su uso, datos espaciales con</p>
+<pre><code>las líneas de transporte subterráneo (SUBTE) de la ciudad</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_lineas &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/subte_lineas.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `subte_lineas&#39; from data source `http://bitsandbricks.github.io/data/subte_lineas.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 80 features and 2 fields
+## geometry type:  MULTILINESTRING
+## dimension:      XY
+## bbox:           xmin: -58.48639 ymin: -34.64331 xmax: -58.36993 ymax: -34.55564
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<pre><code>y los puntos con las ubicaciones de las estaciones de SUBTE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_estaciones &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/subte_estaciones.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `subte_estaciones&#39; from data source `http://bitsandbricks.github.io/data/subte_estaciones.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 86 features and 3 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -58.48639 ymin: -34.64331 xmax: -58.36993 ymax: -34.55564
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Combinar capas mostrado distintas geometrías es simple usando <code>sf()</code> y <code>ggplot()</code>. Sólo es cuestión de sumar capas de <code>geom_sf()</code> con cada fuente de datos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> subte_lineas, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> subte_estaciones, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Sistema de transporte subterráneo (SUBTE)&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;Ciudad de Buenos Aires&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-171-1.png" width="1050" /></p>
+<p>¡Voilà! Podríamos también aprovechar el lienzo en blanco de la superficie de los barrios para hacer un mapa temático que muestre la cantidad de incidentes en la base de atención ciudadana relacionados con el SUBTE.</p>
+<p>Para revisar todos los rubros de atención, podemos usar <code>summary(atencion_ciudadano$RUBRO)</code>; en lugar de pedir un resumen del dataframe completo, le estamos indicando a R que nos interesa el detalle de la columna “RUBRO”. Entre las 346 categorías, una es “EMERGENCIAS EN SUBTE”. Suena interesante.</p>
+<p>¿Dónde se han registrado más incidentes con emergencias? Lo responderemos con un mapa. A priori asumimos que no vamos a encontrar casos en en los barrios por donde no pasa el SUBTE, lo cual también podremos comprobar.</p>
+<p>Primero creamos un subconjunto de los datos con la suma, por barrio, de emergencias reportadas</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">emergencias_en_subte &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(RUBRO <span class="op">==</span><span class="st"> &quot;EMERGENCIAS EN SUBTE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(BARRIO) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">emergencias =</span> <span class="kw">sum</span>(total))</code></pre></div>
+<p>… luego lo cruzamos con nuestro archivo geográfico</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_geo &lt;-<span class="st"> </span>barrios_geo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(emergencias_en_subte)</code></pre></div>
+<p>… y creamos un mapa temático mostrando la suma de emergencias por barrio:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> emergencias)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> subte_lineas, <span class="dt">color =</span> <span class="st">&quot;yellow&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> subte_estaciones, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Emergencias relacionadas con el SUBTE&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;Registros de atención al ciudadano, Ciudad de Buenos Aires (2015 - 2017)&quot;</span>,
+         <span class="dt">fill =</span> <span class="st">&quot;emergencias reportadas&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-174-1.png" width="1050" /></p>
+<p>Aquí se cumplen las expectativas: la cantidad de emergencias reportadas sigue en forma clara un patrón relacionado con la cantidad de estaciones ubicadas en cada barrio. Y como era de esperarse, en barrios donde el SUBTE no ofrece cobertura la cantidad de emergencias es nula.</p>
+<p>Con eso cerramos el capítulo, y el libro. Hemos llegado al brusco final… al menos brusco por ahora. Continuaré puliendo el texto, y más adelante quisiera agregar un breve capítulo de consideraciones finales.</p>
+<p>Mientras tanto, mi mensaje final es fácil de resumir. Espero que “Ciencia de Datos para Gente Sociable” haya sido una introducción satisfactoria al análisis, modelado y visualización de información, y tan sólo el inicio de un largo y gratificante recorrido.</p>
+<p>¡Gracias por haber leído hasta aquí!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelado-estadistico.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["ciencia_de_datos_para_gente_sociable.pdf", "ciencia_de_datos_para_gente_sociable.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

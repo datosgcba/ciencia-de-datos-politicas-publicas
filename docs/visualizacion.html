@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ciencia de Datos para Gente Sociable</title>
+  <meta name="description" content="Ciencia de Datos para Gente Sociable">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ciencia de Datos para Gente Sociable" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="bitsandbricks/datos_sociables" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ciencia de Datos para Gente Sociable" />
+  
+  
+  
+
+<meta name="author" content="Antonio Vazquez Brust">
+
+
+<meta name="date" content="2019-01-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="poniendo-los-datos-en-forma.html">
+<link rel="next" href="modelado-estadistico.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ciencia de Datos para gente sociable</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>¿Para quién es esto?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#antes-de-empezar"><i class="fa fa-check"></i>Antes de empezar</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> ¿Qué es la ciencia de datos?</a><ul>
+<li class="chapter" data-level="1.1" data-path="que-es-la-ciencia-de-datos.html"><a href="que-es-la-ciencia-de-datos.html#que-significa-hacer-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué significa hacer ciencia de datos?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html"><i class="fa fa-check"></i><b>2</b> Una presentación a toda marcha de R</a><ul>
+<li class="chapter" data-level="2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#nuestro-primer-proyecto-en-r"><i class="fa fa-check"></i><b>2.1</b> Nuestro primer proyecto en R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#a-investigar-cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.1.1</b> A investigar: ¿Cual es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#crear-un-proyecto-en-rstudio"><i class="fa fa-check"></i><b>2.1.2</b> Crear un proyecto en RStudio</a></li>
+<li class="chapter" data-level="2.1.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#escribiendo-un-script"><i class="fa fa-check"></i><b>2.1.3</b> Escribiendo un script</a></li>
+<li class="chapter" data-level="2.1.4" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cargar-los-datos"><i class="fa fa-check"></i><b>2.1.4</b> Cargar los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#visualizacion-la-exploracion-grafica-de-la-informacion"><i class="fa fa-check"></i><b>2.2</b> Visualización: la exploración gráfica de la información</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#haciendo-mapas"><i class="fa fa-check"></i><b>2.2.1</b> Haciendo mapas</a></li>
+<li class="chapter" data-level="2.2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#agregando-datos"><i class="fa fa-check"></i><b>2.2.2</b> Agregando datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#el-veredicto-final"><i class="fa fa-check"></i><b>2.3</b> El veredicto final</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires"><i class="fa fa-check"></i><b>2.3.1</b> ¿Cuál es la diferencia en mortalidad infantil entre el sur y el norte de la Ciudad Autónoma de Buenos Aires?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html"><i class="fa fa-check"></i><b>3</b> Poniendo los datos en forma</a><ul>
+<li class="chapter" data-level="3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#primeros-pasos-al-examinar-un-conjunto-de-datos-nuevo"><i class="fa fa-check"></i><b>3.1</b> Primeros pasos al examinar un conjunto de datos nuevo</a></li>
+<li class="chapter" data-level="3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#cruzando-variables-la-operacion-join"><i class="fa fa-check"></i><b>3.2</b> Cruzando variables: la operación <code>join</code></a></li>
+<li class="chapter" data-level="3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#transformando-los-datos"><i class="fa fa-check"></i><b>3.3</b> Transformando los datos</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#seleccionar-columnas-con-select"><i class="fa fa-check"></i><b>3.3.1</b> Seleccionar columnas con <code>select()</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#filtrar-filas-con-filter"><i class="fa fa-check"></i><b>3.3.2</b> Filtrar filas con <code>filter()</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#ordenar-filas-con-arrange"><i class="fa fa-check"></i><b>3.3.3</b> Ordenar filas con <code>arrange()</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#agregar-nuevas-variables-con-mutate"><i class="fa fa-check"></i><b>3.3.4</b> Agregar nuevas variables con <code>mutate()</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#extraer-sumarios-con-summarise"><i class="fa fa-check"></i><b>3.3.5</b> Extraer sumarios con <code>summarise()</code></a></li>
+<li class="chapter" data-level="3.3.6" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#bonus-el-operador-pipe"><i class="fa fa-check"></i><b>3.3.6</b> ¡BONUS! El operador “pipe”: <code>%&gt;%</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualizacion.html"><a href="visualizacion.html"><i class="fa fa-check"></i><b>4</b> Visualización</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualizacion.html"><a href="visualizacion.html#una-buena-visualizacion-para-empezar-el-scatterplot"><i class="fa fa-check"></i><b>4.1</b> Una buena visualización para empezar: el <em>scatterplot</em></a></li>
+<li class="chapter" data-level="4.2" data-path="visualizacion.html"><a href="visualizacion.html#ajustando-color-y-tamano"><i class="fa fa-check"></i><b>4.2</b> Ajustando color y tamaño</a></li>
+<li class="chapter" data-level="4.3" data-path="visualizacion.html"><a href="visualizacion.html#facetado"><i class="fa fa-check"></i><b>4.3</b> Facetado</a></li>
+<li class="chapter" data-level="4.4" data-path="visualizacion.html"><a href="visualizacion.html#graficos-de-barras"><i class="fa fa-check"></i><b>4.4</b> Gráficos de barras</a></li>
+<li class="chapter" data-level="4.5" data-path="visualizacion.html"><a href="visualizacion.html#histogramas"><i class="fa fa-check"></i><b>4.5</b> Histogramas</a></li>
+<li class="chapter" data-level="4.6" data-path="visualizacion.html"><a href="visualizacion.html#preparando-una-visualizacion-para-compartir"><i class="fa fa-check"></i><b>4.6</b> Preparando una visualización para compartir</a></li>
+<li class="chapter" data-level="4.7" data-path="visualizacion.html"><a href="visualizacion.html#otras-visualizaciones"><i class="fa fa-check"></i><b>4.7</b> Otras visualizaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html"><i class="fa fa-check"></i><b>5</b> Modelado estadístico</a><ul>
+<li class="chapter" data-level="5.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-numerica"><i class="fa fa-check"></i><b>5.1.1</b> Regresión con una variable numérica</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#revolviendo-los-residuos"><i class="fa fa-check"></i><b>5.1.2</b> Revolviendo los residuos</a></li>
+<li class="chapter" data-level="5.1.3" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-una-variable-categorica"><i class="fa fa-check"></i><b>5.1.3</b> Regresión con una variable categórica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelado-estadistico.html"><a href="modelado-estadistico.html#regresion-con-multiples-variables"><i class="fa fa-check"></i><b>5.2</b> Regresión con múltiples variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html"><i class="fa fa-check"></i><b>6</b> Información geográfica y mapas</a><ul>
+<li class="chapter" data-level="6.1" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#los-datos-georreferenciados"><i class="fa fa-check"></i><b>6.1</b> Los datos georreferenciados</a></li>
+<li class="chapter" data-level="6.2" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#formatos-de-archivo"><i class="fa fa-check"></i><b>6.2</b> Formatos de archivo</a></li>
+<li class="chapter" data-level="6.3" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#explorando-un-archivo-con-informacion-geografica"><i class="fa fa-check"></i><b>6.3</b> Explorando un archivo con información geográfica</a></li>
+<li class="chapter" data-level="6.4" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#visualizando-informacion-geografica"><i class="fa fa-check"></i><b>6.4</b> Visualizando información geográfica</a></li>
+<li class="chapter" data-level="6.5" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#volcando-en-el-mapa-informacion-de-multiples-fuentes"><i class="fa fa-check"></i><b>6.5</b> Volcando en el mapa información de múltiples fuentes</a></li>
+<li class="chapter" data-level="6.6" data-path="informacion-geografica-y-mapas.html"><a href="informacion-geografica-y-mapas.html#combinando-capas-geograficas"><i class="fa fa-check"></i><b>6.6</b> Combinando capas geográficas</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ciencia de Datos para Gente Sociable</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualizacion" class="section level1">
+<h1><span class="header-section-number">Capítulo 
+4</span> Visualización</h1>
+<p>La visualización de información es una de las técnica más poderosas, y a la vez más accesibles, de las que disponemos como analistas de datos. La visualización es el proceso de hacer visibles los contrastes, ritmos y eventos que los datos expresan, que no podemos percibir cuando vienen en forma de áridas listas de números y categorías.</p>
+<p>Vamos a aprender a realizar las visualizaciones más usadas, y las opciones de ajuste con las que podemos lograr que luzcan tal como queremos.</p>
+<div id="una-buena-visualizacion-para-empezar-el-scatterplot" class="section level2">
+<h2><span class="header-section-number">4.1</span> Una buena visualización para empezar: el <em>scatterplot</em></h2>
+<p>Los gráficos de dispersión, o <em>scatterplots</em>, son quizás el tipo de visualización más conocido. Consisten en puntos proyectados en un eje de coordenadas, donde cada punto representa una observación. Son útiles para mostrar la correlación entre dos variables numéricas.</p>
+<p>Por ejemplo, podríamos asumir que existirá una correlación positiva entre la cantidad de habitantes de una comuna y la cantidad de contactos anuales que sus habitantes hacen a las líneas de atención al ciudadano. Es decir, cuantas más personas vivan en una comuna, es de esperarse que sea mayor la cantidad de quejas, denuncias, etc. que se originan allí.</p>
+<p>Activamos el paquete <code>tidyverse</code>, si aún no lo habíamos hecho.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>Y si no lo tenemos ya cargado, leemos de nuevo el dataframe con los registros de atención al ciudadano (esta versión incluye la columna “COMUNA”).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv&quot;</span>)</code></pre></div>
+<p>Usando los verbos de transformación que aprendimos, es fácil obtener un dataframe resumen con los totales anuales por comuna. Vamos a expresar los totales en miles de contactos, para evitar trabajar con números tan grandes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_comuna &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(COMUNA) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">miles_contactos =</span> <span class="kw">sum</span>(total) <span class="op">/</span><span class="st"> </span><span class="dv">1000</span> )
+
+contactos_por_comuna</code></pre></div>
+<pre><code>## # A tibble: 16 x 2
+##    COMUNA miles_contactos
+##     &lt;int&gt;           &lt;dbl&gt;
+##  1      1          685   
+##  2      2           48.8 
+##  3      3           71.2 
+##  4      4           94.5 
+##  5      5           77.1 
+##  6      6           82.8 
+##  7      7           95.8 
+##  8      8           61.3 
+##  9      9           91.2 
+## 10     10          114   
+## 11     11          139   
+## 12     12          123   
+## 13     13          106   
+## 14     14           99.3 
+## 15     15          107   
+## 16     NA            5.78</code></pre>
+<p>Lo que nos falta ahora es la cantidad de habitantes en cada comuna. <em>No problem</em>. El dato es fácil de conseguir, otra vez cortesía de la Dirección General de Estadística y Censos de la Ciudad de Buenos Aires. Traemos la proyección al año 2017 de la cantidad de habitantes por comuna.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">habitantes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_pob_comunas_17.csv&quot;</span>)
+
+habitantes</code></pre></div>
+<pre><code>##    COMUNA POBLACION
+## 1       1    253271
+## 2       2    149720
+## 3       3    192763
+## 4       4    238809
+## 5       5    186956
+## 6       6    184846
+## 7       7    240607
+## 8       8    226649
+## 9       9    170605
+## 10     10    170282
+## 11     11    189986
+## 12     12    213914
+## 13     13    235967
+## 14     14    226944
+## 15     15    182409</code></pre>
+<p>Por suerte, ya sabemos como combinar tablas usando <code>left_join()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_comuna &lt;-<span class="st"> </span>contactos_por_comuna <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(habitantes)
+
+contactos_por_comuna</code></pre></div>
+<pre><code>## # A tibble: 16 x 3
+##    COMUNA miles_contactos POBLACION
+##     &lt;int&gt;           &lt;dbl&gt;     &lt;int&gt;
+##  1      1          685       253271
+##  2      2           48.8     149720
+##  3      3           71.2     192763
+##  4      4           94.5     238809
+##  5      5           77.1     186956
+##  6      6           82.8     184846
+##  7      7           95.8     240607
+##  8      8           61.3     226649
+##  9      9           91.2     170605
+## 10     10          114       170282
+## 11     11          139       189986
+## 12     12          123       213914
+## 13     13          106       235967
+## 14     14           99.3     226944
+## 15     15          107       182409
+## 16     NA            5.78        NA</code></pre>
+<p>!Preparativos terminados! Hagamos por fin nuestro scatterplot. Tal como en el capítulo de introducción a R, continuaremos usando <code>ggplot()</code> para visualizar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-84-1.png" width="1050" /></p>
+<p>¿Un gráfico vacío? Recordemos que ggplot funciona por capas. Primero uno declara el dataframe que va a usar, y luego agrega una o más capas con representaciones de la información. La forma de agregar una capa con un scatterplot, en la práctica dibujar puntos, es con <code>geom_point</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-85-1.png" width="1050" /></p>
+<p>Lo que hicimos fue pedirle a ggplot que dibuje un punto por cada fila (representando a cada comuna), con la posición en el eje de las <code>x</code> según su población, y en el eje de las <code>y</code> según la cantidad de contactos registrados. Estas referencias estéticas (<em>aesthetics</em> en inglés) son las que van dentro de la función <code>aes()</code> en <code>geom_point(aes(x = POBLACION, y = miles_contactos))</code></p>
+<p>Primer sorpresa: ¡en el extremo superior derecho hay una comuna que se sale de la norma! Su relación población/reclamos es muy diferente a la de todas las demás. Podemos identificarla, pidiendo a ggplot que agregue una variable más a la visualización -la comuna. Siendo un gráfico en dos dimensiones, ya no podemos usar la posición para representar un valor; tanto la posición horizontal como la vertical están siendo usadas por población y total. Nuestras opciones son codificar la comuna por color, forma o tamaño del punto. A pesar de que son identificadas con números, las comunas son una variable categórica: no tiene sentido decir que la comuna 1 es “menor” que la comuna 7. Par las variables categóricas, el color suele ser una buena opción de codificación.</p>
+<p>Lo hacemos agregando un parámetro <code>color</code> dentro de <code>aes()</code>. Tal como hicimos en el capítulo 2, usamos <code>factor(COMUNA)</code> en lugar de <code>COMUNA</code> a secas para indicarle a R que queremos que trate a la variable como categórica:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">color =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-86-1.png" width="1050" /></p>
+<p>En ese caso, no es tan fácil discernir cuál es cuál, pero mirando con cuidado descubrimos que la comuna 1 es el <em>outlier</em>, el valor fuera de lo común. Lo que nos pasa aquí es que tenemos demasiadas categorías, con lo cual cada una tiene su propio color pero el rango cromático no alcanza para darle a cada una un tono bien distinto al de las demás.</p>
+<p>Si necesitamos generar un gráfico que no deje lugar a dudas, lo resolvemos usando un método alternativo para el scatterplot. En lugar de dibujar puntos, podemos poner etiquetas con el nombre de cada comuna.</p>
+<p>En lugar de</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">color =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
+<p>usamos</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">label =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-88-1.png" width="1050" /></p>
+<p>Volvamos a nuestros puntos para practicar dos codificaciones estéticas que no hemos probado, color y tamaño.</p>
+<p>Para dejar aún más clara la diferencia de reclamos entre comunas, podríamos usar el tamaño (<em>size</em>) de cada punto para representar esa variable, además de su altura en el gráfico.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">size =</span> miles_contactos))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-89-1.png" width="1050" /></p>
+<p>Y para distinguir cuál es cuál, podemos pedirle a ggplot que cambie la forma (<em>shape</em>) de cada punto según la comuna a la que corresponde.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">shape =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-90-1.png" width="1050" /></p>
+<p>¡Hey, sólo aparecen seis de las comunas! <code>ggplot()</code> usa cómo máximo 6 formas distintas, debido a que una cantidad mayor sería de veras muy difícil de discernir para nuestros pobres ojos. Moraleja: la estética <code>shape</code> sirve sólo cuando manejamos pocas categorías. De todas formas -en mi opinión- es el método de codificación que menos gracia tiene, así que no es grave que su utilidad sea limitada.</p>
+</div>
+<div id="ajustando-color-y-tamano" class="section level2">
+<h2><span class="header-section-number">4.2</span> Ajustando color y tamaño</h2>
+<p>Hemos visto que especificando atributos estéticos y las variables que representan dentro de <code>aes()</code> podemos ajustas posición, tamaño, color y hasta la forma de los puntos de acuerdo a sus valores. Pero, ¿qué pasa si queremos usar un tamaño o un color arbitrario para nuestros puntos? Es decir, si no nos gusta el color negro y queremos que sean todos azules, o si nos parece que se ven pequeños y queremos que sean todos un poco más grandes. Fácil: definimos el <code>color</code> o <code>size</code> que queremos por fuera de las función <code>aes()</code>, y será aplicado a todos los puntos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-91-1.png" width="1050" /></p>
+<p>Obsérvese que <code>color = &quot;blue&quot;</code> está escrito por fuera de los paréntesis de <code>aes()</code>. De paso, hicimos uso de una característica muy práctica de R: reconoce un montón de colores por su nombre, siempre que los escribamos entre comillas. Si le decimos <code>color = &quot;blue&quot;</code>, <code>color = &quot;red&quot;</code>, <code>color = &quot;yellow&quot;</code>, etc., sabe de que hablamos. Una lista de todos los colores que R reconoce, ideal como referencia, se puede encontrar en <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf" class="uri">http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf</a> ; ¡son más de 600!.</p>
+<p>Tras un vistazo a la lista, me decido por “darkolivegreen4”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">color =</span> <span class="st">&quot;darkolivegreen4&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-92-1.png" width="1050" /></p>
+<p>Bellísimo.</p>
+<p>En cuanto al tamaño, la fórmula es la misma:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">size =</span> <span class="dv">5</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-93-1.png" width="1050" /></p>
+<p>El valor de <code>size</code> se da en píxeles. Es una medida difícil de estimar antes de ver el resultado, pero es cuestión de probar algunos valores distintos hasta encontrar el que nos va bien. Por supuesto, podemos ajustar varios, o todos, los atributos a la vez</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), 
+               <span class="dt">size =</span> <span class="dv">9</span>, <span class="dt">color =</span> <span class="st">&quot;chocolate3&quot;</span>, <span class="dt">shape =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-94-1.png" width="1050" /></p>
+</div>
+<div id="facetado" class="section level2">
+<h2><span class="header-section-number">4.3</span> Facetado</h2>
+<p>Ya sabemos como representar variables usando atributos estéticos. Con esa técnica podemos mostrar con claridad dos o tres variables en un plano bidimensional (nuestro gráfico). Pero cuando si queremos agregar más atributos para codificar variables adicionales, la visualización pierde legibilidad de inmediato. Por suerte existe otra técnica, que podemos usar en combinación con la estética, para agregar aún más variables: el facetado.</p>
+<p>Las facetas son múltiples gráficos contiguos, con cada uno mostrando un subconjunto de los datos. Son útiles sobre todo para variables categóricas.</p>
+<p>Practiquemos con un ejemplo. Sabemos que en la comuna 1 se registra una cantidad de contactos de la ciudadanía mucho mayor que en las demás. ¿La diferencia será igual para todas las categorías de contacto, o existe alguna en particular que es la que inclina la balanza?</p>
+<p>En nuestro dataframe original, el tipo de contacto aparece en la columna “TIPO_PRESTACION”. El nombre que eligieron no es del todo informativo, pero <code>summary()</code> (recuerden siempre lo usamos para explorar un dataset que no conocemos) nos da una pista:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(atencion_ciudadano)</code></pre></div>
+<pre><code>##     PERIODO                         RUBRO        TIPO_PRESTACION 
+##  Min.   :201301   SANEAMIENTO URBANO   : 4589   DENUNCIA :21606  
+##  1st Qu.:201309   TRANSPORTE Y TRANSITO: 4580   QUEJA    : 3914  
+##  Median :201404   ARBOLADO             : 3122   RECLAMO  :21038  
+##  Mean   :201401   ALUMBRADO            : 2918   SOLICITUD: 9662  
+##  3rd Qu.:201503   PAVIMENTO            : 2411   TRAMITE  : 1211  
+##  Max.   :201512   ESPACIO PUBLICO      : 1918                    
+##                   (Other)              :37893                    
+##     BARRIO              total              COMUNA           AÑO           
+##  Length:57431       Min.   :    1.00   Min.   : 1.000   Length:57431      
+##  Class :character   1st Qu.:    1.00   1st Qu.: 4.000   Class :character  
+##  Mode  :character   Median :    4.00   Median : 9.000   Mode  :character  
+##                     Mean   :   34.85   Mean   : 8.119                     
+##                     3rd Qu.:   16.00   3rd Qu.:12.000                     
+##                     Max.   :19221.00   Max.   :15.000                     
+##                                        NA&#39;s   :63                         
+##      MES           
+##  Length:57431      
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
+<p>“TIPO_PRESTACION” es la categoría más general, con sólo cinco niveles - “DENUNCIA”, “QUEJA”, “RECLAMO”, “SOLICITUD” y “TRAMITE”. Las otras variables categóricas, asumimos, representan subtipos.</p>
+<p>Agrupamos entonces nuestra data por comuna y por tipo de contacto, sin olvidar agregar luego los datos de población</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_comuna_y_tipo &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(COMUNA, TIPO_PRESTACION) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">miles_contactos =</span> <span class="kw">sum</span>(total) <span class="op">/</span><span class="st"> </span><span class="dv">1000</span> ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">left_join</span>(habitantes)
+
+<span class="kw">head</span>(contactos_por_comuna_y_tipo)</code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+## # Groups:   COMUNA [2]
+##   COMUNA TIPO_PRESTACION miles_contactos POBLACION
+##    &lt;int&gt; &lt;fct&gt;                     &lt;dbl&gt;     &lt;int&gt;
+## 1      1 DENUNCIA                   22.9    253271
+## 2      1 QUEJA                      17.4    253271
+## 3      1 RECLAMO                    55.7    253271
+## 4      1 SOLICITUD                  20.9    253271
+## 5      1 TRAMITE                   568      253271
+## 6      2 DENUNCIA                   10.2    149720</code></pre>
+<p>Listos para facetar. Producimos un scatterplot igual que antes, y le agregamos una capa adicional con <code>facet_wrap()</code>. La variable a “facetar”, la que recibirá un gráfico por cada una de sus categorías, siempre se escribe a continuación del signo <code>~</code>; en nuestro caso, queda como <code>~TIPO_PRESTACION</code>. El simbolillo en cuestión denota lo que en R se denomina una <em>fórmula</em> y ya nos lo cruzaremos de nuevo, pero por ahora no le prestamos más atención.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna_y_tipo) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>TIPO_PRESTACION)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-97-1.png" width="1050" /></p>
+<p>Los culpables de la anomalía son los trámites; en ninguna otra categoría la comuna 1 se separa del resto. Sabiendo que la base de donde provienen los datos combina información de distintos sistemas de atención, mi interpretación es que una gran cantidad de “TRAMITES” proviene de algún sistema administrativo que no guarda direcciones. Si ese fuera el caso, parece que a todos los trámites huérfanos de origen se les asigna una dirección en la Comuna 1 (sede histórica del Gobierno de la Ciudad) y nosotros terminamos haciendo estas elucubraciones.</p>
+<p>Pero valga el ejemplo para mencionar algo fundamental: por más ciencia de datos que apliquemos, siempre vamos a llegar a un punto en que nuestros hallazgos no tendrán sentido sin combinarlos con lo que se llama “conocimiento de dominio”. El conocimiento de dominio es el saber especializado sobre el tema que estamos tratando, sea el ciclo reproductivo de la gaviota austral o la organización administrativa del Gobierno de la Ciudad Autónoma de Buenos Aires. Esto no debería desanimarnos, ¡al contrario!. El análisis de datos como profesión conlleva un constante aprendizaje sobre los más variados temas. Y a la inversa: si somos expertos en cualquier campo, aún con un puñado de técnicas básicas de R podemos extraer conocimiento de nuestros datos que jamas encontraría un experto programador que no conoce el paño.</p>
+</div>
+<div id="graficos-de-barras" class="section level2">
+<h2><span class="header-section-number">4.4</span> Gráficos de barras</h2>
+<p>Si hay un tipo de visualización que compite en popularidad con el <em>scatterplot</em>, son los gráficos de barras (<em>bar charts</em> en inglés). Solemos encontrarlos acompañando artículos en diarios y revistas, sin duda porque son fáciles de leer de un vistazo. Los gráficos de barras se usan mucho para hacer comparaciones: quién tiene más y quién tiene menos de alguna variable continua cómo ingresos, edad, altura o similares.</p>
+<p>Comparemos la suma total de registros que alcanza cada barrio. Con <code>geom_bar</code> podemos agregar una capa de visualizacón con gráficos de barras. Los parámetros a definir dentro de <code>aes()</code> son <code>x</code>, donde va una variable categórica, y en forma opcional <code>weight</code>, que indica la variable a sumar para determinar la altura de cada barra. Si no especificamos un <code>weight</code>, simplemente se cuenta cuantas veces aparece cada categoría en el dataframe, en la práctica un conteo o frecuencia de aparición. En nuestro dataset cada fila incluye un período y un total de contactos recibidos. Nosotros no estamos interesados en cuantas veces aparece cada barrio, sino en la suma de la columna total para cada uno de ellos, así que vamos a usar <code>weight = total</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-98-1.png" width="1050" /></p>
+<p>Tenemos dos problemas. El primero es que los valores en el eje de las <code>y</code> son grandes, y R nos quiere hacer un favor expresándolos en notación científica. La notación científica es práctica para ahorrar espacio, pero no queda vien en visualizaciones. Para pedirle que no lo haga mas, usamos esta función</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>)</code></pre></div>
+<p>y por el resto de la sesión nos libramos de la notación científica. Listo.</p>
+<p>El segundo problema es que los nombres de los barrios resultan del todo ilegibles porque no tienen espacio. En un gráfico, el eje horizonatal es un muy mal lugar para poner muchas categorías con nombre, ya que el solapamiento se vuelve inevitable. Sería mejor tener los nombre en el eje vertical, donde se pueden escribir uno encima del otro sin pisarse ¡La solución es invertir los ejes de de coordenadas! Sólo necesitamos agregar <code>coord_flip</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-100-1.png" width="1050" /></p>
+<p>Ahora si podemos interpretar el gráfico. San Nicolás y Monserrat son los barrios a la cabeza, lo cual no sorprende sabiendo que pertenecen a la ya legendaria comuna 1.</p>
+<p>Los gráficos de barras, además de comparar, también son buenos para mostrar la composición interna de las cosas: que “hay dentro”, que componentes contribuye a un determinado total. Vamos a mostrar entonces cuanto contribuye cada tipo de trámite al toal por barrio, usando el parámetro estético <code>fill</code> (relleno). <code>geom_bar</code> realiza un segmentado automático de cada barra, con la proporción que le corresponde a cada subcategoría:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-101-1.png" width="1050" /></p>
+<p>!Esos trámites otra vez! En cierto modo, estamos recorriendo las mismas conclusiones a las que arribamos usando scatterplots, pero mostrando la información de otra manera. De más está decirlo, hay muchas maneras de contar las cosas.</p>
+<p>En lugar de relleno podríamos haber usado <code>color</code>, tal como hicimos con los puntos, pero los resultado es un poco menos legible y no luce tan bien. La variable <code>color</code> modifica la silueta de las barras, pero no su interior:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">color =</span> TIPO_PRESTACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-102-1.png" width="1050" /></p>
+<p>También podemos cambiar las categorías. Si qusiéramos ver el total de registros por cada tipo de trámite:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total)) </code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-103-1.png" width="1050" /></p>
+<p>Notamos que las quejas y denuncias son eventos poco frecuentes en comparación con las otras clases de contacto entre ciudadanos y ciudad. En esta ocasión no recurrimos a <code>coord_flip</code>, ya que las categorías son pocas y tienen espacio suficiente en el eje horizontal.</p>
+<p>¿Y si mostramos el aporte de cada barrio al total global de cada tipo de contacto?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total, <span class="dt">fill =</span> BARRIO)) </code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-104-1.png" width="1050" /></p>
+<p>Hemos obtenido una visualización indigerible. Quizás con un facetado por barrio…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>BARRIO)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-105-1.png" width="1050" /></p>
+<p>Esta opción es un poco mejor, ya que al menos permite identificar pronto los barrios salientes, y discernir diferencias generales si se la mira con paciencia. Una visualización tan densa en información puede resultar ideal para “uso personal”, explorando de forma rápida datos con los que estamos familiarizados, pero es poco recomendable para compartir con otros.</p>
+<p>En general, para evitar la confusión asociada a variables con docenas de categorías se busca simplificar definiendo menos grupos. Por ejemplo, como hicimos al comienzo al separar por comunas, que son sólo quince, en lugar de por barrios.</p>
+</div>
+<div id="histogramas" class="section level2">
+<h2><span class="header-section-number">4.5</span> Histogramas</h2>
+<p>Los histogramas son usados para mostrar la <em>distribución</em> de una variable continua. El histograma permite decir si los valores que toma cada observación se agrupan en torno a un valor “típico” o medio -como en el caso de la llamada <em>distribución normal</em>-, o en torno a dos valores frecuentes (<em>distribución bimodal</em>), o con dispersión sin picos ni valles, donde no hay valores típicos ni atípicos - <em>distribución uniforme</em>.</p>
+<p>Por ejemplo, analicemos la distribución de resgistros mensuales (la columna PERIODO en nuestro datset representa el lapso de un mes). Tenemos que agrupar por mes, y hacer un resumen (<code>summarise()</code>) que extraiga el gran total:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_mes &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(PERIODO) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">gran_total =</span> <span class="kw">sum</span>(total))
+
+<span class="kw">head</span>(contactos_por_mes)</code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   PERIODO gran_total
+##     &lt;int&gt;      &lt;int&gt;
+## 1  201301      43826
+## 2  201302      43666
+## 3  201303      47405
+## 4  201304      50768
+## 5  201305      52761
+## 6  201306      48344</code></pre>
+<p>Hacer un histograma es simple con <code>geom_histogram()</code>: sólo hay que elegir una variable y asignarla a las <code>x</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_mes) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gran_total))</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-107-1.png" width="1050" /></p>
+<p><code>geom_histogram()</code> divide el rango de valores en una cantidad arbitraria de segmentos iguales (“bins” en inglés) y cuenta cuantas observaciones caen en cada uno, cantidad que se representa con la altura de la columna en el eje de las <code>y</code>.</p>
+<p>En nuestro ejemplo, vemos que un mes mes en el que la cantidad de resgitros tiende a agurparse en torno a un valor típico de poco más de 60.000 por mes. En apenas un caso hubo mennos de 40.000 o más de 80.000</p>
+<p>No sería raro que la agregación qeu hicimos nos oculte patrones en los datos. Que pasa si contamos los registros por mes y por tipo de contacto, y mostramso los histogramas mensuales en facetado por tipo?</p>
+<p>Hacemos el agrupado y sumario de rigor</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_mes_y_tipo &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(PERIODO, TIPO_PRESTACION) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">gran_total =</span> <span class="kw">sum</span>(total))
+
+<span class="kw">head</span>(contactos_por_mes_y_tipo)</code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   PERIODO [2]
+##   PERIODO TIPO_PRESTACION gran_total
+##     &lt;int&gt; &lt;fct&gt;                &lt;int&gt;
+## 1  201301 DENUNCIA              2740
+## 2  201301 QUEJA                  889
+## 3  201301 RECLAMO              16011
+## 4  201301 SOLICITUD            15325
+## 5  201301 TRAMITE               8861
+## 6  201302 DENUNCIA              2463</code></pre>
+<p>y creamos el facetado como ya sabemos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_mes_y_tipo) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gran_total)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>TIPO_PRESTACION)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-109-1.png" width="1050" /></p>
+<p>Aparecen las diferencias. Los reclamos tienen una dispersión mínima, con casi todas las observaciones apiladas en torno a unos 1000 contactos mensuales; siempre son bajas. La cantidad mensual de denuncias, reclamos y solicitudes muestra una dispersión mayor, pero aún así tendencia a rondar un valor típico. Los trámites son el extremo opuesto a las qeujas, ya que muestran una gran dispersión, pudiendo tomar cualquier valor de menos de 10.000 a más de 40.000 registros de forma bastante pareja.</p>
+</div>
+<div id="preparando-una-visualizacion-para-compartir" class="section level2">
+<h2><span class="header-section-number">4.6</span> Preparando una visualización para compartir</h2>
+<p>Lo último que nos queda por decir en este capítulo es que los gráficos que hemos producido hasta aquí están pensandos para nuestro propio consumo. Son parte, y parte dundamental, de lo que llamamos análisis exploratorio de datos. En el contexto de la exploración, lo importante es trabajar en forma rápida, probando una u otra técnica de visuzalización y refinando nuestros resultados hasta hallar patrones interesantes, o sacarnos dudas acerca de los datos. No necesitamos ponerle título a las visualizaciones, porque ya sabemos de que tratan (¡acabamos de escribirlas!). No nos preocupa que los nombres de los ejes indiquen en forma clara la variable representan, porque ya lo sabemos de antemano.</p>
+<p>Pero cuando queremos guardar un gráfico para compartir con otros, sea publicándola en un paper, o enviándola por mail a un amigo, necesitamos tener más cuidado. Hemos pasado del ámbito de la exploración al de la comunicación. Ahora si debe preocuparnos la claridad, porque no sabemos el grado de familiaridad que tiene con los datos la eventual audiencia.</p>
+<p>Si bien la comunicación clara es un arte cuyas reglas dependen del contexto, y además cada quien tiene su estilo, podemos decretar al menos tres elementos que no deberían faltar en un gráfico destinado a comunicar algo a los demás:</p>
+<ul>
+<li>Un título descriptivo, pero breve</li>
+<li>Etiquetas claras (no ambiguas) en los ejes</li>
+<li>Nombres descriptivos en las leyendas</li>
+</ul>
+<p>y ya que estamos, dos opcionales:</p>
+<ul>
+<li>Un subtítulo donde poner detalles importantes que no entran en un título breve</li>
+<li>Una nota al pie con infromación adicional: fuente de los datos, cita académica, advertencias, etc.</li>
+</ul>
+<p>Con <code>ggplot()</code> podemos encargarnos de todo dentro de una sola función, <code>labs()</code> (por <em>labels</em>, etiquetas)</p>
+<p>Tomemos un gráfico de los que hicimos antes para pulirlo un poco y que sirva de ejemplo. El original:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-110-1.png" width="1050" /></p>
+<p>versus la versión pulida usando <code>labs()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Contactos realizados al Sistema Único de Atención Ciudadana&quot;</span>,
+         <span class="dt">subtitle =</span> <span class="st">&quot;Ciudad Autónoma de Buenos Aires, 2013 - 2015&quot;</span>,
+         <span class="dt">caption =</span> <span class="st">&quot;Fuente: portal de datos abiertos de la Ciudad - http://data.buenosaires.gob.ar&quot;</span>,
+         <span class="dt">x =</span> <span class="st">&quot;barrio&quot;</span>,
+         <span class="dt">y =</span> <span class="st">&quot;cantidad&quot;</span>,
+         <span class="dt">fill =</span> <span class="st">&quot;Motivo del contacto&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_para_gente_sociable_files/figure-html/unnamed-chunk-111-1.png" width="1200" /></p>
+<p>Ahora si, a compartir.</p>
+</div>
+<div id="otras-visualizaciones" class="section level2">
+<h2><span class="header-section-number">4.7</span> Otras visualizaciones</h2>
+<p>Por supuesto, las opciones que hemos repasado son apenas una fracción de la enorme variedad de técnicas de visualización que existen. Para empezar, nos falta hablar de los mapas, una categoría tan importante que tiene un capítulo completo dedicado más adelante.</p>
+<p>Y aún quedan tantas por discutir, que sería imposible hacerles justicia en un libro introductorio. Con nombres tan variopintos como <em>waffle charts</em>, <em>violin plots</em>, o <em>tree maps</em>, existen quizás un centenar o más de métodos bien documentados para explorar información en forma visual.</p>
+<p>El sitio web <em>from Data to Viz</em> (<a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a>) es un recurso excelente para investigar opciones. Contiene un compendio visual e interactivo de técnicas de visualización con sus nombres y características generales. También explica a que familia corresponde cada una, y para qué suele usarse (mostrar relaciones, distribuciones, cambio a través del tiempo, etc).</p>
+<div class="figure"><span id="fig:unnamed-chunk-112"></span>
+<img src="imagenes/data_to_viz.png" alt="from Data to Viz - www.data-to-viz.com/" width="100%" />
+<p class="caption">
+Figura 4.1: from Data to Viz - www.data-to-viz.com/
+</p>
+</div>
+<p>Y lo más interesante: Para todas y cada una de las visualizaciones se incluye el código en R que permite reproducirlas. A partir de allí sólo es cuestión de adaptar los ejemplos a nuestros datos para realizar de forma fácil la visualización que nos interesa.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="poniendo-los-datos-en-forma.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelado-estadistico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["ciencia_de_datos_para_gente_sociable.pdf", "ciencia_de_datos_para_gente_sociable.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

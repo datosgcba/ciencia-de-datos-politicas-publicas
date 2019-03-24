@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553462253060.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2092477320",
+    "id" : "7A5E94DE",
+    "lastKnownWriteTime" : 1553462286,
+    "last_content_update" : 1553462286726,
+    "path" : "~/Dropbox/Work/GCBA/curso_DS/Ciencia de Datos y Políticas Públicas/01-intro.Rmd",
+    "project_path" : "01-intro.Rmd",
+    "properties" : {
+        "cursorPosition" : "47,237",
+        "scrollLine" : "41"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
