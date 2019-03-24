@@ -186,14 +186,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>El atributo que distingue a los datos georreferenciados, lo que los hace merecer ese nombre, es que representan ubicaciones exactas sobre la superficie de la Tierra. Representar en forma precisa una posición sobre la superficie terrestre es un todo un reto. Para empezar, la Tierra tiene una forma irregular. A pesar de cómo solemos imaginarla y dibujarla, no es una esfera perfecta sino que está “achatada” en los polos, dificultando la matemática necesaria para comparar posiciones y medir distancias. Luego, está el problema de cómo mostrar sobre papel impreso, o en una pantalla digital, -superficies planas- rasgos geográficos que pertenecen a una superficie tridimensional esférica. La solución a estos problemas toma la forma de sistemas de coordenadas de referencia (<em>CRS</em> por sus siglas en inglés), y de proyecciones cartográficas.</p>
 <p>Los CRS son un sistema de números que definen ubicaciones sobre la superficie de la Tierra; funcionan como direcciones. El tipo de CRS más conocido es el que usa latitud y longitud, para definir posiciones en los ejes norte-sur y este-oeste.</p>
 <p>Las proyecciones cartográficas son instrucciones para traducir a un plano la disposición de puntos ubicados en la esfera terrestre. Algo así como las instrucciones para dibujar en dos dimensiones las disposición de fronteras, accidentes geográficos, calles o cualquier otro objeto que se extiende sobre la superficie curva del planeta. Como en toda traducción, hay algo que se pierde en el proceso. Todo los mapas “mienten”, en el sentido en que presentan una versión distorsionada de la superficie de terrestre. Esto es inevitable; no existe forma de pasar de la esfera al plano sin distorsionar la forma, la superficie, la distancia o la dirección de los rasgo geográficos. Existen muchísimas proyecciones distintas, cada una pensada para minimizar alguno de los tipos de distorsión, o para encontrar una solución de compromiso que los balancee.</p>
-<div class="figure"><span id="fig:unnamed-chunk-119"></span>
+<div class="figure"><span id="fig:unnamed-chunk-120"></span>
 <img src="imagenes/proyecciones.png" alt="Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)" width="100%" />
 <p class="caption">
 Figura 6.1: Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)
 </p>
 </div>
 <p>La proyección más famosa es la Mercator, diseñada para asistir la navegación marítima y en uso desde el siglo XVI. Su fuerte es que no distorsiona las direcciones, por lo que permite fijar el rumbo de navegación consultando el mapa. Su principal problema es que produce una distorsión notable en las áreas cercanas a los polos: Groenlandia aparenta el mismo tamaño que toda África, cuando en realidad tiene sólo un quinceavo de su superficie. Por esa razón perdió la proyección popularidad en el siglo XX cuando comenzaron a preferirse proyecciones que respetan las áreas, como las de la Figura 6.1. Sin embargo, en el siglo XXI la proyección Mercator recuperó protagonismo. Google la eligió para sus mapas en línea, y por razones de compatibilidad otros proveedores de mapas digitales la adoptaron también. Así, y para inconsolable irritación de los geógrafos, Mercator se convirtió en el estándar de facto para aplicaciones geográficas en la web.</p>
-<div class="figure"><span id="fig:unnamed-chunk-120"></span>
+<div class="figure"><span id="fig:unnamed-chunk-121"></span>
 <img src="imagenes/Mercator-proj.png" alt="La inescapable proyección Mercator (cortesía Jecowa)" width="100%" />
 <p class="caption">
 Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
@@ -261,21 +261,21 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <p>La visualización de información geográfica por excelencia es el mapa, ¡por supuesto!</p>
 <p>Nuestro aliado <code>ggplot()</code> se encarga de ello.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-124-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-125-1.png" width="1050" /></p>
 <p>Ademas de encontrarnos con la reconocible silueta de la ciudad, comprobamos lo que el resumen de la data había sugerido: la mayoría de los radios censales tiene un tamaño similar, pero existe un puñado que es considerablemente más extenso que el promedio. Los “mega radios” seguramente corresponden a zonas poco habitadas, por lo que se asume que un censista puede terminar de encuestar a todos los residentes en un día.</p>
 <p>Podemos analizar eso mismo: ¿cuántas viviendas hay por radio?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> VIVIENDAS)) </code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-125-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-126-1.png" width="1050" /></p>
 <p>EL grosor de la línea que traza las fronteras entre radios hace difícil determinar el color de relleno. Esto suele pasar cuando se grafica información geográfica intrincada como la de los radios censales. Una solución es definir el color de la línea como <code>NA</code>, que para <code>ggplot</code> significa “ninguno”. Lo hacemos así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> POBLACION), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-126-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-127-1.png" width="1050" /></p>
 <p>Así esta mejor. Nótese que definimos el color por fuera de <code>aes()</code>. Cuando queremos asignar un valor fijo a alguno de los atributos estéticos (y no dependiente de una variable) siempre va fuera de la función <code>aes()</code>.</p>
 <p>En cuanto al gráfico, observamos que los radios censales más grandes tienden a ser poco poblados, con algunas excepciones, en particular el gran radio censal al oeste. ¿A qué barrio corresponde?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> BARRIO), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-127-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-128-1.png" width="1050" /></p>
 <p>Hemos logrado otro de nuestros gráficos ilegibles, intentando mostrar demasiadas variables categóricas a la vez. Una forma de resolver el dilema es filtrando los datos para aislar los casos de interés. Del menú de visualizaciones que aprendimos en el capítulo 2, podemos elegir el histograma para mostrar la distribución de tamaños de nuestros radios censales.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">x =</span> AREA_KM2))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-128-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-129-1.png" width="1050" /></p>
 <p>Cómo había anticipado el resumen vía <code>summary()</code>, la gran mayoría de los radios tiene menos de medio km^2. Unos pocos superan los 2 km^2, así que vamos a aislar esos para saber a que barrio corresponden.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">filtrados &lt;-<span class="st"> </span>radios <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">filter</span>(AREA_KM2 <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>) 
@@ -283,10 +283,10 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> filtrados, <span class="kw">aes</span>(<span class="dt">fill =</span> BARRIO)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Radios censales de mayo tamaño&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-129-1.png" width="1050" /> Nuestro gran radio censal al este, con población considerable, corresponde a Puerto Madero.</p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-130-1.png" width="1050" /> Nuestro gran radio censal al este, con población considerable, corresponde a Puerto Madero.</p>
 <p>Llevemos ahora nuestra atención al tema de la cantidad de viviendas superando a la de hogares. Tal situación implica que hay una tasa de vacancia alta en el radio censal. Podemos verla en el mapa graficando la intensidad de la relación entre viviendas y hogares, expresándola como la división de una por otra.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> radios, <span class="kw">aes</span>(<span class="dt">fill =</span> VIVIENDAS<span class="op">/</span>HOGARES), <span class="dt">color =</span> <span class="ot">NA</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-130-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-131-1.png" width="1050" /></p>
 <p>Hay un radio censal que parece brillar, destacándose entre los demás. ¿Dónde está? Esta vez lo resolvemos en forma analítica en lugar de visual, usando los verbos de transformación de datos. Vamos a definir una variable nueva, con la tasa entre viviendas y hogares que ya usamos para el gráfico. Luego vamos a ordenar el dataframe por orden descendiente de la tasa, y usando <code>head()</code> nos quedamos sólo con los primeros valores, que corresponden a los más altos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">radios <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="dt">viv_vs_hogares =</span> VIVIENDAS <span class="op">/</span><span class="st"> </span>HOGARES) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -326,7 +326,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Densidad de población&quot;,</span>
 <span class="st">         subtitle = &quot;</span>Ciudad Autónoma de Buenos Aires<span class="st">&quot;,</span>
 <span class="st">         fill = &quot;</span>hab<span class="op">/</span>km2<span class="st">&quot;)</span></code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-132-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-133-1.png" width="1050" /></p>
 <p>Este último gráfico representa de forma mucho mas precisa la distribución de habitantes en la ciudad, haciendo saltar a la vista los núcleos con mayor densidad de población. De paso, aprendimos un truco nuevo: agregando <code>scale_fill_viridis_c()</code> le pedimos a <code>ggplot</code> que utilice la escala de colores conocida como “viridis”, diseñada por expertos en visualización para ser fácil de leer… y lucir bien.</p>
 </div>
 <div id="volcando-en-el-mapa-informacion-de-multiples-fuentes" class="section level2">
@@ -355,7 +355,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
               <span class="dt">AREA_KM2 =</span> <span class="kw">sum</span>(AREA_KM2))</code></pre></div>
 <p>Y esto es lo lindo de trabajar con datos geográficos en forma de tabla: la columna <code>geometry</code>, la que guarda la información espacial, se crea en forma automática al hacer el <code>summarise</code>, y contiene la fronteras de la unidad de agregación - los barrios.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-137-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-138-1.png" width="1050" /></p>
 <p>Como efecto secundario de la operación (que en la jerga del <em>GIS</em> se conoce como “disolver polígonos”) podemos ver algunas líneas internas que han quedado como residuo de la unión de los radios censales. Es un problema muy común al trabajar con datos geográficos, dependiendo de la calidad de la fuente. Por suerte, en este caso el pequeño desperfecto no afecta nuestros planes. En pos de la prolijidad, podríamos realizar un ajuste fino y eliminar esas líneas internas, ya que hay varias técnicas para ello. Pero la complejidad de la tarea haría demasiado larga la explicación, así que vamos a dejarlo así… un recordatorio de que al trabajar con datos “reales” pasan estas cosas.</p>
 <p>Ahora hagamos también un agregado por barrio de los datos de atención al ciudadano,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_por_barrio &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
@@ -376,14 +376,14 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_geo &lt;-<span class="st"> </span>barrios_geo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(atencion_por_barrio)</code></pre></div>
 <p>¡Ahora podemos hacer un mapa de cantidad de contactos por barrio!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> total))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-140-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-141-1.png" width="1050" /></p>
 <p>Tal como habíamos verificado cuando hicimos la exploración del dataset en el capítulo 2, en los barrios céntricos se registra la mayoría de los contactos. Podemos mejorar un poco el mapa, normalizando los datos para mostrar valores per cápita.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> total<span class="op">/</span>POBLACION)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Contactos a atención ciudadana per cápita&quot;</span>,
          <span class="dt">subtitle =</span> <span class="st">&quot;Barrios de Ciudad Autónoma de Buenos Aires&quot;</span>,
          <span class="dt">fill =</span> <span class="st">&quot;contactos/habitante&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-141-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-142-1.png" width="1050" /></p>
 <p>Normalizar los datos hace evidente que los barrios son parejos en su grado de demanda por habitante, exceptuando los casos salientes que mencionamos antes.</p>
 <p>Hasta ahora hemos mostrado sobre un mapa variables numéricas, pero es igual de fácil representar variables categóricas. Imaginemos que quisiéramos mostrar el principal rubro por el cual se comunican los ciudadanos en cada barrio.</p>
 <p>Usando los verbos de transformación que conocemos, la receta sería:</p>
@@ -420,7 +420,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> barrios_geo, <span class="kw">aes</span>(<span class="dt">fill =</span> RUBRO)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Principal categoría de las solicitudes/reclamos&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-144-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-145-1.png" width="1050" /></p>
 </div>
 <div id="combinando-capas-geograficas" class="section level2">
 <h2><span class="header-section-number">6.6</span> Combinando capas geográficas</h2>
@@ -452,7 +452,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <span class="st">    </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> subte_estaciones, <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Sistema de transporte subterráneo (SUBTE)&quot;</span>,
          <span class="dt">subtitle =</span> <span class="st">&quot;Ciudad de Buenos Aires&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-147-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-148-1.png" width="1050" /></p>
 <p>¡Voilà! Podríamos también aprovechar el lienzo en blanco de la superficie de los barrios para hacer un mapa temático que muestre la cantidad de incidentes en la base de atención ciudadana relacionados con el SUBTE.</p>
 <p>Para revisar todos los rubros de atención, podemos usar <code>summary(atencion_ciudadano$RUBRO)</code>; en lugar de pedir un resumen del dataframe completo, le estamos indicando a R que nos interesa el detalle de la columna “RUBRO”. Entre las 346 categorías, una es “EMERGENCIAS EN SUBTE”. Suena interesante.</p>
 <p>¿Dónde se han registrado más incidentes con emergencias? Lo responderemos con un mapa. A priori asumimos que no vamos a encontrar casos en en los barrios por donde no pasa el SUBTE, lo cual también podremos comprobar.</p>
@@ -471,7 +471,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Emergencias relacionadas con el SUBTE&quot;</span>,
          <span class="dt">subtitle =</span> <span class="st">&quot;Registros de atención al ciudadano, Ciudad de Buenos Aires (2015 - 2017)&quot;</span>,
          <span class="dt">fill =</span> <span class="st">&quot;emergencias reportadas&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-150-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-151-1.png" width="1050" /></p>
 <p>Aquí se cumplen las expectativas: la cantidad de emergencias reportadas sigue en forma clara un patrón relacionado con la cantidad de estaciones ubicadas en cada barrio. Y como era de esperarse, en barrios donde el SUBTE no ofrece cobertura la cantidad de emergencias es nula.</p>
 <p>Con eso cerramos el capítulo, y el libro. Hemos llegado al brusco final… al menos brusco por ahora. Continuaré puliendo el texto, y más adelante quisiera agregar un breve capítulo de consideraciones finales.</p>
 <p>Mientras tanto, mi mensaje final es fácil de resumir. Espero que “Ciencia de Datos para Gente Sociable” haya sido una introducción satisfactoria al análisis, modelado y visualización de información, y tan sólo el inicio de un largo y gratificante recorrido.</p>

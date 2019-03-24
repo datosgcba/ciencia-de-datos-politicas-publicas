@@ -256,16 +256,16 @@ contactos_por_comuna</code></pre></div>
 ## 16     NA            5.78        NA</code></pre>
 <p>!Preparativos terminados! Hagamos por fin nuestro scatterplot. Tal como en el capítulo de introducción a R, continuaremos usando <code>ggplot()</code> para visualizar:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-60-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-61-1.png" width="1050" /></p>
 <p>¿Un gráfico vacío? Recordemos que ggplot funciona por capas. Primero uno declara el dataframe que va a usar, y luego agrega una o más capas con representaciones de la información. La forma de agregar una capa con un scatterplot, en la práctica dibujar puntos, es con <code>geom_point</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-61-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-62-1.png" width="1050" /></p>
 <p>Lo que hicimos fue pedirle a ggplot que dibuje un punto por cada fila (representando a cada comuna), con la posición en el eje de las <code>x</code> según su población, y en el eje de las <code>y</code> según la cantidad de contactos registrados. Estas referencias estéticas (<em>aesthetics</em> en inglés) son las que van dentro de la función <code>aes()</code> en <code>geom_point(aes(x = POBLACION, y = miles_contactos))</code></p>
 <p>Primer sorpresa: ¡en el extremo superior derecho hay una comuna que se sale de la norma! Su relación población/reclamos es muy diferente a la de todas las demás. Podemos identificarla, pidiendo a ggplot que agregue una variable más a la visualización -la comuna. Siendo un gráfico en dos dimensiones, ya no podemos usar la posición para representar un valor; tanto la posición horizontal como la vertical están siendo usadas por población y total. Nuestras opciones son codificar la comuna por color, forma o tamaño del punto. A pesar de que son identificadas con números, las comunas son una variable categórica: no tiene sentido decir que la comuna 1 es “menor” que la comuna 7. Par las variables categóricas, el color suele ser una buena opción de codificación.</p>
 <p>Lo hacemos agregando un parámetro <code>color</code> dentro de <code>aes()</code>. Tal como hicimos en el capítulo 2, usamos <code>factor(COMUNA)</code> en lugar de <code>COMUNA</code> a secas para indicarle a R que queremos que trate a la variable como categórica:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">color =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-62-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-63-1.png" width="1050" /></p>
 <p>En ese caso, no es tan fácil discernir cuál es cuál, pero mirando con cuidado descubrimos que la comuna 1 es el <em>outlier</em>, el valor fuera de lo común. Lo que nos pasa aquí es que tenemos demasiadas categorías, con lo cual cada una tiene su propio color pero el rango cromático no alcanza para darle a cada una un tono bien distinto al de las demás.</p>
 <p>Si necesitamos generar un gráfico que no deje lugar a dudas, lo resolvemos usando un método alternativo para el scatterplot. En lugar de dibujar puntos, podemos poner etiquetas con el nombre de cada comuna.</p>
 <p>En lugar de</p>
@@ -274,16 +274,16 @@ contactos_por_comuna</code></pre></div>
 <p>usamos</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_label</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">label =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-64-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-65-1.png" width="1050" /></p>
 <p>Volvamos a nuestros puntos para practicar dos codificaciones estéticas que no hemos probado, color y tamaño.</p>
 <p>Para dejar aún más clara la diferencia de reclamos entre comunas, podríamos usar el tamaño (<em>size</em>) de cada punto para representar esa variable, además de su altura en el gráfico.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">size =</span> miles_contactos))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-65-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-66-1.png" width="1050" /></p>
 <p>Y para distinguir cuál es cuál, podemos pedirle a ggplot que cambie la forma (<em>shape</em>) de cada punto según la comuna a la que corresponde.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos, <span class="dt">shape =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-66-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-67-1.png" width="1050" /></p>
 <p>¡Hey, sólo aparecen seis de las comunas! <code>ggplot()</code> usa cómo máximo 6 formas distintas, debido a que una cantidad mayor sería de veras muy difícil de discernir para nuestros pobres ojos. Moraleja: la estética <code>shape</code> sirve sólo cuando manejamos pocas categorías. De todas formas -en mi opinión- es el método de codificación que menos gracia tiene, así que no es grave que su utilidad sea limitada.</p>
 </div>
 <div id="ajustando-color-y-tamano" class="section level2">
@@ -291,22 +291,22 @@ contactos_por_comuna</code></pre></div>
 <p>Hemos visto que especificando atributos estéticos y las variables que representan dentro de <code>aes()</code> podemos ajustas posición, tamaño, color y hasta la forma de los puntos de acuerdo a sus valores. Pero, ¿qué pasa si queremos usar un tamaño o un color arbitrario para nuestros puntos? Es decir, si no nos gusta el color negro y queremos que sean todos azules, o si nos parece que se ven pequeños y queremos que sean todos un poco más grandes. Fácil: definimos el <code>color</code> o <code>size</code> que queremos por fuera de las función <code>aes()</code>, y será aplicado a todos los puntos.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-67-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-68-1.png" width="1050" /></p>
 <p>Obsérvese que <code>color = &quot;blue&quot;</code> está escrito por fuera de los paréntesis de <code>aes()</code>. De paso, hicimos uso de una característica muy práctica de R: reconoce un montón de colores por su nombre, siempre que los escribamos entre comillas. Si le decimos <code>color = &quot;blue&quot;</code>, <code>color = &quot;red&quot;</code>, <code>color = &quot;yellow&quot;</code>, etc., sabe de que hablamos. Una lista de todos los colores que R reconoce, ideal como referencia, se puede encontrar en <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf" class="uri">http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf</a> ; ¡son más de 600!.</p>
 <p>Tras un vistazo a la lista, me decido por “darkolivegreen4”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">color =</span> <span class="st">&quot;darkolivegreen4&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-68-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-69-1.png" width="1050" /></p>
 <p>Bellísimo.</p>
 <p>En cuanto al tamaño, la fórmula es la misma:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), <span class="dt">size =</span> <span class="dv">5</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-69-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-70-1.png" width="1050" /></p>
 <p>El valor de <code>size</code> se da en píxeles. Es una medida difícil de estimar antes de ver el resultado, pero es cuestión de probar algunos valores distintos hasta encontrar el que nos va bien. Por supuesto, podemos ajustar varios, o todos, los atributos a la vez</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos), 
                <span class="dt">size =</span> <span class="dv">9</span>, <span class="dt">color =</span> <span class="st">&quot;chocolate3&quot;</span>, <span class="dt">shape =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-70-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-71-1.png" width="1050" /></p>
 </div>
 <div id="facetado" class="section level2">
 <h2><span class="header-section-number">4.3</span> Facetado</h2>
@@ -361,7 +361,7 @@ contactos_por_comuna</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_comuna_y_tipo) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> POBLACION, <span class="dt">y =</span> miles_contactos)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>TIPO_PRESTACION)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-73-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-74-1.png" width="1050" /></p>
 <p>Los culpables de la anomalía son los trámites; en ninguna otra categoría la comuna 1 se separa del resto. Sabiendo que la base de donde provienen los datos combina información de distintos sistemas de atención, mi interpretación es que una gran cantidad de “TRAMITES” proviene de algún sistema administrativo que no guarda direcciones. Si ese fuera el caso, parece que a todos los trámites huérfanos de origen se les asigna una dirección en la Comuna 1 (sede histórica del Gobierno de la Ciudad) y nosotros terminamos haciendo estas elucubraciones.</p>
 <p>Pero valga el ejemplo para mencionar algo fundamental: por más ciencia de datos que apliquemos, siempre vamos a llegar a un punto en que nuestros hallazgos no tendrán sentido sin combinarlos con lo que se llama “conocimiento de dominio”. El conocimiento de dominio es el saber especializado sobre el tema que estamos tratando, sea el ciclo reproductivo de la gaviota austral o la organización administrativa del Gobierno de la Ciudad Autónoma de Buenos Aires. Esto no debería desanimarnos, ¡al contrario!. El análisis de datos como profesión conlleva un constante aprendizaje sobre los más variados temas. Y a la inversa: si somos expertos en cualquier campo, aún con un puñado de técnicas básicas de R podemos extraer conocimiento de nuestros datos que jamas encontraría un experto programador que no conoce el paño.</p>
 </div>
@@ -371,7 +371,7 @@ contactos_por_comuna</code></pre></div>
 <p>Comparemos la suma total de registros que alcanza cada barrio. Con <code>geom_bar</code> podemos agregar una capa de visualizacón con gráficos de barras. Los parámetros a definir dentro de <code>aes()</code> son <code>x</code>, donde va una variable categórica, y en forma opcional <code>weight</code>, que indica la variable a sumar para determinar la altura de cada barra. Si no especificamos un <code>weight</code>, simplemente se cuenta cuantas veces aparece cada categoría en el dataframe, en la práctica un conteo o frecuencia de aparición. En nuestro dataset cada fila incluye un período y un total de contactos recibidos. Nosotros no estamos interesados en cuantas veces aparece cada barrio, sino en la suma de la columna total para cada uno de ellos, así que vamos a usar <code>weight = total</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-74-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-75-1.png" width="1050" /></p>
 <p>Tenemos dos problemas. El primero es que los valores en el eje de las <code>y</code> son grandes, y R nos quiere hacer un favor expresándolos en notación científica. La notación científica es práctica para ahorrar espacio, pero no queda vien en visualizaciones. Para pedirle que no lo haga mas, usamos esta función</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">999</span>)</code></pre></div>
 <p>y por el resto de la sesión nos libramos de la notación científica. Listo.</p>
@@ -379,33 +379,33 @@ contactos_por_comuna</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-76-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-77-1.png" width="1050" /></p>
 <p>Ahora si podemos interpretar el gráfico. San Nicolás y Monserrat son los barrios a la cabeza, lo cual no sorprende sabiendo que pertenecen a la ya legendaria comuna 1.</p>
 <p>Los gráficos de barras, además de comparar, también son buenos para mostrar la composición interna de las cosas: que “hay dentro”, que componentes contribuye a un determinado total. Vamos a mostrar entonces cuanto contribuye cada tipo de trámite al toal por barrio, usando el parámetro estético <code>fill</code> (relleno). <code>geom_bar</code> realiza un segmentado automático de cada barra, con la proporción que le corresponde a cada subcategoría:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-77-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-78-1.png" width="1050" /></p>
 <p>!Esos trámites otra vez! En cierto modo, estamos recorriendo las mismas conclusiones a las que arribamos usando scatterplots, pero mostrando la información de otra manera. De más está decirlo, hay muchas maneras de contar las cosas.</p>
 <p>En lugar de relleno podríamos haber usado <code>color</code>, tal como hicimos con los puntos, pero los resultado es un poco menos legible y no luce tan bien. La variable <code>color</code> modifica la silueta de las barras, pero no su interior:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">color =</span> TIPO_PRESTACION)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-78-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-79-1.png" width="1050" /></p>
 <p>También podemos cambiar las categorías. Si qusiéramos ver el total de registros por cada tipo de trámite:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total)) </code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-79-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-80-1.png" width="1050" /></p>
 <p>Notamos que las quejas y denuncias son eventos poco frecuentes en comparación con las otras clases de contacto entre ciudadanos y ciudad. En esta ocasión no recurrimos a <code>coord_flip</code>, ya que las categorías son pocas y tienen espacio suficiente en el eje horizontal.</p>
 <p>¿Y si mostramos el aporte de cada barrio al total global de cada tipo de contacto?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total, <span class="dt">fill =</span> BARRIO)) </code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-80-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-81-1.png" width="1050" /></p>
 <p>Hemos obtenido una visualización indigerible. Quizás con un facetado por barrio…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> TIPO_PRESTACION, <span class="dt">weight =</span> total)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>BARRIO)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-81-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-82-1.png" width="1050" /></p>
 <p>Esta opción es un poco mejor, ya que al menos permite identificar pronto los barrios salientes, y discernir diferencias generales si se la mira con paciencia. Una visualización tan densa en información puede resultar ideal para “uso personal”, explorando de forma rápida datos con los que estamos familiarizados, pero es poco recomendable para compartir con otros.</p>
 <p>En general, para evitar la confusión asociada a variables con docenas de categorías se busca simplificar definiendo menos grupos. Por ejemplo, como hicimos al comienzo al separar por comunas, que son sólo quince, en lugar de por barrios.</p>
 </div>
@@ -430,7 +430,7 @@ contactos_por_comuna</code></pre></div>
 <p>Hacer un histograma es simple con <code>geom_histogram()</code>: sólo hay que elegir una variable y asignarla a las <code>x</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_mes) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gran_total))</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-83-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-84-1.png" width="1050" /></p>
 <p><code>geom_histogram()</code> divide el rango de valores en una cantidad arbitraria de segmentos iguales (“bins” en inglés) y cuenta cuantas observaciones caen en cada uno, cantidad que se representa con la altura de la columna en el eje de las <code>y</code>.</p>
 <p>En nuestro ejemplo, vemos que un mes mes en el que la cantidad de resgitros tiende a agurparse en torno a un valor típico de poco más de 60.000 por mes. En apenas un caso hubo mennos de 40.000 o más de 80.000</p>
 <p>No sería raro que la agregación qeu hicimos nos oculte patrones en los datos. Que pasa si contamos los registros por mes y por tipo de contacto, y mostramso los histogramas mensuales en facetado por tipo?</p>
@@ -454,7 +454,7 @@ contactos_por_comuna</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(contactos_por_mes_y_tipo) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gran_total)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>TIPO_PRESTACION)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-85-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-86-1.png" width="1050" /></p>
 <p>Aparecen las diferencias. Los reclamos tienen una dispersión mínima, con casi todas las observaciones apiladas en torno a unos 1000 contactos mensuales; siempre son bajas. La cantidad mensual de denuncias, reclamos y solicitudes muestra una dispersión mayor, pero aún así tendencia a rondar un valor típico. Los trámites son el extremo opuesto a las qeujas, ya que muestran una gran dispersión, pudiendo tomar cualquier valor de menos de 10.000 a más de 40.000 registros de forma bastante pareja.</p>
 </div>
 <div id="preparando-una-visualizacion-para-compartir" class="section level2">
@@ -477,7 +477,7 @@ contactos_por_comuna</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-86-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-87-1.png" width="1050" /></p>
 <p>versus la versión pulida usando <code>labs()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(atencion_ciudadano) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">weight =</span> total, <span class="dt">fill =</span> TIPO_PRESTACION)) <span class="op">+</span>
@@ -488,7 +488,7 @@ contactos_por_comuna</code></pre></div>
          <span class="dt">x =</span> <span class="st">&quot;barrio&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;cantidad&quot;</span>,
          <span class="dt">fill =</span> <span class="st">&quot;Motivo del contacto&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-87-1.png" width="1200" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-88-1.png" width="1200" /></p>
 <p>Ahora si, a compartir.</p>
 </div>
 <div id="otras-visualizaciones" class="section level2">
@@ -496,7 +496,7 @@ contactos_por_comuna</code></pre></div>
 <p>Por supuesto, las opciones que hemos repasado son apenas una fracción de la enorme variedad de técnicas de visualización que existen. Para empezar, nos falta hablar de los mapas, una categoría tan importante que tiene un capítulo completo dedicado más adelante.</p>
 <p>Y aún quedan tantas por discutir, que sería imposible hacerles justicia en un libro introductorio. Con nombres tan variopintos como <em>waffle charts</em>, <em>violin plots</em>, o <em>tree maps</em>, existen quizás un centenar o más de métodos bien documentados para explorar información en forma visual.</p>
 <p>El sitio web <em>from Data to Viz</em> (<a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a>) es un recurso excelente para investigar opciones. Contiene un compendio visual e interactivo de técnicas de visualización con sus nombres y características generales. También explica a que familia corresponde cada una, y para qué suele usarse (mostrar relaciones, distribuciones, cambio a través del tiempo, etc).</p>
-<div class="figure"><span id="fig:unnamed-chunk-88"></span>
+<div class="figure"><span id="fig:unnamed-chunk-89"></span>
 <img src="imagenes/data_to_viz.png" alt="from Data to Viz - www.data-to-viz.com/" width="100%" />
 <p class="caption">
 Figura 4.1: from Data to Viz - www.data-to-viz.com/

@@ -307,31 +307,6 @@ interesante, usando datos reales. Y que nos sirva como motivación para
 practicar luego ejercicios básicos que son muy necesarios pero, a veces,
 no tan emocionantes.
 
-\subsection{A investigar: ¿Cual es la diferencia en mortalidad infantil
-entre el sur y el norte de la Ciudad Autónoma de Buenos
-Aires?}\label{a-investigar-cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires}
-
-Buenos Aires es una ciudad que desde hace décadas presenta una
-\href{https://elpais.com/internacional/2016/10/16/argentina/1476629610_416732.html}{marcada
-polarización} entre sus barrios del sur, relativamente menos
-desarrollados, y los del norte donde el nivel socioeconómico y la
-calidad de vida son mayores.
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{imagenes/noticia_caba} \caption{Artículo en la edición online de El País}\label{fig:unnamed-chunk-5}
-\end{figure}
-
-Uno de los aspectos más lamentables de la disparidad norte-sur, y sin
-duda de los que más polémica y acusaciones cruzadas ha generado, es la
-diferencia en la tasa de mortalidad infantil de acuerdo a la región de
-la ciudad.
-
-¿Qué tan grande es esa diferencia? ¿Cómo se distribuye geográficamente?
-
-Vamos a utilizar R para responder esas preguntas y visualizar los
-resultados de nuestro análisis, utilizando como fuente cifras oficiales
-publicada por la ciudad.
-
 \subsection{Crear un proyecto en
 RStudio}\label{crear-un-proyecto-en-rstudio}
 
@@ -363,7 +338,7 @@ la acción!
 Aprovechemos para dar un nombre a los áreas que vemos en RStudio:
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{imagenes/Interfaz_RStudio} \caption{La interfaz de RStudio}\label{fig:unnamed-chunk-6}
+\includegraphics[width=1\linewidth]{imagenes/Interfaz_RStudio} \caption{La interfaz de RStudio}\label{fig:unnamed-chunk-5}
 \end{figure}
 
 Vamos a escribir nuestro código (las instrucciones que \texttt{R}
@@ -513,619 +488,11 @@ fácil a otras personas que interpreten nuestros programas. Y también a
 nosotros mismos en el futuro, cuando debamos lidiar con un programa que
 escribimos tiempo atrás y del que a duras penas recordamos su lógica.
 
-A todo esto\ldots{} ¿no se suponía que íbamos a investigar la mortalidad
-infantil en la Ciudad de Buenos Aires?. Suficiente introducción\ldots{}
-¡allá vamos!
-
-\subsection{Cargar los datos}\label{cargar-los-datos}
-
-Vamos a cargar datos de mortalidad infantil, por comuna de la ciudad, en
-el año 2016, publicados por la
-\href{http://www.estadisticaciudad.gob.ar/eyc/?p=67358}{Dirección
-General de Estadística y Censos} de Buenos Aires. El formato original de
-los datos es ``.xls'' (planilla de hojas de cálculo). Yo lo he
-convertido a .csv (``comma separated values'') un formato muy popular en
-el mundo de la ciencia de datos, ya que es muy fácil de manipular y
-compartir entre sistemas\ldots{} es posible abrir un archivo .csv hasta
-con el \href{https://es.wikipedia.org/wiki/Bloc_de_notas}{humilde block
-de notas}. Al igual que los archivos .xls, los .csv se utilizan para
-guardar información tabular: un rectángulo con filas y columnas. R
-incluye una función que lee archivos .csv, que se llama
-\texttt{read.csv}. La usamos así:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mortalidad <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://bitsandbricks.github.io/data/mortalidad_infantil_caba_2016.csv'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Obsérvese que los datos están alojados en un servidor de internet
-(accesibles vía \textbf{\url{https://bitsandbricks}\ldots{}}). Eso no es
-problema para la función read.csv, que con la misma soltura lee archivos
-guardados en nuestra PC o publicados en un sitio web. Para ver el
-contenido de la variable donde guardamos el resultado de leer la data,
-\texttt{mortalidad}, sólo hace falta escribir su nombre:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mortalidad}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##    Comuna Tasa2016
-## 1       1      9.5
-## 2       2      3.6
-## 3       3      8.0
-## 4       4     11.9
-## 5       5      8.5
-## 6       6      2.4
-## 7       7      8.5
-## 8       8      9.7
-## 9       9     10.1
-## 10     10      3.6
-## 11     11      6.2
-## 12     12      7.1
-## 13     13      4.5
-## 14     14      3.2
-## 15     15      6.4
-\end{verbatim}
-
-Vemos que la tabla tiene 15 filas (una por
-\href{https://es.wikipedia.org/wiki/Comunas_de_la_ciudad_de_Buenos_Aires}{cada
-comuna de la ciudad}) y 7 columnas (una que indica la comuna, y 6 con
-los valores de mortalidad para cada año entre 2010 y 2017).
-
-En R, las tablas son llamadas \texttt{dataframes}. El dataframe es el
-objeto por excelencia del análisis de datos. En concepto, es muy similar
-a una tabla de excel; al fin y al cabo, ambos formatos guardan
-información en celdas identificadas por fila y columna.
-
-Algunas funciones útiles para explorar un dataframe que no conocemos son
-\texttt{dim()}, que nos da las dimensiones del dataframe (cantidad de
-filas y columnas), \texttt{names()} que nos dice como se llaman sus
-columnas (que en general representan variables), y \texttt{head()} que
-nos permite echar un vistazo rápido al contenido, mostrando sólo las
-seis primeras filas (ésto es útil porque con frecuencia trabajamos con
-dataframes que contienen miles o millones de filas, con lo que no tiene
-sentido tratar de volcar todas en pantalla).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{dim}\NormalTok{(mortalidad)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 15  2
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{names}\NormalTok{(mortalidad)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "Comuna"   "Tasa2016"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(mortalidad)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   Comuna Tasa2016
-## 1      1      9.5
-## 2      2      3.6
-## 3      3      8.0
-## 4      4     11.9
-## 5      5      8.5
-## 6      6      2.4
-\end{verbatim}
-
-\section{Visualización: la exploración gráfica de la
-información}\label{visualizacion-la-exploracion-grafica-de-la-informacion}
-
-Ahora es vamos a pisar el acelerador. Insisto: nadie debe preocuparse si
-algunos conceptos parecen ser demasiado complejos. En las próximas
-secciones practicaremos de forma gradual las técnicas que vamos a usar
-ahora, y todo tendrá sentido -¡lo prometo!. Pero antes, seamos un
-poquito irresponsables con el poder de R y empleemos un arsenal
-sofisticado de herramientas para ver de que somos capaces.
-
-En la introducción hablamos de los paquetes, conjuntos de programas que
-extienden la funcionalidad de R. Vamos a cargar uno de los paquetes más
-usados, \texttt{tidyverse}. Tidyverse incluye una gran cantidad de
-funciones diseñadas por y para practicantes de la ciencia de datos.
-Estas funciones comparten una filosofía y una sintaxis común, por lo que
-al aprender una en cierto modo aprendemos a usar todas. El valor que
-aportan es que, sin dudas, ayudan a realizar de manera más fácil las
-tareas típicas de la ciencia de datos: importar, limpiar, comprender y
-comunicar datos.
-
-Si acabamos de instalar R y RStudio, el paquete aún no estará disponible
-en nuestro sistema. Para instalarlo, usamos la función
-\texttt{install.packages()} y le pasamos el nombre del paquete deseado,
-``tidyverse'', entre comillas.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-De aquí en más, podremos activar el conjunto de funciones que provee
-\texttt{tidyverse} cada vez que queramos. Para eso, lo invocamos con la
-función \texttt{library()}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\end{Highlighting}
-\end{Shaded}
-
-\ldots{} y listo para usar. La razón por la cual activamos tidyverse es
-que en este momento nos vienen bien dos de sus funciones:
-\texttt{mutate()} para modificar valores, y \texttt{ggplot()} para hacer
-gráficos.
-
-Bien, llega la hora de los gráficos. Vamos a llamar a la función
-\texttt{ggplot()}, una auténtica navaja suiza para la visualización.
-
-Por ejemplo, veamos a cuanto asciende la tasa de mortalidad infantil en
-cada comuna durante 2016:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mortalidad) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_col}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(Comuna), }\DataTypeTok{y =}\NormalTok{ Tasa2016))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-19-1.pdf}
-
-Para realizar una visualización con ésta herramienta, siempre se
-comienza con la función ggplot(), que crea un eje de coordenadas sobre
-el cual se pueden agregar capas. El primer parámetro que recibe ggplot()
-es el dataset que queremos usar para el gráfico; en nuestro caso,
-ggplot(mortalidad). Ejecutar sólo ggplot(mortalidad) nos devuelve un
-gráfico vacío; la gracia está en agregar una o más capas especificando
-cómo queremos mostrar los datos. Estas capas se agregan con un signo
-\texttt{+}.
-
-En nuestro ejemplo, \texttt{geom\_col()} crea columnas cuya posición en
-el eje de las x depende de la variable ``Comuna'', mientas que la altura
-(posición en el eje de las y) depende del valor de la variable
-``Tasa2016''. Existen muchas funciones de tipo ``geom\_XXX'', que
-agregan distintas clases de capas al gráfico: geom\_point,
-geom\_polygon, geom\_text y muchos, muchos más que iremos viendo más
-adelante.
-
-Cada función ``geom\_'' toma como parámetro un conjunto de definiciones
-``estéticas'' que le indican una variable a graficar (``mortalidad'' en
-nuestro caso), cómo (color, tamaño, etc) y dónde (posición x, posición y
-del eje). Estos parámetros van siempre dentro de una función auxiliar,
-\texttt{aes()}. En nuestro ejemplo, ``geom\_line(aes(x = año, y =
-mortalidad, group = Comuna, color = factor(Comuna)))''.
-
-No se preocupen que iremos practicando el uso de ggplot, y su uso se
-volverá familiar.
-
-En cuanto al gráfico que hemos creado, podemos observar que entre las 15
-comunas en la ciudad, la tasa de mortalidad tiene un rango que va de un
-poco menos de 2,5 a un poco más de 12,5 (esto es, muertes antes del año
-de vida por cada 10.000 nacimientos).
-
-Pero no se distingue aquello que queríamos comprender: la diferencia
-entre el norte y el sur de la ciudad. Necesitamos contexto geográfico.
-
-\subsection{Haciendo mapas}\label{haciendo-mapas}
-
-Vamos a presentar un paquete más, el último para éste capítulo:
-\texttt{sf}. Quizás algunos tengan experiencia con sistemas de
-información geográfica (GIS por sus siglas en inglés), al estilo de
-\href{https://qgis.org/en/site/}{QGIS} o
-\href{https://www.arcgis.com/features/index.html}{ArcGIS}, que permiten
-crear, manipular y combinar archivos con datos espaciales para producir
-mapas que pueden ser simples o en extremo sofisticados. En R, el paquete
-\texttt{sf} brinda herramientas que permiten realizar tares similares.
-
-Nuestro objetivo es obtener un mapa de la ciudad de Buenos Aires con sus
-comunas.
-
-Primero, instalamos \texttt{sf} en caso de que aún no lo hayamos hecho.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"sf"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Vale la pena insistir: Sólo es necesario instalar los paquetes una vez.
-De aquí en más, cada vez que querramos echar mano a las funciones
-incluidas en \texttt{sf}, sólo necesitamos activarlo pues ya estará
-listo en nuestro sistema. Pedimos a R que active el paquete así:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(sf)}
-\end{Highlighting}
-\end{Shaded}
-
-Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad
-Autónoma de Buenos Aires, disponible online en formato
-\href{https://es.wikipedia.org/wiki/GeoJSON}{\emph{geojson}}, un
-estándar de representación de datos geográficos que es fácil de usar:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{comunas <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{'https://bitsandbricks.github.io/data/CABA_comunas.geojson'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Reading layer `CABA_comunas' from data source `https://bitsandbricks.github.io/data/CABA_comunas.geojson' using driver `GeoJSON'
-## Simple feature collection with 15 features and 4 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -58.53152 ymin: -34.70529 xmax: -58.33514 ymax: -34.52754
-## epsg (SRID):    4326
-## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-\end{verbatim}
-
-Al igual que cuando usamos \texttt{read.csv()} para leer un archivo .csv
-y cargarlo como un dataframe, el comando \texttt{st\_read()} hace lo
-propio con archivos de información geográfica, conocidos en la jerga
-como ``shapefiles''. El resultado también es un dataframe, por lo cual
-podemos practicar el uso de las funciones que ya aprendimos, como dim(),
-names() y head().
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{dim}\NormalTok{(comunas)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 15  5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{names}\NormalTok{(comunas)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "barrios"   "perimetro" "area"      "comunas"   "geometry"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(comunas)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Simple feature collection with 6 features and 4 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -58.4627 ymin: -34.6625 xmax: -58.33514 ymax: -34.56935
-## epsg (SRID):    4326
-## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-##                                                                        barrios
-## 1 CONSTITUCION - MONSERRAT - PUERTO MADERO -  RETIRO - SAN NICOLAS - SAN TELMO
-## 2                                                                     RECOLETA
-## 3                                                    BALVANERA - SAN CRISTOBAL
-## 4                           BARRACAS - BOCA - NUEVA POMPEYA - PARQUE PATRICIOS
-## 5                                                              ALMAGRO - BOEDO
-## 6                                                                    CABALLITO
-##   perimetro     area comunas                       geometry
-## 1  35572.65 17802807       1 MULTIPOLYGON (((-58.36854 -...
-## 2  21246.61  6140873       2 MULTIPOLYGON (((-58.39521 -...
-## 3  10486.26  6385991       3 MULTIPOLYGON (((-58.41192 -...
-## 4  36277.44 21701236       4 MULTIPOLYGON (((-58.3552 -3...
-## 5  12323.47  6660526       5 MULTIPOLYGON (((-58.41287 -...
-## 6  10990.96  6851029       6 MULTIPOLYGON (((-58.43061 -...
-\end{verbatim}
-
-Podemos ver que el dataframe contiene 15 filas y 5 columnas. Una fila
-por comuna (es razonable!) y 5 columnas: ``barrios'', ``perímetro'',
-``area'', ``comunas'' y ``geometry''. Nuestro vistazo mediante head()
-permite asumir que ``barrios'' informa los barrios que componen cada
-comuna, mientras que perímetro y área informan sobre las dimensiones del
-polígono cubierto por cada comuna. La columna ``geometry'' aparece en
-todos los dataframes de tipo espacial, y es la que contiene los datos
-con sus coordenadas geográficas.
-
-Y hablando de coordenadas, generar un mapa a partir de un dataframe
-espacial creado por sf es muy fácil con la ayuda de ggplot
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(comunas) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-24-1.pdf}
-
-Si queremos agregar una leyenda al mapa que identifique cada comuna con
-su número, usamos:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(comunas) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ comunas))}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-25-1.pdf}
-
-Dentro de ``aes()'' usé el parámetro ``fill'' (relleno en inglés) para
-pedirle a ggplot que llene cada polígono con un color distinto de
-acuerdo al campo ``comunas''.
-
-Aprovechando que tenemos un mapa, deberíamos clasificar las comunas
-entre las que pertenecen al norte y las que pertenecen al sur de la
-ciudad. No hay una línea divisoria oficial, pero la traza de la Avenida
-Rivadavia suele ser tomada como frontera: Rivadavia es la
-\href{https://www.clarin.com/ediciones-anteriores/avenida-rivadaviaun-largo-recorrido-contrastes_0_B1reo181CYe.html}{``divisoria
-simbólica del Norte y el Sur de la Ciudad, con sus diferencias de
-desarrollo''}
-
-Por esas casualidades de la vida, tengo un archivo geográfico que
-contiene la línea que dibuja a avenida Rivadavia al atravesar la ciudad.
-Lo bajamos:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{rivadavia <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{'https://bitsandbricks.github.io/data/avenida_rivadavia.geojson'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Reading layer `avenida_rivadavia' from data source `https://bitsandbricks.github.io/data/avenida_rivadavia.geojson' using driver `GeoJSON'
-## Simple feature collection with 1 feature and 1 field
-## geometry type:  LINESTRING
-## dimension:      XY
-## bbox:           xmin: -58.53014 ymin: -34.63946 xmax: -58.37017 ymax: -34.60711
-## epsg (SRID):    4326
-## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-\end{verbatim}
-
-Y lo proyectamos sobre el mapa, como una capa adicional del gráfico de
-ggplot que definimos antes:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(comunas) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ comunas)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ rivadavia, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-27-1.pdf}
-
-La identificación por colores no hace fácil reconocer con rapidez que
-número corresponde a cada comuna; es un recurso que funciona mejor con
-menos categorías que nuestras 15. Podríamos arreglarlo, por ejemplo
-evitando la codificación por color, y dibujando una etiqueta con número
-dibujada sobre cada comuna. ¡Pero no en este momento! En aras de la
-sencillez, vamos a aguzar la vista y tomar nota de cuales comunas tienen
-gran parte de su territorio al sur de la Avenida Rivadavia. Según mi
-interpretación, son las comunas 1, 3, 4, 5, 7, 8 y 9. (Hay que admitir
-que la comuna 1 parece estar repartida en partes más o menos iguales,
-pero vamos a dejársela al sur en forma arbitraria para no complicar el
-ejercicio).
-
-\subsection{Agregando datos}\label{agregando-datos}
-
-En este punto necesitamos una manera de ``etiquetar'' cada comuna con el
-punto cardinal que le toca ``Norte'' o ``Sur''. La forma más rápida es
-crear una lista con los atributos, y agregarla a nuestro dataframe como
-una nueva columna.
-
-Podemos armar una sucesión de 15 ``etiquetas'' según el punto cardinal
-que le toca a cada comuna. El comando en R que ``une'' valores en
-conjunto se llama \texttt{c()} (viene de ``combine'', ``combinar''), y
-permite definir una lista de valores. Mejor dicho, un ``vector'' de
-valores; en el mundo de la programación, se usa la palabra vector cuando
-se combinan elementos del mismo tipo, y ``lista'' cuando se combina una
-variedad de clases: en el mismo conjunto números, textos, y otros tipos
-de objeto más complejos. Por ahora, no nos preocupemos por eso.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{nueva_columna <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sur"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Sur"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{, }\StringTok{"Norte"}\NormalTok{)}
-
-\NormalTok{nueva_columna}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##  [1] "Sur"   "Norte" "Sur"   "Sur"   "Sur"   "Norte" "Sur"   "Sur"  
-##  [9] "Sur"   "Norte" "Norte" "Norte" "Norte" "Norte" "Norte"
-\end{verbatim}
-
-Ya podemos agregar nuestra nueva columna usando una función que ya
-vimos, mutate(). En el dataframe, vamos a ponerle a nuestra nueva
-columna un nombre descriptivo, ``ubicación'' :
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{comunas <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(comunas, }\DataTypeTok{ubicacion =}\NormalTok{ nueva_columna)}
-\end{Highlighting}
-\end{Shaded}
-
-Verifiquemos el resultado:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(comunas)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Simple feature collection with 6 features and 5 fields
-## geometry type:  MULTIPOLYGON
-## dimension:      XY
-## bbox:           xmin: -58.4627 ymin: -34.6625 xmax: -58.33514 ymax: -34.56935
-## epsg (SRID):    4326
-## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-##                                                                        barrios
-## 1 CONSTITUCION - MONSERRAT - PUERTO MADERO -  RETIRO - SAN NICOLAS - SAN TELMO
-## 2                                                                     RECOLETA
-## 3                                                    BALVANERA - SAN CRISTOBAL
-## 4                           BARRACAS - BOCA - NUEVA POMPEYA - PARQUE PATRICIOS
-## 5                                                              ALMAGRO - BOEDO
-## 6                                                                    CABALLITO
-##   perimetro     area comunas ubicacion                       geometry
-## 1  35572.65 17802807       1       Sur MULTIPOLYGON (((-58.36854 -...
-## 2  21246.61  6140873       2     Norte MULTIPOLYGON (((-58.39521 -...
-## 3  10486.26  6385991       3       Sur MULTIPOLYGON (((-58.41192 -...
-## 4  36277.44 21701236       4       Sur MULTIPOLYGON (((-58.3552 -3...
-## 5  12323.47  6660526       5       Sur MULTIPOLYGON (((-58.41287 -...
-## 6  10990.96  6851029       6     Norte MULTIPOLYGON (((-58.43061 -...
-\end{verbatim}
-
-Y en el mapa:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(comunas) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ ubicacion)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ rivadavia, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-31-1.pdf}
-
-Todo en orden. Ahora hagamos lo mismo con el dataframe de mortalidad,
-aprovechando que lista las comunas en el mismo orden (del 1 al 15) y por
-lo tanto podemos ``pegarle'' el mismo vector de etiquetas con ubicación
-que ya preparamos.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{mortalidad <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(mortalidad, ubicación =}\StringTok{ }\NormalTok{nueva_columna)}
-                         
-\KeywordTok{head}\NormalTok{(mortalidad)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   Comuna Tasa2016 ubicación
-## 1      1      9.5       Sur
-## 2      2      3.6     Norte
-## 3      3      8.0       Sur
-## 4      4     11.9       Sur
-## 5      5      8.5       Sur
-## 6      6      2.4     Norte
-\end{verbatim}
-
-\section{El veredicto final}\label{el-veredicto-final}
-
-Habrán notado que llegar hasta aquí tomó una buena cantidad de
-operaciones. En contraste, lo que estamos a punto de hacer -responder la
-pregunta inicial- va a ser mucho más breve. Esa vendría a ser la lección
-central de éste capítulo: la mayor parte del tiempo empleado en la labor
-de la ciencia de datos se insume en la poco glamorosa tarea de
-recopilar, limpiar y combinar los registros necesarios para el análisis.
-Como consuelo, podemos pensar en que el esfuerzo necesario para llegar a
-este punto nos ha dado un conocimiento de los datos (su estructura, sus
-limitaciones, su potencial) que no teníamos antes.
-
-Aprovechemos entonces nuestra data limpia y ordenada, para producir un
-mapa que señale con color el nivel de mortalidad. Armamos un ggplot con
-una capa que muestra las comunas, cuyo color interior (``fill'') depende
-del valor de la mortalidad. Le sumamos una capa con la traza de la
-Avenida Rivadavia, nuestra referencia de posición, y por último
-definimos la paleta de colores a usar en el \emph{fill}, eligiendo una
-llamada ``Spectral'', que va del azul al rojo y es muy usada cuando se
-quiere resaltar la divergencia de una variable.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(comunas) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ mortalidad}\OperatorTok{$}\NormalTok{Tasa2016)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ rivadavia, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Spectral"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-33-1.pdf}
-
-Para una comparación visual más precisa entre los valores de cada
-comuna, le pedimos a ggplot un gráfico de barras, con la capa
-\texttt{geom\_col()}. En las variables estéticas, definimos que la
-posición de las barras en el eje de las x estará dada por el número de
-cada comuna, la altura de las barras (eje y) será dada por su tasa de
-mortalidad, y su color de relleno (fill) dependerá de su ubicación
-geográfica.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mortalidad) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_col}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Comuna, }\DataTypeTok{y =}\NormalTok{ Tasa2016, }\DataTypeTok{fill =}\NormalTok{ ubicación)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Mortalidad infantil en la Ciudad Autónoma de Buenos Aires"}\NormalTok{,}
-         \DataTypeTok{subtitle =} \StringTok{"Año 2016"}\NormalTok{,}
-         \DataTypeTok{y =} \StringTok{"tasa"}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-34-1.pdf}
-
-Por último, usamos a R de calculadora. Separamos las comunas en dos
-dataframes distintos según su ubicación, con el comando
-\texttt{filter()}\ldots{}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{comunas_al_sur <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(mortalidad, ubicación }\OperatorTok{==}\StringTok{ "Sur"}\NormalTok{)}
-
-\NormalTok{comunas_al_norte <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(mortalidad, ubicación }\OperatorTok{==}\StringTok{ "Norte"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\ldots{} y calculamos la diferencia entre el promedio de mortalidad de
-unas y otras.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{mean}\NormalTok{(comunas_al_sur}\OperatorTok{$}\NormalTok{Tasa2016) }\OperatorTok{/}\StringTok{ }\KeywordTok{mean}\NormalTok{(comunas_al_norte}\OperatorTok{$}\NormalTok{Tasa2016)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 2.044788
-\end{verbatim}
-
-\subsection{¿Cuál es la diferencia en mortalidad infantil entre el sur y
-el norte de la Ciudad Autónoma de Buenos
-Aires?}\label{cual-es-la-diferencia-en-mortalidad-infantil-entre-el-sur-y-el-norte-de-la-ciudad-autonoma-de-buenos-aires}
-
-En base a lo que descubrimos, vamos a responder en forma sucinta.
-
-\begin{itemize}
-\item
-  En el año 2016, la tasa de mortalidad infantil en todo los barrios del
-  sur es más alta que en cualquier de los del norte.
-\item
-  Para los nacidos en 2016 de padres que viven en el sur de la ciudad,
-  la posibilidad de morir antes del primer año es, en promedio, el doble
-  que la de aquellos con padres que residen al norte.
-\end{itemize}
-
-Por supuesto, con esto no puede darse por cerrado el tema; hay muchas
-facetas que deberíamos analizar para comenzar a entender un fenómeno
-social de tal complejidad. Por ejemplo, ¿Cómo es la evolución en el
-tiempo de la brecha norte/sur - se mantiene igual, decrece, aumenta?
-¿Qué otros factores están correlacionados con la disparidad, más allá
-del geográfico?
+\section{Un ejemplo de análisis paso a
+paso}\label{un-ejemplo-de-analisis-paso-a-paso}
+
+\textless{}\textless{}\textless{} \ldots{}en construcción\ldots{}
+\textgreater{}\textgreater{}\textgreater{}
 
 En los siguientes capítulos practicaremos varias técnicas que nos
 permitirán profundizar nuestros análisis, en la nunca finalizada misión
@@ -2472,7 +1839,7 @@ en el capítulo de introducción a R, continuaremos usando
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-84-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 ¿Un gráfico vacío? Recordemos que ggplot funciona por capas. Primero uno
 declara el dataframe que va a usar, y luego agrega una o más capas con
@@ -2485,7 +1852,7 @@ scatterplot, en la práctica dibujar puntos, es con \texttt{geom\_point}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-85-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 Lo que hicimos fue pedirle a ggplot que dibuje un punto por cada fila
 (representando a cada comuna), con la posición en el eje de las
@@ -2519,7 +1886,7 @@ indicarle a R que queremos que trate a la variable como categórica:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-86-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-63-1.pdf}
 
 En ese caso, no es tan fácil discernir cuál es cuál, pero mirando con
 cuidado descubrimos que la comuna 1 es el \emph{outlier}, el valor fuera
@@ -2549,7 +1916,7 @@ usamos
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-88-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-65-1.pdf}
 
 Volvamos a nuestros puntos para practicar dos codificaciones estéticas
 que no hemos probado, color y tamaño.
@@ -2565,7 +1932,7 @@ esa variable, además de su altura en el gráfico.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-89-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-66-1.pdf}
 
 Y para distinguir cuál es cuál, podemos pedirle a ggplot que cambie la
 forma (\emph{shape}) de cada punto según la comuna a la que corresponde.
@@ -2577,7 +1944,7 @@ forma (\emph{shape}) de cada punto según la comuna a la que corresponde.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-90-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-67-1.pdf}
 
 ¡Hey, sólo aparecen seis de las comunas! \texttt{ggplot()} usa cómo
 máximo 6 formas distintas, debido a que una cantidad mayor sería de
@@ -2605,7 +1972,7 @@ será aplicado a todos los puntos.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 Obsérvese que \texttt{color\ =\ "blue"} está escrito por fuera de los
 paréntesis de \texttt{aes()}. De paso, hicimos uso de una característica
@@ -2626,7 +1993,7 @@ Tras un vistazo a la lista, me decido por ``darkolivegreen4'':
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 Bellísimo.
 
@@ -2639,7 +2006,7 @@ En cuanto al tamaño, la fórmula es la misma:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-93-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-70-1.pdf}
 
 El valor de \texttt{size} se da en píxeles. Es una medida difícil de
 estimar antes de ver el resultado, pero es cuestión de probar algunos
@@ -2654,7 +2021,7 @@ podemos ajustar varios, o todos, los atributos a la vez
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-94-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 \section{Facetado}\label{facetado}
 
@@ -2761,7 +2128,7 @@ prestamos más atención.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 Los culpables de la anomalía son los trámites; en ninguna otra categoría
 la comuna 1 se separa del resto. Sabiendo que la base de donde provienen
@@ -2815,7 +2182,7 @@ que vamos a usar \texttt{weight\ =\ total}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-98-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-75-1.pdf}
 
 Tenemos dos problemas. El primero es que los valores en el eje de las
 \texttt{y} son grandes, y R nos quiere hacer un favor expresándolos en
@@ -2848,7 +2215,7 @@ agregar \texttt{coord\_flip}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-100-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-77-1.pdf}
 
 Ahora si podemos interpretar el gráfico. San Nicolás y Monserrat son los
 barrios a la cabeza, lo cual no sorprende sabiendo que pertenecen a la
@@ -2870,7 +2237,7 @@ corresponde a cada subcategoría:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-101-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-78-1.pdf}
 
 !Esos trámites otra vez! En cierto modo, estamos recorriendo las mismas
 conclusiones a las que arribamos usando scatterplots, pero mostrando la
@@ -2890,7 +2257,7 @@ barras, pero no su interior:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-102-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-79-1.pdf}
 
 También podemos cambiar las categorías. Si qusiéramos ver el total de
 registros por cada tipo de trámite:
@@ -2902,7 +2269,7 @@ registros por cada tipo de trámite:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-103-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 Notamos que las quejas y denuncias son eventos poco frecuentes en
 comparación con las otras clases de contacto entre ciudadanos y ciudad.
@@ -2919,7 +2286,7 @@ contacto?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-104-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-81-1.pdf}
 
 Hemos obtenido una visualización indigerible. Quizás con un facetado por
 barrio\ldots{}
@@ -2932,7 +2299,7 @@ barrio\ldots{}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-105-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-82-1.pdf}
 
 Esta opción es un poco mejor, ya que al menos permite identificar pronto
 los barrios salientes, y discernir diferencias generales si se la mira
@@ -2993,7 +2360,7 @@ que elegir una variable y asignarla a las \texttt{x}.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-84-1.pdf}
 
 \texttt{geom\_histogram()} divide el rango de valores en una cantidad
 arbitraria de segmentos iguales (``bins'' en inglés) y cuenta cuantas
@@ -3043,7 +2410,7 @@ y creamos el facetado como ya sabemos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-109-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-86-1.pdf}
 
 Aparecen las diferencias. Los reclamos tienen una dispersión mínima, con
 casi todas las observaciones apiladas en torno a unos 1000 contactos
@@ -3116,7 +2483,7 @@ sirva de ejemplo. El original:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-110-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-87-1.pdf}
 
 versus la versión pulida usando \texttt{labs()}:
 
@@ -3134,7 +2501,7 @@ versus la versión pulida usando \texttt{labs()}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-111-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-88-1.pdf}
 
 Ahora si, a compartir.
 
@@ -3160,7 +2527,7 @@ usarse (mostrar relaciones, distribuciones, cambio a través del tiempo,
 etc).
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{imagenes/data_to_viz} \caption{from Data to Viz - www.data-to-viz.com/}\label{fig:unnamed-chunk-112}
+\includegraphics[width=1\linewidth]{imagenes/data_to_viz} \caption{from Data to Viz - www.data-to-viz.com/}\label{fig:unnamed-chunk-89}
 \end{figure}
 
 Y lo más interesante: Para todas y cada una de las visualizaciones se
@@ -3334,7 +2701,7 @@ para intentar anticipar los resultados de la regresión lineal.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-115-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-92-1.pdf}
 
 Bien, no necesitamos recurrir a la matemática para saber que tiempo y
 expectativa de vida están correlacionadas en forma positiva. Esto es, el
@@ -3475,7 +2842,7 @@ respectivos valores que nos indica el modelo, \texttt{-389.6063} y
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-119-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-96-1.pdf}
 
 Aquí no vemos más que los datos que ya teníamos. Pero proyectemos la
 línea hacia el futuro. Con \texttt{xlim()} e \texttt{ylim()} podemos
@@ -3497,7 +2864,7 @@ que ahora podemos ver hacia donde va.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-120-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 Ahí está la predicción. Según nuestro modelo, para el año 2030 la
 expectativa de vida en la Argentina habrá superado los 80 años.
@@ -3536,7 +2903,7 @@ una línea de tendencia. Aquí usamos \texttt{method\ =\ "lm"} por
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 Hacer una regresión lineal se trata de encontrar la línea que atraviesa
 nuestra nube de puntos de modo tal que la suma de las distancias de cada
@@ -3567,7 +2934,7 @@ año, agregando la línea de regresión para:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-122-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-99-1.pdf}
 
 Sigue siendo evidente una fuerte tendencia lineal, pero las
 observaciones ya no se ciñen de forma tan estrecha a la línea idealizada
@@ -3656,7 +3023,7 @@ corresponden a observaciones a las que el modelo se ajusta bien.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-126-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 Siempre podemos esperar una cierta divergencia entre las predicciones y
 los valores observados, por lo que los residuos siempre tendrán (en
@@ -3709,7 +3076,7 @@ vertical que señale el año de la crisis:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-127-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 Es claro que el modelo se beneficiaría de poder tener en cuenta la
 irrupción de las crisis en el país. Esto se lograría agregando una
@@ -3751,7 +3118,7 @@ recientes, las de 2007.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-128-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-105-1.pdf}
 
 Ya podemos vislumbrar que el continente incide en la expectativa de
 vida, con África sufriendo los números más bajos. La profusión de puntos
@@ -3774,7 +3141,7 @@ mejor lo que está ocurriendo. Usamos \texttt{geom\_jitter()} igual que
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-129-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 Algún ojo avizor habrá notado que la clasificación por color no es
 necesaria, ya que el continente ya está señalado por su posición en el
@@ -3796,7 +3163,7 @@ de vida de los países, con un histograma facetado por continente:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-130-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-107-1.pdf}
 
 Bien, estamos convencidos de que hay una relación entre continente y
 expectativa de vida, aunque no la hemos cuantificado. Para eso,
@@ -3860,7 +3227,7 @@ ideal:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-133-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-110-1.pdf}
 
 Notamos que:
 
@@ -3918,7 +3285,7 @@ vida según los años.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-135-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-112-1.pdf}
 
 Vaya sopresa. A pesar de ser en extremo baja comparada con el resto de
 Asia, la expectativa de vida en Afganistán en el 2007 es la más alta de
@@ -4380,7 +3747,7 @@ tipos de distorsión, o para encontrar una solución de compromiso que los
 balancee.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{imagenes/proyecciones} \caption{Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)}\label{fig:unnamed-chunk-143}
+\includegraphics[width=1\linewidth]{imagenes/proyecciones} \caption{Distintos sistemas de proyección cartográfica (cortesía Daniel R. Strebe 2011)}\label{fig:unnamed-chunk-120}
 \end{figure}
 
 La proyección más famosa es la Mercator, diseñada para asistir la
@@ -4399,7 +3766,7 @@ inconsolable irritación de los geógrafos, Mercator se convirtió en el
 estándar de facto para aplicaciones geográficas en la web.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{imagenes/Mercator-proj} \caption{La inescapable proyección Mercator (cortesía Jecowa)}\label{fig:unnamed-chunk-144}
+\includegraphics[width=1\linewidth]{imagenes/Mercator-proj} \caption{La inescapable proyección Mercator (cortesía Jecowa)}\label{fig:unnamed-chunk-121}
 \end{figure}
 
 En la práctica, si trabajamos en forma frecuente con archivos
@@ -4580,7 +3947,7 @@ Nuestro aliado \texttt{ggplot()} se encarga de ello.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-148-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-125-1.pdf}
 
 Ademas de encontrarnos con la reconocible silueta de la ciudad,
 comprobamos lo que el resumen de la data había sugerido: la mayoría de
@@ -4598,7 +3965,7 @@ Podemos analizar eso mismo: ¿cuántas viviendas hay por radio?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-126-1.pdf}
 
 EL grosor de la línea que traza las fronteras entre radios hace difícil
 determinar el color de relleno. Esto suele pasar cuando se grafica
@@ -4612,7 +3979,7 @@ solución es definir el color de la línea como \texttt{NA}, que para
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-150-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-127-1.pdf}
 
 Así esta mejor. Nótese que definimos el color por fuera de
 \texttt{aes()}. Cuando queremos asignar un valor fijo a alguno de los
@@ -4629,7 +3996,7 @@ gran radio censal al oeste. ¿A qué barrio corresponde?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-151-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-128-1.pdf}
 
 Hemos logrado otro de nuestros gráficos ilegibles, intentando mostrar
 demasiadas variables categóricas a la vez. Una forma de resolver el
@@ -4644,7 +4011,7 @@ censales.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-152-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-129-1.pdf}
 
 Cómo había anticipado el resumen vía \texttt{summary()}, la gran mayoría
 de los radios tiene menos de medio km\^{}2. Unos pocos superan los 2
@@ -4662,7 +4029,7 @@ corresponden.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-153-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-130-1.pdf}
 Nuestro gran radio censal al este, con población considerable,
 corresponde a Puerto Madero.
 
@@ -4678,7 +4045,7 @@ la división de una por otra.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-154-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-131-1.pdf}
 
 Hay un radio censal que parece brillar, destacándose entre los demás.
 ¿Dónde está? Esta vez lo resolvemos en forma analítica en lugar de
@@ -4764,7 +4131,7 @@ Con nuestros datos, podemos visualizar la densidad de la población así:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-156-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-133-1.pdf}
 
 Este último gráfico representa de forma mucho mas precisa la
 distribución de habitantes en la ciudad, haciendo saltar a la vista los
@@ -4873,7 +4240,7 @@ fronteras de la unidad de agregación - los barrios.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-161-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-138-1.pdf}
 
 Como efecto secundario de la operación (que en la jerga del \emph{GIS}
 se conoce como ``disolver polígonos'') podemos ver algunas líneas
@@ -4931,7 +4298,7 @@ sea la misma.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-164-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-141-1.pdf}
 
 Tal como habíamos verificado cuando hicimos la exploración del dataset
 en el capítulo 2, en los barrios céntricos se registra la mayoría de los
@@ -4948,7 +4315,7 @@ mostrar valores per cápita.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-165-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-142-1.pdf}
 
 Normalizar los datos hace evidente que los barrios son parejos en su
 grado de demanda por habitante, exceptuando los casos salientes que
@@ -5039,7 +4406,7 @@ Y mostramos el rubro principal por barrio en un mapa
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-168-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-145-1.pdf}
 
 \section{Combinando capas
 geográficas}\label{combinando-capas-geograficas}
@@ -5113,7 +4480,7 @@ Combinar capas mostrado distintas geometrías es simple usando
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-171-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-148-1.pdf}
 
 ¡Voilà! Podríamos también aprovechar el lienzo en blanco de la
 superficie de los barrios para hacer un mapa temático que muestre la
@@ -5166,7 +4533,7 @@ barrio:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-174-1.pdf}
+\includegraphics{ciencia_de_datos_politicas_publicas_files/figure-latex/unnamed-chunk-151-1.pdf}
 
 Aquí se cumplen las expectativas: la cantidad de emergencias reportadas
 sigue en forma clara un patrón relacionado con la cantidad de estaciones
