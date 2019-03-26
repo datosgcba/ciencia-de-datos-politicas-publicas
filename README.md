@@ -5,7 +5,7 @@ Estamos ante una transformación radical impulsada por la innovación tecnológi
 
 Los datos se han convertido en el commodity principal de la economía, y se transformaron en el activo más valioso y estratégico con el que cuentan las organizaciones. Bajo este nuevo paradigma, disponer de información actualizada y confiable genera ventajas competitivas porque permite brindar mejores servicios, facilita la toma de decisiones, impulsa la innovación y genera valor económico. 
 
-En un mundo cada vez más digitalizado, los gobiernos se enfrentan a la necesidad de establecer las políticas para asegurar que los datos fluyan de un modo seguro entre las distintas áreas para impulsar la toma de decisiones basadas en evidencia, la innovación y el desarrollo económico. El curso Ciencia de Datos y Políticas Públicas está dirigido a empleados de gobierno que quieran aprender nuevas técnicas en materia de análisis, explotación y visualización de datos.
+En un mundo cada vez más digitalizado, los gobiernos se enfrentan a la necesidad de establecer las políticas para asegurar que los datos fluyan de un modo seguro entre las distintas áreas para impulsar la toma de decisiones basadas en evidencia, la innovación y el desarrollo económico. El curso *Ciencia de Datos y Políticas Públicas* está dirigido a empleados de gobierno que quieran aprender nuevas técnicas en materia de análisis, explotación y visualización de datos.
 
 Esta iniciativa se enmarca en la Política de Datos Públicos diseñada por el Gobierno de la Ciudad Autónoma de Buenos Aires para impulsar la toma de decisiones basadas en evidencia y fortalecer las capacidades del Estado en materia de gestión y análisis de datos.
 
