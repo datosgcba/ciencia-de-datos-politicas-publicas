@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-03-24">
+<meta name="date" content="2019-04-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -115,6 +115,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#escribiendo-un-script"><i class="fa fa-check"></i><b>2.1.2</b> Escribiendo un script</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#un-ejemplo-de-analisis-paso-a-paso"><i class="fa fa-check"></i><b>2.2</b> Un ejemplo de análisis paso a paso</a></li>
+<li class="chapter" data-level="2.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#visualizacion-la-exploracion-grafica-de-la-informacion"><i class="fa fa-check"></i><b>2.3</b> Visualización: la exploración gráfica de la información</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#haciendo-mapas"><i class="fa fa-check"></i><b>2.3.1</b> Haciendo mapas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#agregando-datos"><i class="fa fa-check"></i><b>2.3.2</b> Agregando datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#el-resultado-final"><i class="fa fa-check"></i><b>2.4</b> El resultado final</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html"><i class="fa fa-check"></i><b>3</b> Poniendo los datos en forma</a><ul>
 <li class="chapter" data-level="3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#primeros-pasos-al-examinar-un-conjunto-de-datos-nuevo"><i class="fa fa-check"></i><b>3.1</b> Primeros pasos al examinar un conjunto de datos nuevo</a></li>
@@ -234,7 +239,183 @@ superficie_habitacion_m2</code></pre></div>
 </div>
 <div id="un-ejemplo-de-analisis-paso-a-paso" class="section level2">
 <h2><span class="header-section-number">2.2</span> Un ejemplo de análisis paso a paso</h2>
-<p>&lt;&lt;&lt; …en construcción… &gt;&gt;&gt;</p>
+<p>Imaginemos por un momento que trabajamos en un área del Gobierno de la Ciudad encargada de analizar los reclamos y solicitudes que realizan los vecinos. Para abordar el tema, algunas preguntas que de inmediato vienen a la mente son ¿Qué tipo de solicitudes hacen los ciudadanos, en qué cantidad, y en dónde?</p>
+<p>Disponiendo de los datos necesarios, podemos usar <code>R</code> para encontrar las respuestas.</p>
+<p>Vamos a cargar datos provenientes de los registros del Sistema Único de Atención Ciudadana (o <a href="https://suaci.buenosaires.gob.ar">SUACI</a>), la plataforma del Gobierno de la Ciudad que administra los contactos iniciados por ciudadanos. En el portal de datos abiertos de la Ciudad se publica <a href="https://data.buenosaires.gob.ar/dataset/sistema-unico-atencion-ciudadana">cada uno de los contactos recibidos por SUACI año a año</a>. El tipo de archivo con el que se publican es “.csv” (o “comma separated values”) un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas. Es posible abrir un archivo .csv hasta con el <a href="https://es.wikipedia.org/wiki/Bloc_de_notas">humilde block de notas</a>. Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama <code>read.csv</code>. La usamos así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/gcba_suaci_2018.csv&#39;</span>)</code></pre></div>
+<p>Obsérvese que los datos están alojados en un servidor de internet (accesibles vía <strong><a href="https://bitsandbricks" class="uri">https://bitsandbricks</a>…</strong>). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, <code>suaci2018</code>, sólo hace falta escribir su nombre:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018</code></pre></div>
+<pre><code>##               BARRIO CONTACTOS
+## 1          AGRONOMIA      7378
+## 2            ALMAGRO     31420
+## 3          BALVANERA     28616
+## 4           BARRACAS     23106
+## 5           BELGRANO     46936
+## 6               BOCA     11495
+## 7              BOEDO     12926
+## 8          CABALLITO     50301
+## 9          CHACARITA     11076
+## 10           COGHLAN      8920
+## 11        COLEGIALES     18637
+## 12      CONSTITUCION      7569
+## 13            FLORES     38462
+## 14          FLORESTA     13589
+## 15           LINIERS     17606
+## 16         MATADEROS     19771
+## 17         MONSERRAT     10716
+## 18      MONTE CASTRO     15459
+## 19     NUEVA POMPEYA     11762
+## 20             NUÑEZ     26556
+## 21           PALERMO     75068
+## 22 PARQUE AVELLANEDA     14914
+## 23  PARQUE CHACABUCO     16560
+## 24       PARQUE CHAS      8948
+## 25  PARQUE PATRICIOS     13559
+## 26          PATERNAL      7255
+## 27     PUERTO MADERO      1939
+## 28          RECOLETA     30339
+## 29            RETIRO     10646
+## 30          SAAVEDRA     18232
+## 31     SAN CRISTOBAL     11050
+## 32       SAN NICOLAS     12526
+## 33         SAN TELMO      5281
+## 34   VELEZ SARSFIELD     11586
+## 35         VERSALLES      5835
+## 36      VILLA CRESPO     25748
+## 37  VILLA DEL PARQUE     25224
+## 38      VILLA DEVOTO     34361
+## 39 VILLA GRAL. MITRE     11417
+## 40      VILLA LUGANO     24853
+## 41        VILLA LURO     11485
+## 42     VILLA ORTUZAR     11150
+## 43  VILLA PUEYRREDON     18985
+## 44        VILLA REAL      5496
+## 45   VILLA RIACHUELO      5311
+## 46  VILLA SANTA RITA     13265
+## 47     VILLA SOLDATI      9811
+## 48     VILLA URQUIZA     40146</code></pre>
+<p>Vemos que la tabla tiene 48 filas (una por cada barrio de la ciudad) y 2 columnas (una con el nombre del barrio, y otra con la cantidad total de contactos registrados en 2018).</p>
+<p>En R, las tablas son llamadas <code>dataframes</code>. El dataframe es el objeto por excelencia del análisis de datos. En concepto, es muy similar a una tabla de excel; al fin y al cabo, ambos formatos guardan información en celdas identificadas por fila y columna.</p>
+<p>Algunas funciones útiles para explorar un dataframe que no conocemos son <code>dim()</code>, que nos da las dimensiones del dataframe (cantidad de filas y columnas), <code>names()</code> que nos dice como se llaman sus columnas (que en general representan variables), y <code>head()</code> que nos permite echar un vistazo rápido al contenido, mostrando sólo las seis primeras filas (ésto es útil porque con frecuencia trabajamos con dataframes que contienen miles o millones de filas, con lo que no tiene sentido tratar de volcar todas en pantalla).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(suaci2018)</code></pre></div>
+<pre><code>## [1] 48  2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(suaci2018)</code></pre></div>
+<pre><code>## [1] &quot;BARRIO&quot;    &quot;CONTACTOS&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(suaci2018)</code></pre></div>
+<pre><code>##      BARRIO CONTACTOS
+## 1 AGRONOMIA      7378
+## 2   ALMAGRO     31420
+## 3 BALVANERA     28616
+## 4  BARRACAS     23106
+## 5  BELGRANO     46936
+## 6      BOCA     11495</code></pre>
+</div>
+<div id="visualizacion-la-exploracion-grafica-de-la-informacion" class="section level2">
+<h2><span class="header-section-number">2.3</span> Visualización: la exploración gráfica de la información</h2>
+<p>Ahora es vamos a pisar el acelerador. Insisto: nadie debe preocuparse si algunos conceptos parecen ser demasiado complejos. En las próximas secciones practicaremos de forma gradual las técnicas que vamos a usar ahora, y todo tendrá sentido -¡lo prometo!. Pero antes, seamos un poquito irresponsables con el poder de R y empleemos un arsenal sofisticado de herramientas para ver de que somos capaces.</p>
+<p>En la introducción hablamos de los paquetes, conjuntos de programas que extienden la funcionalidad de R. Vamos a cargar uno de los paquetes más usados, <code>tidyverse</code>. Tidyverse incluye una gran cantidad de funciones diseñadas por y para practicantes de la ciencia de datos. Estas funciones comparten una filosofía y una sintaxis común, por lo que al aprender una en cierto modo aprendemos a usar todas. El valor que aportan es que, sin dudas, ayudan a realizar de manera más fácil las tareas típicas de la ciencia de datos: importar, limpiar, comprender y comunicar datos.</p>
+<p>Si acabamos de instalar R y RStudio, el paquete aún no estará disponible en nuestro sistema. Para instalarlo, usamos la función <code>install.packages()</code> y le pasamos el nombre del paquete deseado, “tidyverse”, entre comillas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>De aquí en más, podremos activar el conjunto de funciones que provee <code>tidyverse</code> cada vez que queramos. Para eso, lo invocamos con la función <code>library()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<p>… y listo para usar. La razón por la cual activamos tidyverse es que en este momento nos vienen bien dos de sus funciones: <code>mutate()</code> para modificar valores, y <code>ggplot()</code> para hacer gráficos.</p>
+<p>Bien, llega la hora presentar información en forma visual. Vamos a llamar a la función <code>ggplot()</code>, una auténtica navaja suiza para la visualización.</p>
+<p>Por ejemplo, veamos cuantos contactos sumó cada barrio durante 2018:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(suaci2018) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">x =</span> BARRIO, <span class="dt">y =</span> CONTACTOS)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_flip</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-18-1.png" width="1050" /></p>
+<p>Para realizar una visualización con ésta herramienta, siempre se comienza con la función <code>ggplot()</code>, que crea un eje de coordenadas sobre el cual se pueden agregar capas. El primer parámetro que recibe <code>ggplot()</code> es el dataset que queremos usar para el gráfico; en nuestro caso, <code>ggplot(suaci2018)</code>. Ejecutar sólo <code>ggplot(suaci2018)</code> nos devuelve un gráfico vacío; la gracia está en agregar una o más capas especificando cómo queremos mostrar los datos. Estas capas se agregan con un signo <code>+</code>.</p>
+<p>En nuestro ejemplo, <code>geom_col()</code> crea columnas cuya posición en el eje vertical depende de la variable “BARRIO”, mientas que la extensión (posición en el eje horizontal) depende del valor de la variable “CONTACTOS”. Existen muchas funciones del tipo “geom_XXX”, que agregan distintas clases de capas al gráfico: geom_point, geom_polygon, geom_text y muchos, muchos más que iremos viendo más adelante.</p>
+<p>Cada función “geom_” toma como parámetro un conjunto de definiciones “estéticas” que le indican una variable a graficar (“CANTIDAD” en nuestro caso), cómo representar los valores (por color, tamaño, etc) y en dónde (posición en el eje x, posición en el eje y). Estos parámetros van siempre dentro de una función auxiliar, <code>aes()</code>. En nuestro ejemplo, “aes(x = BARRIO, y = contactos)”. La última línea, “coord_flip()”, cambia la disposición de los ejes; en lugar de las x en horizontal y las y en vertical, al revés. ¿Porqué es útil a veces trastocar la posición de los ejes? Prueben correr la función sin agregar esa línea, <code>ggplot(suaci2018) + geom_col(aes(x = BARRIO, y = CONTACTOS))</code>, y verán.</p>
+<p>No se preocupen que iremos practicando el uso de ggplot, y su uso se volverá familiar.</p>
+<p>En cuanto al gráfico que hemos creado, podemos observar que entre las 48 barrios de la ciudad la cantidad de contactos en 2018 varió bastante. Si escudriñamos las líneas podemos arriesgar que van de de un par de miles en Puerto Madero a unos 75000 en Palermo. Lo que no nos muestra son patrones espaciales: ¿Cómo es la distribución geográfica de las solicitudes? ¿Los barrios con mayor demanda son los de una región de la ciudad en particular? Para responde esas preguntas, necesitamos un mapa.</p>
+<div id="haciendo-mapas" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Haciendo mapas</h3>
+<p>Vamos a presentar un paquete más, el último para éste capítulo: <code>sf</code>. Quizás algunos tengan experiencia con sistemas de información geográfica (GIS por sus siglas en inglés), al estilo de <a href="https://qgis.org/en/site/">QGIS</a> o <a href="https://www.arcgis.com/features/index.html">ArcGIS</a>, que permiten crear, manipular y combinar archivos con datos espaciales para producir mapas que pueden ser simples o en extremo sofisticados. En R, el paquete <code>sf</code> brinda herramientas que permiten realizar tares similares.</p>
+<p>Nuestro objetivo es obtener un mapa de la ciudad de Buenos Aires con sus comunas.</p>
+<p>Primero, instalamos <code>sf</code> en caso de que aún no lo hayamos hecho.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</code></pre></div>
+<p>Vale la pena insistir: Sólo es necesario instalar los paquetes una vez. De aquí en más, cada vez que querramos echar mano a las funciones incluidas en <code>sf</code>, sólo necesitamos activarlo pues ya estará listo en nuestro sistema. Pedimos a R que active el paquete así:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
+<p>Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato <a href="https://es.wikipedia.org/wiki/GeoJSON"><em>geojson</em></a>, un estándar de representación de datos geográficos que es fácil de usar:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/CABA_barrios.geojson&#39;</span>)</code></pre></div>
+<pre><code>## Reading layer `CABA_barrios&#39; from data source `https://bitsandbricks.github.io/data/CABA_barrios.geojson&#39; using driver `GeoJSON&#39;
+## Simple feature collection with 48 features and 4 fields
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: -58.53152 ymin: -34.70529 xmax: -58.33514 ymax: -34.52754
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>Al igual que cuando usamos <code>read.csv()</code> para leer un archivo .csv y cargarlo como un dataframe, el comando <code>st_read()</code> hace lo propio con archivos de información geográfica, conocidos en la jerga como “shapefiles”. El resultado también es un dataframe, por lo cual podemos practicar el uso de las funciones que ya aprendimos, como dim(), names() y head().</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(barrios)</code></pre></div>
+<pre><code>## [1] 48  5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(barrios)</code></pre></div>
+<pre><code>## [1] &quot;BARRIO&quot;    &quot;COMUNA&quot;    &quot;PERIMETRO&quot; &quot;AREA&quot;      &quot;geometry&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(barrios)</code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 4 fields
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: -58.50617 ymin: -34.63064 xmax: -58.41192 ymax: -34.57829
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+##             BARRIO COMUNA PERIMETRO    AREA                       geometry
+## 1        CHACARITA     15  7725.695 3118101 POLYGON ((-58.45282 -34.595...
+## 2         PATERNAL     15  7087.513 2229829 POLYGON ((-58.46558 -34.596...
+## 3     VILLA CRESPO     15  8132.699 3613584 POLYGON ((-58.42375 -34.597...
+## 4 VILLA DEL PARQUE     11  7705.390 3399596 POLYGON ((-58.49461 -34.614...
+## 5          ALMAGRO      5  8537.901 4050752 POLYGON ((-58.41287 -34.614...
+## 6        CABALLITO      6 10990.964 6851029 POLYGON ((-58.43061 -34.607...</code></pre>
+<p>Podemos ver que el dataframe contiene 48 filas y 5 columnas. Una fila por barrio, y una columnas por cada variable disponible: “BARRIO”, “COMUNA”, “PERIMETRO”, “AREA” y “geometry”. Nuestro vistazo mediante head() permite asumir que “BARRIO” contiene los nombres, COMUNA indica la unidad administrativa, y PERIMETRO y AREA informan sobre las dimensiones del polígono cubierto por cada barrio. La columna “geometry” aparece en todos los dataframes de tipo espacial, y es la que contiene los datos con sus coordenadas geográficas.</p>
+<p>Y hablando de coordenadas, generar un mapa a partir de un dataframe espacial creado por sf es muy fácil con la ayuda de <code>ggplot()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(barrios) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>()</code></pre></div>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-23-1.png" width="1050" /></p>
+<p>Si queremos agregar una leyenda al mapa que identifique la comuna a la que pertenece cada barrio, usamos:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(barrios) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> <span class="kw">factor</span>(COMUNA)))</code></pre></div>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-24-1.png" width="1050" /></p>
+<p>Dentro de “aes()” usé el parámetro “fill” (relleno en inglés) para pedirle a <code>ggplot()</code> que llene cada polígono con un color distinto de acuerdo al campo “COMUNA”. Lo mismo podríamos hacer para ver la distribución de solicitudes registradas en SUACI, pintando los barrios con una escala de colores que indique el nivel de solicitudes que les corresponde. Pero antes de hacer eso, pensemos: es de esperarse que los barrios más poblados representen un mayor número de solicitudes que los más pequeños, ya que al fin y al cabo tienen más gente viviendo dentro. Nos interesa la cantiad de contactos <em>per cápita</em>, lo cuál debería darnos una mejor idea acerca de las diferencias entre barrios en lo que respecta a cuánta interacción hay entre vecinos y gobierno.</p>
+<p>Sumemos pues datos de población.</p>
+</div>
+<div id="agregando-datos" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Agregando datos</h3>
+<p>Cuando tenemos una identificador en común, <code>R</code> hace muy fácil cruzar datos de fuentes distintas. Traigamos los datos de población en cada barrio de la Ciudad de Buenos Aires, de acuerdo al censo nacional de 2010:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poblacion &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://bitsandbricks.github.io/data/caba_pob_barrios_2010.csv&quot;</span>)</code></pre></div>
+<p>Veamos el contenido del dataframe:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(poblacion)</code></pre></div>
+<pre><code>##      BARRIO POBLACION
+## 1 AGRONOMIA     13912
+## 2   ALMAGRO    131699
+## 3 BALVANERA    138926
+## 4  BARRACAS     89452
+## 5  BELGRANO    126267
+## 6      BOCA     45113</code></pre>
+<p>Bien, tenemos el nombre de cada barrio y su población. Como nuestro dataframe de contactos a SUACI tiene una columna con el mismo nombre que contiene las mismas categorías, sumarle la información de población es tan fácil como:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">left_join</span>(suaci2018, poblacion)</code></pre></div>
+<p>Más adelante aprenderemos más de las funciones de “join”, que nos permiten cruzar información. Por ahora sólo miremos el resultado:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(suaci2018)</code></pre></div>
+<pre><code>##      BARRIO CONTACTOS POBLACION
+## 1 AGRONOMIA      7378     13912
+## 2   ALMAGRO     31420    131699
+## 3 BALVANERA     28616    138926
+## 4  BARRACAS     23106     89452
+## 5  BELGRANO     46936    126267
+## 6      BOCA     11495     45113</code></pre>
+<p>Todo en orden. Ahora usemos una operación similar para sumar los datos de SUACI y de pobación al dataframe con información espacial, el que nos permite dibujar los barrios. Teniendo toda la información allí, podremos visualizar el mapa que queremos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">left_join</span>(barrios, suaci2018)</code></pre></div>
+</div>
+</div>
+<div id="el-resultado-final" class="section level2">
+<h2><span class="header-section-number">2.4</span> El resultado final</h2>
+<p>Habrán notado que llegar hasta aquí tomó una buena cantidad de operaciones. En contraste, lo que estamos a punto de hacer -generar un mapa con los barrios de la ciudad que muestre la cantidad de solicitudes de la ciudadanía per cápita- va a ser mucho más breve. Esa vendría a ser la lección central de éste capítulo: la mayor parte del tiempo empleado en la labor de la ciencia de datos se insume en la poco glamorosa tarea de recopilar, limpiar y combinar los registros necesarios para el análisis. Como consuelo, podemos pensar en que el esfuerzo necesario para llegar a este punto nos ha dado un conocimiento de los datos (su estructura, su contenido, atributos en común, etc) que no teníamos antes.</p>
+<p>Aprovechemos entonces nuestra data limpia y ordenada, para producir un mapa que indique por color el grado en que los vecinos de cada barrio interactúan con los canales de atención del gobierno de la Ciudad. Con ggplot dibujaremos los barrios, y pintaremos su interior (“fill”) de acuerdo a la cantidad de contactos, dividida por la población local. Por último, definiremos la paleta de colores a usar en el <em>fill</em>, eligiendo una escala llamada “Spectral”, que va del azul al rojo y es muy usada cuando se quiere resaltar la divergencia de una variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(barrios) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> CONTACTOS <span class="op">/</span><span class="st"> </span>POBLACION)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_fill_distiller</span>(<span class="dt">palette =</span> <span class="st">&quot;Spectral&quot;</span>)</code></pre></div>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-30-1.png" width="1050" /></p>
+<p>¡Y hemos hallado un patrón! La zona caliente de contactos se asienta en el sector noroeste de la Ciudad.</p>
+<p>Por supuesto, con esto no puede darse por cerrado el tema; hay muchas facetas que deberíamos analizar para comenzar a entender éste fenómeno social o cualquier otro.</p>
 <p>En los siguientes capítulos practicaremos varias técnicas que nos permitirán profundizar nuestros análisis, en la nunca finalizada misión de entender un poco más.</p>
 
 </div>

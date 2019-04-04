@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-03-24">
+<meta name="date" content="2019-04-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -115,6 +115,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#escribiendo-un-script"><i class="fa fa-check"></i><b>2.1.2</b> Escribiendo un script</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#un-ejemplo-de-analisis-paso-a-paso"><i class="fa fa-check"></i><b>2.2</b> Un ejemplo de análisis paso a paso</a></li>
+<li class="chapter" data-level="2.3" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#visualizacion-la-exploracion-grafica-de-la-informacion"><i class="fa fa-check"></i><b>2.3</b> Visualización: la exploración gráfica de la información</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#haciendo-mapas"><i class="fa fa-check"></i><b>2.3.1</b> Haciendo mapas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#agregando-datos"><i class="fa fa-check"></i><b>2.3.2</b> Agregando datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="una-presentacion-a-toda-marcha-de-r.html"><a href="una-presentacion-a-toda-marcha-de-r.html#el-resultado-final"><i class="fa fa-check"></i><b>2.4</b> El resultado final</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html"><i class="fa fa-check"></i><b>3</b> Poniendo los datos en forma</a><ul>
 <li class="chapter" data-level="3.1" data-path="poniendo-los-datos-en-forma.html"><a href="poniendo-los-datos-en-forma.html#primeros-pasos-al-examinar-un-conjunto-de-datos-nuevo"><i class="fa fa-check"></i><b>3.1</b> Primeros pasos al examinar un conjunto de datos nuevo</a></li>
@@ -242,7 +247,7 @@ data_arg</code></pre></div>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Correlación entre tiempo y expectativa de vida&quot;</span>,
          <span class="dt">subtitle =</span> <span class="st">&quot;Argentina&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-92-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-109-1.png" width="1050" /></p>
 <p>Bien, no necesitamos recurrir a la matemática para saber que tiempo y expectativa de vida están correlacionadas en forma positiva. Esto es, el incremento de una unidad de tiempo en general (o siempre, en este caso) resulta en el incremento de la expectativa de vida. Una correlación <em>negativa</em> sería lo opuesto: que el incremento de la variable explicativa estuviera asociado a un decremento de la variable explicada. Además del <em>signo</em> de una correlación, otra medida importante es su intensidad. La intensidad de una correlación va de -1 (correlación negativa total) a 1 (correlación positiva total). Una correlación de cero significa que las dos variables son por completo independientes. En en ese caso, saber cuánto vale una no nos ayuda a estimar el valor de la otra.</p>
 <p>Obtener la correlación entre dos variables es fácil. La función <code>cor()</code> toma dos vectores dos secuencias de valores, y los compara para determinar su grado de correlación. Recurriendo al truco que ya usamos alguna vez, usamos el formato “dataframe$columna” para extraer las columnas de nuestro dataframe que necesitamos:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(data_arg<span class="op">$</span>año, data_arg<span class="op">$</span>expVida)</code></pre></div>
@@ -279,7 +284,7 @@ data_arg</code></pre></div>
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>,
          <span class="dt">caption =</span> <span class="st">&quot;con línea de regresión&quot;) +</span>
 <span class="st">    geom_abline(aes(intercept = -389.6063, slope = 0.2317), color = &quot;</span>blue<span class="st">&quot;)</span></code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-96-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-113-1.png" width="1050" /></p>
 <p>Aquí no vemos más que los datos que ya teníamos. Pero proyectemos la línea hacia el futuro. Con <code>xlim()</code> e <code>ylim()</code> podemos definir a mano los límites de nuestro gráfico, haciéndolo ir más allá del rango de los datos que tenemos. La línea sigue siendo la misma, sólo que ahora podemos ver hacia donde va.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> data_arg) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> año, <span class="dt">y =</span> expVida)) <span class="op">+</span>
@@ -290,7 +295,7 @@ data_arg</code></pre></div>
 <span class="st">    geom_abline(aes(intercept = -389.6063, slope = 0.2317), color = &quot;</span>blue<span class="st">&quot;) +</span>
 <span class="st">    xlim(c(1950, 2030)) +</span>
 <span class="st">    ylim(c(60, 85))</span></code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-97-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-114-1.png" width="1050" /></p>
 <p>Ahí está la predicción. Según nuestro modelo, para el año 2030 la expectativa de vida en la Argentina habrá superado los 80 años.</p>
 <p>Es hora de dar una definición oficial para una regresión lineal, y es esta: es la línea que describe la ecuación:</p>
 <p><span class="math display">\[ \hat{y} = b_0 + b_1 \times x \]</span> Obsérvese que se trata de la ecuación de una recta, <span class="math inline">\(y = a + b \times x\)</span>, con otros nombres. En voz alta, se leería así “Cada predicción del valor de y, llamada <span class="math inline">\(\hat{y}\)</span>, se obtiene multiplicando a la variable predictora <span class="math inline">\(x\)</span> por su coeficiente <span class="math inline">\(b_1\)</span> y sumándole el valor de la intersección <span class="math inline">\(b_0\)</span>”. En otras palabras, a cada valor de <span class="math inline">\(x\)</span> (las observaciones de la variable explicativa) le corresponde un punto en la recta trazada por el modelo. La altura sobre la recta de las <span class="math inline">\(y\)</span> para ese punto es el valor predicho para la variable dependiente.</p>
@@ -302,7 +307,7 @@ data_arg</code></pre></div>
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>,
          <span class="dt">caption =</span> <span class="st">&quot;con línea de regresión vía geom_smooth()&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> año, <span class="dt">y =</span> expVida), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-98-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-115-1.png" width="1050" /></p>
 <p>Hacer una regresión lineal se trata de encontrar la línea que atraviesa nuestra nube de puntos de modo tal que la suma de las distancias de cada punto a la línea sea la menor posible. Es un problema matemático que puede resolverse con distintas técnicas (algebra lineal, geometría, etc) que no vamos a discutir aquí. Confiaremos en R para hacer los cálculos.</p>
 <p>En la relación año - expectativa de vida las distancias entre los puntos (las observaciones) y la línea (el modelo) son muy pequeñas. Eso indica que el modelo describe con gran precisión la dinámica de la relación entre las variables analizadas.</p>
 <p>En general, es inusual encontrar una correlación tan nítida entre variables “en la vida real”, sobre todo cuando estudiamos procesos complejos cuyo comportamiento describe patrones más complejos que una relación lineal pura. No hace falta ir demasiado lejos para encontrar un ejemplo. Usando el mismo dataset, visualicemos un scatterplot de PBI vs año, agregando la línea de regresión para:</p>
@@ -312,7 +317,7 @@ data_arg</code></pre></div>
          <span class="dt">subtitle =</span> <span class="st">&quot;Argentina&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;PBI per cápita&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">x =</span> año, <span class="dt">y =</span> PBI_PC), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-99-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-116-1.png" width="1050" /></p>
 <p>Sigue siendo evidente una fuerte tendencia lineal, pero las observaciones ya no se ciñen de forma tan estrecha a la línea idealizada de la regresión.</p>
 <p>Obtengamos el modelo del PBI per cápita de la Argentina en relación al paso del tiempo:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modelo_PBI &lt;-<span class="st"> </span><span class="kw">lm</span>(PBI_PC <span class="op">~</span><span class="st"> </span>año, <span class="dt">data =</span> data_arg)
@@ -346,7 +351,7 @@ residuos</code></pre></div>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> año, <span class="dt">y =</span> residuo_ml)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;año&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;residuo del modelo lineal&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-103-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-120-1.png" width="1050" /></p>
 <p>Siempre podemos esperar una cierta divergencia entre las predicciones y los valores observados, por lo que los residuos siempre tendrán (en general) un valor distinto a cero. Lo que quisiéramos ver en un gráfico como este es que los residuos se distribuyan al azar, sin indicios de <em>patrones sistemáticos</em>. Si así fuere, podemos considerar que nuestro modelo es adecuado.</p>
 <p>¿Cómo determinamos que no exhiben patrones sistemáticos? Una vez mas, se trata de una evaluación bastante subjetiva, y cada quien estará conforme dependiendo del contexto y la experiencia previa. Aún así podemos argumentar en favor de la adecuación del modelo cuando:</p>
 <ol style="list-style-type: decimal">
@@ -360,7 +365,7 @@ residuos</code></pre></div>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Evolución del PBI en la Argentina&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;PBI per cápita&quot;</span>,
          <span class="dt">caption =</span> <span class="st">&quot;La línea roja indica la ocurrencia de la crisis del 2001&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-104-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-121-1.png" width="1050" /></p>
 <p>Es claro que el modelo se beneficiaría de poder tener en cuenta la irrupción de las crisis en el país. Esto se lograría agregando una variable categórica para cada año, que indique si se trata de un período de crisis. En ese caso, seria un modelo de regresión lineal múltiple (con más de una variable explicativa), incorporando una variable explicativa numérica y otra categórica. Que lástima que nuestro dataset no incluye la variable de las crisis financieras. Si quisiéramos mejorar nuestro modelo con esa información, no nos quedaría mas remedio que salir a buscar los datos. Con suerte, alguien los habrá recopilado por nosotros, y si no, tendríamos que hacerlo por nuestra cuenta. ¡La investigación es un sacerdocio!</p>
 <p>En aras de la simplicidad, sigamos practicando con los datos disponibles.</p>
 </div>
@@ -374,13 +379,13 @@ residuos</code></pre></div>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> continente, <span class="dt">y =</span> expVida, <span class="dt">color =</span> continente)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Expectativa de vida por continente&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-105-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-122-1.png" width="1050" /></p>
 <p>Ya podemos vislumbrar que el continente incide en la expectativa de vida, con África sufriendo los números más bajos. La profusión de puntos hace que muchos terminen superpuestos, haciendo imposible determinar cuántos ocupan cada posición (un problema llamado <em>overplotting</em> en inglés). Una variante de <code>geom_point()</code> llamada <code>geom_jitter()</code> resuelve este problema al “sacudir” los puntos, sumando a cada uno un pequeño valor al azar para que se separe de los que comparten su posición. Es un buen ejemplo de la paradoja por la cual reducir la precisión de la información a veces permite entender mejor lo que está ocurriendo. Usamos <code>geom_jitter()</code> igual que <code>geom_point()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> data_mundial_<span class="dv">2007</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x =</span> continente, <span class="dt">y =</span> expVida, <span class="dt">color =</span> continente)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Expectativa de vida por continente&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-106-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-123-1.png" width="1050" /></p>
 <p>Algún ojo avizor habrá notado que la clasificación por color no es necesaria, ya que el continente ya está señalado por su posición en el eje de las <code>x</code>. El color cumple aquí una función más que nada cosmética, en pos de hacer al gráfico maś atractivo a la vista.</p>
 <p>También podemos visualizar la diferencia de distribución de expectactiva de vida de los países, con un histograma facetado por continente:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> data_mundial_<span class="dv">2007</span>) <span class="op">+</span>
@@ -390,7 +395,7 @@ residuos</code></pre></div>
          <span class="dt">subtitle =</span> <span class="st">&quot;histogramas&quot;</span>,
         <span class="dt">x =</span> <span class="st">&quot;expectativa de vida&quot;</span>,
         <span class="dt">y =</span> <span class="st">&quot;cantidad&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-107-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-124-1.png" width="1050" /></p>
 <p>Bien, estamos convencidos de que hay una relación entre continente y expectativa de vida, aunque no la hemos cuantificado. Para eso, recurrimos a una regresión lineal con variable expicativa categórica. Se obtiene de la misma manera que antes, no hay cambios en la forma de invocar <code>lm()</code> por el hecho de que la variabe ahora sea categórica en vez de numérica.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modelo_exp_continente &lt;-<span class="st"> </span><span class="kw">lm</span>(expVida <span class="op">~</span><span class="st"> </span>continente, <span class="dt">data =</span> data_mundial_<span class="dv">2007</span>)
 
@@ -414,7 +419,7 @@ modelo_exp_continente</code></pre></div>
 <span class="st">    </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">x =</span> continente, <span class="dt">y =</span> residuo_ml), <span class="dt">width =</span> <span class="fl">0.1</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;año&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;residuo del modelo lineal&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-110-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-127-1.png" width="1050" /></p>
 <p>Notamos que:</p>
 <ol style="list-style-type: decimal">
 <li>Los residuos están repartidos en forma pareja entre positivos y negativos. Eso indica que su promedio será cercano a cero, lo cual es bueno.</li>
@@ -439,7 +444,7 @@ modelo_exp_continente</code></pre></div>
 <span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> año, <span class="dt">y =</span> expVida)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Expectativa de vida en Afganistán&quot;</span>,
          <span class="dt">y =</span> <span class="st">&quot;expectativa de vida&quot;</span>)</code></pre></div>
-<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-112-1.png" width="1050" /></p>
+<p><img src="ciencia_de_datos_politicas_publicas_files/figure-html/unnamed-chunk-129-1.png" width="1050" /></p>
 <p>Vaya sopresa. A pesar de ser en extremo baja comparada con el resto de Asia, la expectativa de vida en Afganistán en el 2007 es la más alta de la historia, y no sólo eso: ha aumentado con rapidez <em>después</em> del año de la invasión. ¿A qué podemos atribuir entonces la bajísima expectativa de vida? Teniendo en cuenta que el país ha sufrido conflictos bélicos en forma continua desde fines de los ’70, podría tratarse de una tragedia histórica: los años que faltan son los que el país habría alcanzado si las guerras no hubieran alterado su ritmo de progreso.</p>
 <p>Dependiendo del esfuerzo que requiera determinar la causa de un <em>outlier</em>, una alternativa razonable es dejarlo de lado. Es un poco cruel, pero realista: cuando tenemos cientos, miles o millones de observaciones, hacer una “poda” de los valores extremos que nuestros modelos no pueden explicar termina siendo la opción más razonable. Dedicar recursos limitados a la caza de una explicación o a complejizar el modelo agregando variables hasta lograr predecir los <em>outliers</em> no tiene sentido cuando se trata de casos aislados y fortuitos. Por otra parte, eliminarlos antes de tiempo podría hacernos ignorar los casos más interesantes de un dataset, los que más información podrían revelar. Existen tratados completos dedicados a la cuestión de como manejar los <em>outliers</em>, pero el conocimiento de dominio es la principal herramienta para decidir que hacer ante casos inusuales… como siempre.</p>
 </div>

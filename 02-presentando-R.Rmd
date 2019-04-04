@@ -99,11 +99,186 @@ En su resultado ambas expresiones son iguales, dado que producen lo mismo. Pero 
 
 ## Un ejemplo de análisis paso a paso
 
-<<< ...en construcción... >>>
+Imaginemos por un momento que trabajamos en un área del Gobierno de la Ciudad encargada de analizar los reclamos y solicitudes que realizan los vecinos. Para abordar el tema, algunas preguntas que de inmediato vienen a la mente son ¿Qué tipo de solicitudes hacen los ciudadanos, en qué cantidad, y en dónde?
 
-```{r echo=FALSE}
-library(sf)
+Disponiendo de los datos necesarios, podemos usar `R` para encontrar las respuestas.
+
+Vamos a cargar datos provenientes de los registros del Sistema Único de Atención Ciudadana (o [SUACI](https://suaci.buenosaires.gob.ar)), la plataforma del Gobierno de la Ciudad que administra los contactos iniciados por ciudadanos. En el portal de datos abiertos de la Ciudad se publica [cada uno de los contactos recibidos por SUACI año a año](https://data.buenosaires.gob.ar/dataset/sistema-unico-atencion-ciudadana). El tipo de archivo con el que se publican es ".csv" (o "comma separated values") un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas. Es posible abrir un archivo .csv hasta con el [humilde block de notas](https://es.wikipedia.org/wiki/Bloc_de_notas). Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama  `read.csv`. La usamos así:
+
+```{r}
+suaci2018 <- read.csv('https://bitsandbricks.github.io/data/gcba_suaci_2018.csv')
 ```
 
 
+Obsérvese que los datos están alojados en un servidor de internet (accesibles vía __https://bitsandbricks...__). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, `suaci2018`, sólo hace falta escribir su nombre:
+
+```{r}
+suaci2018
+```
+
+Vemos que la tabla tiene 48 filas (una por cada barrio de la ciudad) y 2 columnas (una con el nombre del barrio, y otra con la cantidad total de contactos registrados en 2018).
+
+En R, las tablas son llamadas `dataframes`. El dataframe es el objeto por excelencia del análisis de datos. En concepto, es muy similar a una tabla de excel; al fin y al cabo, ambos formatos guardan información en celdas identificadas por fila y columna.
+
+Algunas funciones útiles para explorar un dataframe que no conocemos son `dim()`, que nos da las dimensiones del dataframe (cantidad de filas y columnas), `names()` que nos dice como se llaman sus columnas (que en general representan variables), y `head()` que nos permite echar un vistazo rápido al contenido, mostrando sólo las seis primeras filas (ésto es útil porque con frecuencia trabajamos con dataframes que contienen miles o millones de filas, con lo que no tiene sentido tratar de volcar todas en pantalla).
+
+```{r}
+dim(suaci2018)
+names(suaci2018)
+head(suaci2018)
+```
+
+## Visualización: la exploración gráfica de la información
+
+Ahora es vamos a pisar el acelerador. Insisto: nadie debe preocuparse si algunos conceptos parecen ser demasiado complejos. En las próximas secciones practicaremos de forma gradual las técnicas que vamos a usar ahora, y todo tendrá sentido -¡lo prometo!. Pero antes, seamos un poquito irresponsables con el poder de R y empleemos un arsenal sofisticado de herramientas para ver de que somos capaces.
+
+En la introducción hablamos de los paquetes, conjuntos de programas que extienden la funcionalidad de R. Vamos a cargar uno de los paquetes más usados, `tidyverse`. Tidyverse incluye una gran cantidad de funciones diseñadas por y para practicantes de la ciencia de datos. Estas funciones comparten una filosofía y una sintaxis común, por lo que al aprender una en cierto modo aprendemos a usar todas. El valor que aportan es que, sin dudas, ayudan a realizar de manera más fácil las tareas típicas de la ciencia de datos: importar, limpiar, comprender y comunicar datos.  
+
+Si acabamos de instalar R y RStudio, el paquete aún no estará disponible en nuestro sistema. Para instalarlo, usamos la función `install.packages()` y le pasamos el nombre del paquete deseado, "tidyverse", entre comillas. 
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+De aquí en más, podremos activar el conjunto de funciones que provee `tidyverse` cada vez que queramos. Para eso, lo invocamos con la función `library()`:
+
+```{r}
+library(tidyverse)
+```
+
+... y listo para usar. La razón por la cual activamos tidyverse es que en este momento nos vienen bien dos de sus funciones: `mutate()` para modificar valores, y `ggplot()` para hacer gráficos.  
+
+
+Bien, llega la hora presentar información en forma visual. Vamos a llamar a la función `ggplot()`, una auténtica navaja suiza para la visualización. 
+
+Por ejemplo, veamos cuantos contactos sumó cada barrio durante 2018:
+
+
+```{r fig.height=6}
+ggplot(suaci2018) +
+    geom_col(aes(x = BARRIO, y = CONTACTOS)) +
+    coord_flip()
+```
+
+Para realizar una visualización con ésta herramienta, siempre se comienza con la función `ggplot()`, que crea un eje de coordenadas sobre el cual se pueden agregar capas. El primer parámetro que recibe `ggplot()` es el dataset que queremos usar para el gráfico; en nuestro caso, `ggplot(suaci2018)`. Ejecutar sólo `ggplot(suaci2018)` nos devuelve un gráfico vacío; la gracia está en agregar una o más capas especificando cómo queremos mostrar los datos. Estas capas se agregan con un signo `+`.
+
+En nuestro ejemplo, `geom_col()` crea columnas cuya posición en el eje vertical depende de la variable "BARRIO", mientas que la extensión (posición en el eje horizontal) depende del valor de la variable "CONTACTOS". Existen muchas funciones del tipo "geom_XXX", que agregan distintas clases de capas al gráfico: geom_point, geom_polygon, geom_text y muchos, muchos más que iremos viendo más adelante.
+
+Cada función "geom_" toma como parámetro un conjunto de definiciones "estéticas" que le indican una variable a graficar ("CANTIDAD" en nuestro caso), cómo representar los valores (por color, tamaño, etc) y en dónde (posición en el eje x, posición en el eje y). Estos parámetros van siempre dentro de una función auxiliar, `aes()`. En nuestro ejemplo, "aes(x = BARRIO, y = contactos)". La última línea, "coord_flip()", cambia la disposición de los ejes; en lugar de las x en horizontal y las y en vertical, al revés. ¿Porqué es útil a veces trastocar la posición de los ejes? Prueben correr la función sin agregar esa línea, `ggplot(suaci2018) + geom_col(aes(x = BARRIO, y = CONTACTOS))`, y verán. 
+
+No se preocupen que iremos practicando el uso de ggplot, y su uso se volverá familiar.
+
+En cuanto al gráfico que hemos creado, podemos observar que entre las 48 barrios de la ciudad la cantidad de contactos en 2018 varió bastante. Si escudriñamos las líneas podemos arriesgar que van de de un par de miles en Puerto Madero a unos 75000 en Palermo. Lo que no nos muestra son patrones espaciales: ¿Cómo es la distribución geográfica de las solicitudes? ¿Los barrios con mayor demanda son los de una región de la ciudad en particular? Para responde esas preguntas, necesitamos un mapa.
+
+### Haciendo mapas
+
+Vamos a presentar un paquete más, el último para éste capítulo: `sf`. Quizás algunos tengan experiencia con sistemas de información geográfica (GIS por sus siglas en inglés), al estilo de [QGIS](https://qgis.org/en/site/) o [ArcGIS](https://www.arcgis.com/features/index.html), que permiten crear, manipular y combinar archivos con datos espaciales para producir mapas que pueden ser simples o en extremo sofisticados. En R, el paquete `sf` brinda herramientas que permiten realizar tares similares. 
+
+Nuestro objetivo es obtener un mapa de la ciudad de Buenos Aires con sus comunas. 
+
+Primero, instalamos `sf` en caso de que aún no lo hayamos hecho.
+
+```{r eval=FALSE}
+install.packages("sf")
+```
+
+Vale la pena insistir: Sólo es necesario instalar los paquetes una vez. De aquí en más, cada vez que querramos echar mano a las funciones incluidas en `sf`, sólo necesitamos activarlo pues ya estará listo en nuestro sistema. Pedimos a R que active el paquete así:
+
+```{r}
+library(sf)
+```
+
+Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato [_geojson_](https://es.wikipedia.org/wiki/GeoJSON), un estándar de representación de datos geográficos que es fácil de usar:
+
+```{r}
+barrios <- st_read('https://bitsandbricks.github.io/data/CABA_barrios.geojson')
+```
+
+Al igual que cuando usamos `read.csv()` para leer un archivo .csv y cargarlo como un dataframe, el comando `st_read()` hace lo propio con archivos de información geográfica, conocidos en la jerga como "shapefiles". El resultado también es un dataframe, por lo cual podemos practicar el uso de las funciones que ya aprendimos, como dim(), names() y head().
+
+
+```{r}
+dim(barrios)
+
+names(barrios)
+
+head(barrios)
+```
+
+
+Podemos ver que el dataframe contiene 48 filas y 5 columnas. Una fila por barrio, y una columnas por cada variable disponible: "BARRIO", "COMUNA", "PERIMETRO", "AREA" y "geometry". Nuestro vistazo mediante head() permite asumir que "BARRIO" contiene los nombres, COMUNA indica la unidad administrativa, y PERIMETRO y AREA informan sobre las dimensiones del polígono cubierto por cada barrio. La columna "geometry" aparece en todos los dataframes de tipo espacial, y es la que contiene los datos con sus coordenadas geográficas.
+
+Y hablando de coordenadas, generar un mapa a partir de un dataframe espacial creado por sf es muy fácil con la ayuda de `ggplot()`:
+
+
+```{r}
+ggplot(barrios) +
+    geom_sf()
+```
+
+Si queremos agregar una leyenda al mapa que identifique la comuna a la que pertenece cada barrio, usamos:
+
+```{r}
+ggplot(barrios) +
+    geom_sf(aes(fill = factor(COMUNA)))
+```
+
+Dentro de "aes()" usé el parámetro "fill" (relleno en inglés) para pedirle a `ggplot()` que llene cada polígono con un color distinto de acuerdo al campo "COMUNA". Lo mismo podríamos hacer para ver la distribución de solicitudes registradas en SUACI, pintando los barrios con una escala de colores que indique el nivel de solicitudes que les corresponde. Pero antes de hacer eso, pensemos: es de esperarse que los barrios más poblados representen un mayor número de solicitudes que los más pequeños, ya que al fin y al cabo tienen más gente viviendo dentro. Nos interesa la cantiad de contactos _per cápita_, lo cuál debería darnos una mejor idea acerca de las diferencias entre barrios en lo que respecta a cuánta interacción hay entre vecinos y gobierno.
+
+Sumemos pues datos de población.
+
+
+### Agregando datos
+
+Cuando tenemos una identificador en común, `R` hace muy fácil cruzar datos de fuentes distintas. Traigamos los datos de población en cada barrio de la Ciudad de Buenos Aires, de acuerdo al censo nacional de 2010:
+
+
+```{r}
+poblacion <- read.csv("https://bitsandbricks.github.io/data/caba_pob_barrios_2010.csv")
+```
+
+Veamos el contenido del dataframe:
+
+```{r}
+head(poblacion)
+```
+
+
+Bien, tenemos el nombre de cada barrio y su población. Como nuestro dataframe de contactos a SUACI tiene una columna con el mismo nombre que contiene las mismas categorías, sumarle la información de población es tan fácil como:
+
+
+```{r}
+suaci2018 <- left_join(suaci2018, poblacion)
+```
+
+Más adelante aprenderemos más de las funciones de "join", que nos permiten cruzar información. Por ahora sólo miremos el resultado:
+
+```{r}
+head(suaci2018)
+```
+
+
+Todo en orden. Ahora usemos una operación similar para sumar los datos de SUACI y de pobación al dataframe con información espacial, el que nos permite dibujar los barrios. Teniendo toda la información allí, podremos visualizar el mapa que queremos.
+
+```{r}
+barrios <- left_join(barrios, suaci2018)
+```
+
+## El resultado final
+
+Habrán notado que llegar hasta aquí tomó una buena cantidad de operaciones. En contraste, lo que estamos a punto de hacer -generar un mapa con los barrios de la ciudad que muestre la cantidad de solicitudes de la ciudadanía per cápita- va a ser mucho más breve. Esa vendría a ser la lección central de éste capítulo: la mayor parte del tiempo empleado en la labor de la ciencia de datos se insume en la poco glamorosa tarea de recopilar, limpiar y combinar los registros necesarios para el análisis. Como consuelo, podemos pensar en que el esfuerzo necesario para llegar a este punto nos ha dado un conocimiento de los datos (su estructura, su contenido, atributos en común, etc) que no teníamos antes.
+
+Aprovechemos entonces nuestra data limpia y ordenada, para producir un mapa que indique por color el grado en que los vecinos de cada barrio interactúan con los canales de atención del gobierno de la Ciudad. Con ggplot dibujaremos los barrios, y pintaremos su interior ("fill") de acuerdo a la cantidad de contactos, dividida por la población local. Por último, definiremos la paleta de colores a usar en el _fill_, eligiendo una escala llamada "Spectral", que va del azul al rojo y es muy usada cuando se quiere resaltar la divergencia de una variable.
+
+```{r}
+ggplot(barrios) +
+    geom_sf(aes(fill = CONTACTOS / POBLACION)) +
+    scale_fill_distiller(palette = "Spectral")
+```
+
+¡Y hemos hallado un patrón! La zona caliente de contactos se asienta en el sector noroeste de la Ciudad. 
+
+Por supuesto, con esto no puede darse por cerrado el tema; hay muchas facetas que deberíamos analizar para comenzar a entender éste fenómeno social o cualquier otro. 
+
 En los siguientes capítulos practicaremos varias técnicas que nos permitirán profundizar nuestros análisis, en la nunca finalizada misión de entender un poco más.
+
