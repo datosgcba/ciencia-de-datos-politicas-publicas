@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Capítulo 1 ¿Qué es la ciencia de datos? | Ciencia de Datos y Políticas Públicas</title>
-  <meta name="description" content="Capítulo 1 ¿Qué es la ciencia de datos? | Ciencia de Datos y Políticas Públicas">
+  <title>Ciencia de Datos y Políticas Públicas</title>
+  <meta name="description" content="Ciencia de Datos y Políticas Públicas">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Capítulo 1 ¿Qué es la ciencia de datos? | Ciencia de Datos y Políticas Públicas" />
+  <meta property="og:title" content="Ciencia de Datos y Políticas Públicas" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="datosgcba/ciencia-de-datos-politicas-publicas" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 1 ¿Qué es la ciencia de datos? | Ciencia de Datos y Políticas Públicas" />
+  <meta name="twitter:title" content="Ciencia de Datos y Políticas Públicas" />
   
   
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="una-presentacion-a-toda-marcha-de-r.html">
+
+<link rel="next" href="que-es-la-ciencia-de-datos.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -179,32 +179,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="que-es-la-ciencia-de-datos" class="section level1">
-<h1><span class="header-section-number">Capítulo 
-1</span> ¿Qué es la ciencia de datos?</h1>
-<p>La <em>Big Data</em> ha llegado para quedarse, y asumimos que su efecto en la sociedad será permanente. Así como pasó con la escritura, los medios de comunicación o tantos otros inventos humanos de inmenso impacto cultural, el incremento en la producción y análisis computacional de grandes volúmenes de datos está transformando cada una de nuestras actividades. Algunas profesiones se ven en crisis, otras se benefician, y también se crean algunas nuevas.</p>
-<p>Big data es un término impreciso, que se usa cuando queremos hablar de los datos que nuestra sociedad crea y procesa en forma digital, con cada vez más creciente velocidad, volumen, y variedad.</p>
-<p>En forma acorde, <em>data scientist</em> o “científico de datos” es también una profesión, o una actividad, que aún no está definida con toda claridad. El término, que abarca a quienes en forma cotidiana aplican técnicas de programación para analizar datos, no existía antes del 2008. Sólo cuatro años después la publicación Harvard Business Review agitó las aguas al declarar que quienes se desempeñan como científicos de datos pueden presumir de la profesión “más sexy del siglo XXI” [^1]. Títulos exagerados aparte, lo que es seguro es que la discipina ofrece un conjunto cada vez más maduro de saberes orientados a explotar datos para extraer conocimiento. Las técnicas y principios que la comunidad de la ciencia de datos ha desarrollado pueden ser aprovechados en muchos ámbitos. Entre ellos, el de las ciencias sociales, que también están en una etapa de transformación e incorporan la programación analítica como un recurso cada vez extendido.</p>
-<p>Avanzar las fronteras de la ciencia de datos, crear los algoritmos y técnicas informáticas que abren nuevas posibilidades de análisis es una tarea compleja, llevada a cabo por especialistas con profundos conocimientos de matemática. Y sin embargo “usar” la ciencia de datos, aplicar sus principios para resolver problemas complejos, es bastante más fácil. Para empezar sólo necesitamos paciencia para aprender algunos conceptos fundamentales de programación y estadística, empleándolos para entender y comunicar con datos. De eso se trata este libro.</p>
-<div id="que-significa-hacer-ciencia-de-datos" class="section level2">
-<h2><span class="header-section-number">1.1</span> ¿Qué significa hacer ciencia de datos?</h2>
-<p>Ya dijimos que la ciencia de datos se trata de emplear técnicas de programación para analizar datos. Pero no es sólo eso; la ciencia de datos aplicada requiere el desarrollo de habilidades en cuatro áreas:</p>
-<ul>
-<li><p><strong>Programación</strong>. Según la definición que hemos aceptado, todo científico de datos utiliza la programación para explicar a las computadoras lo que necesita de ellas. Al hacerlo, emplea el “pensamiento computacional”: la habilidad de reducir una tarea compleja a una serie de pasos que pueden resolverse con código interpretado por una computadora. Aclaremos por si hiciera falta que no todos los problemas son solubles por medios computacionales, pero muchos lo son, al menos en parte. El científico de datos pone en práctica algunas técnicas de programación (o muchas, según el grado de especialización) para resolver problemas que sería impráctico abordar de otro modo.</p></li>
-<li><p><strong>Estadística</strong>. ¡Inescapable! También poderosa, a veces anti-intuitiva, cuando tenemos suerte reveladora. La estadística es muchas cosas, pero -a pesar de su mala fama- aburrida jamás. Sólo es cuestión de amigarse con ella. Vamos a necesitarla para extraer conocimiento de los datos. Es sorprendente lo mucho que puede lograrse con sólo unos rudimentos (media, mediana, desvío estándar y cuartiles) y de allí en más sólo es cuestión de profundizar paso a paso.</p></li>
-<li><p><strong>Comunicación</strong>. Un científico de datos combina habilidades “duras” con otras que requieren empatizar con los demás: las que se relacionan con la comunicación y la colaboración interdisciplinaria. Encontrar la forma de explicar procesos complejos, de llevar las revelaciones de un modelo estadístico a términos que tengan sentido para un público amplio, crear visualizaciones que permitan a terceros “leer” los datos y sacar conclusiones por su cuenta. Parte de hacer ciencia de datos es saber cómo discutir los datos usados y los resultados obtenidos con un interlocutores muy diversos: audiencia general, funcionarios públicos, colegas, especialistas de otras disciplinas, etcétera.</p></li>
-<li><p><strong>Conocimiento de dominio</strong>. El conocimiento de dominio es la experiencia acumulada en un campo particular de actividad humana: agricultura, relaciones públicas, física cuántica, crianza de niños. Complementa de forma imprescindible a las habilidades analíticas. El conocimiento de dominio no sólo ayuda a discernir si las respuestas obtenidas mediante un sofisticado análisis estadístico tienen sentido. También es necesario para saber cuáles son las preguntas que deberíamos estar haciendo.</p></li>
-</ul>
-<p>Las cuatros habilidades entran en acción en cada proyecto que involucra ciencia de datos, en mayor o menor medida de acuerdo a la etapa de análisis. Hablando de etapas, Hadley Wickham, uno de los referentes actuales en el campo, las define así:</p>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<img src="imagenes/proceso_ciencia_datos.jpg" alt="etapas en la aplicación de ciencia de datos" width="301" />
-<p class="caption">
-Figura 1.1: etapas en la aplicación de ciencia de datos
-</p>
+<div id="header">
+<h1 class="title">Ciencia de Datos y Políticas Públicas</h1>
+<h2 class="subtitle"><em>Una introducción a la exploración, análisis y visualización de datos</em></h2>
+<p class="author"><em>Antonio Vazquez Brust</em></p>
+<p class="date"><em>2019-04-21</em></p>
 </div>
-<p>Y todo ello llevado a cabo mediante la programación, por supuesto.</p>
-<p>A lo largo de los capítulos de este libro vamos a aprender técnicas de programación que nos permitan atravesar cada uno de los pasos del proceso, y al hacerlo estaremos ejercitando las cuatro habilidades que la ciencia de datos involucra.</p>
-<p>Allá vamos.</p>
+<div id="section" class="section level1 unnumbered">
+<h1></h1>
+<p><img src="imagenes/portada.png" width="100%" /></p>
+<p>Éste manual es una <a href="https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(desarrollo_de_software)">“bifurcación”</a> de <a href="https://bitsandbricks.github.io/ciencia_de_datos_gente_sociable/">Ciencia de Datos para Gente Sociable</a>.</p>
+<p>Su antecesor fue escrito para urbanistas, sociólogos, politólogas y otros entusiastas que se acercan al tema desde las Ciencias Sociales; éste manual también, pero ajustado a una audiencia en particular: empleados y funcionarios del Gobierno de la Ciudad de Buenos Aires.</p>
+<div id="antes-de-empezar" class="section level2 unnumbered">
+<h2>Antes de empezar</h2>
+<p>Para practicar los ejemplos que se explicarán a lo argo del libro no hace falta ningún conocimiento previo de programación; todas las herramientas necesarias serán explicadas sobre la marcha.</p>
+<p>Sólo es necesario instalar el <a href="https://cloud.r-project.org/">lenguaje de programación R</a>, y la interfaz gráfica <a href="https://www.rstudio.com/products/rstudio/download/">RStudio Desktop</a>.</p>
 
 </div>
 </div>
@@ -213,8 +202,8 @@ Figura 1.1: etapas en la aplicación de ciencia de datos
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="una-presentacion-a-toda-marcha-de-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="que-es-la-ciencia-de-datos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
