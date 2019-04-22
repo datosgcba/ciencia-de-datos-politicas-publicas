@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-04-21">
+<meta name="date" content="2019-04-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -207,9 +207,9 @@ Figura 2.1: La interfaz de RStudio
 <p>Vamos a escribir nuestro código (las instrucciones que <code>R</code> entiende) en el panel de edición. Los resultados van a aparecer en la consola (cuando se trate de texto) o en el panel de salida (cuando produzcamos gráficos)</p>
 <p>Por ejemplo, podemos escribir el panel de edición la instrucción para mostrar el resultado de una operación matemático:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">144</span>)</code></pre></div>
-<p><code>sqrt()</code> es una <em>función</em>. En el mundo de la programación, las funciones son secuencias de código ya listas para usar, que realizan tareas útiles. Por ejemplo, mostrar algo en pantalla. En nuestro caso, completamos la función con algo más: un <em>parámetro</em>, pues así se le llama a los valores que una función espera de parte del usuario para saber que hacer. La función print espera que le demos un número para el cual calcular su raíz cuadrada (<em>square root</em> en inglés), y eso hicimos: le pasamos cómo parámetro <code>144</code>, un número. Los parámetros siempre se escriben entre paréntesis, a continuación del nombre de la función.</p>
+<p><code>sqrt()</code> es una <em>función</em>. En el mundo de la programación, las funciones son secuencias de código ya listas para usar, que realizan tareas útiles. Por ejemplo, mostrar algo en pantalla. En nuestro caso, completamos la función con algo más: un <em>parámetro</em>, pues así se le llama a los valores que una función espera de parte del usuario para saber que hacer. La función <code>sqrt()</code> espera que le demos un número para el cual calcular su raíz cuadrada (<em>square root</em> en inglés), y eso hicimos: le pasamos cómo parámetro <code>144</code>, un número. Los parámetros siempre se escriben entre paréntesis, a continuación del nombre de la función.</p>
 <p>Ahora vamos a aprender la combinación de teclas más importante al usar RStudio: <code>Ctrl</code> + <code>Enter</code>. Presionar <code>Ctrl</code> + <code>Enter</code> al terminar de escribir una instrucción hace que RStudio la ejecute de inmediato, y espere en la siguiente instrucción, si la hubiera.</p>
-<p>Cambien podemos buscar una línea que deseemos ejecutar, posicionando el cursor de texto (que luce como una barra vertical que titila, en el panel de edición) sobre ella. Si a continuación pulsamos <code>Ctrl</code> + <code>Enter</code>, la línea será ejecutada y el cursor se moverá sólo hasta la siguiente línea, listo para repetir el proceso.</p>
+<p>También podemos buscar una línea que deseemos ejecutar, posicionando el cursor de texto (que luce como una barra vertical que titila, en el panel de edición) sobre ella. Si a continuación pulsamos <code>Ctrl</code> + <code>Enter</code>, la línea será ejecutada y el cursor se moverá sólo hasta la siguiente línea, listo para repetir el proceso.</p>
 <p>La modalidad de ejecución línea por línea es muy útil para lo que se llama “análisis interactivo”. Uno ejecuta un comando, observa el resultado, y en base a eso decide su próxima acción: cambiar parámetros e intentarlo de nuevo, dar por buenos los resultados y usarlos para una tarea subsiguiente… etc.</p>
 <p>Por ejemplo, si escribimos las siguientes líneas:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">144</span>)

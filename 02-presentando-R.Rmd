@@ -39,11 +39,11 @@ Por ejemplo, podemos escribir el panel de edición la instrucción para mostrar 
 sqrt(144)
 ```
 
-`sqrt()` es una _función_. En el mundo de la programación, las funciones son secuencias de código ya listas para usar, que realizan tareas útiles. Por ejemplo, mostrar algo en pantalla. En nuestro caso, completamos la función con algo más: un _parámetro_, pues así se le llama a los valores que una función espera de parte del usuario para saber que hacer. La función print espera que le demos un número para el cual calcular su raíz cuadrada (_square root_ en inglés), y eso hicimos: le pasamos cómo parámetro `144`, un número. Los parámetros siempre se escriben entre paréntesis, a continuación del nombre de la función.
+`sqrt()` es una _función_. En el mundo de la programación, las funciones son secuencias de código ya listas para usar, que realizan tareas útiles. Por ejemplo, mostrar algo en pantalla. En nuestro caso, completamos la función con algo más: un _parámetro_, pues así se le llama a los valores que una función espera de parte del usuario para saber que hacer. La función `sqrt()` espera que le demos un número para el cual calcular su raíz cuadrada (_square root_ en inglés), y eso hicimos: le pasamos cómo parámetro `144`, un número. Los parámetros siempre se escriben entre paréntesis, a continuación del nombre de la función.
 
 Ahora vamos a aprender la combinación de teclas más importante al usar RStudio: `Ctrl` + `Enter`. Presionar `Ctrl` + `Enter` al terminar de escribir una instrucción hace que RStudio la ejecute de inmediato, y espere en la siguiente instrucción, si la hubiera.
 
-Cambien podemos buscar una línea que deseemos ejecutar, posicionando el cursor de texto (que luce como una barra vertical que titila, en el panel de edición) sobre ella. Si a continuación pulsamos `Ctrl` + `Enter`, la línea será ejecutada y el cursor se moverá sólo hasta la siguiente línea, listo para repetir el proceso.
+También podemos buscar una línea que deseemos ejecutar, posicionando el cursor de texto (que luce como una barra vertical que titila, en el panel de edición) sobre ella. Si a continuación pulsamos `Ctrl` + `Enter`, la línea será ejecutada y el cursor se moverá sólo hasta la siguiente línea, listo para repetir el proceso.
 
 La modalidad de ejecución línea por línea es muy útil para lo que se llama "análisis interactivo". Uno ejecuta un comando, observa el resultado, y en base a eso decide su próxima acción: cambiar parámetros e intentarlo de nuevo, dar por buenos los resultados y usarlos para una tarea subsiguiente... etc.
 
