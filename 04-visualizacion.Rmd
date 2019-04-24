@@ -21,7 +21,7 @@ library(tidyverse)
 Y si no lo tenemos ya cargado, leemos de nuevo el dataframe con los registros de atención al ciudadano (esta versión incluye la columna "COMUNA"). 
 
 ```{r eval=FALSE}
-atencion_ciudadano <- read.csv("http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv")
+atencion_ciudadano <- read.csv("http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv")
 ```
 
 Usando los verbos de transformación que aprendimos, es fácil obtener un dataframe resumen con los totales anuales por comuna. Vamos a expresar los totales en miles de contactos, para evitar trabajar con números tan grandes.
@@ -38,7 +38,7 @@ contactos_por_comuna
 Lo que nos falta ahora es la cantidad de habitantes en cada comuna. _No problem_. El dato es fácil de conseguir, otra vez cortesía de la Dirección General de Estadística y Censos de la Ciudad de Buenos Aires. Traemos la proyección al año 2017 de la cantidad de habitantes por comuna. 
 
 ```{r}
-habitantes <- read.csv("http://bitsandbricks.github.io/data/gcba_pob_comunas_17.csv")
+habitantes <- read.csv("http://cdn.buenosaires.gob.ar/datosabiertos/datasets/comunas/gcba_pob_comunas_17.csv")
 
 habitantes
 ```

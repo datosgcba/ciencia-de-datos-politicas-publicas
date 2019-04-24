@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -218,8 +218,8 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)
 <span class="kw">library</span>(tidyverse)</code></pre></div>
 <p>Y leemos los datos directo desde internet:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">radios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;https://bitsandbricks.github.io/data/CABA_rc.geojson&quot;</span>)</code></pre></div>
-<pre><code>## Reading layer `CABA_rc&#39; from data source `https://bitsandbricks.github.io/data/CABA_rc.geojson&#39; using driver `GeoJSON&#39;
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">radios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/informacion-censal-por-radio/CABA_rc.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `CABA_rc&#39; from data source `http://cdn.buenosaires.gob.ar/datosabiertos/datasets/informacion-censal-por-radio/CABA_rc.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 3554 features and 8 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -340,7 +340,7 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <p>En algunos casos, un archivo con información geográfica contiene todos los datos que necesitamos. Pero lo habitual es que el archivo sólo brinde la ubicación y fronteras de nuestras unidades de análisis, de manera que necesitamos agregarle los datos que hemos obtenido de otras fuentes y queremos proyectar en un mapa.</p>
 <p>En el capítulo 2 aprendimos a usar la función <code>left_join()</code> para combinar tablas. Dado que los datos espaciales cargados vía <code>sf()</code> son dataframes -tablas-, podemos usarla para agregar variables a nuestros radios censales. Por ejemplo, las del dataset de interacciones de la ciudadanía con la ciudad.</p>
 <p>Lo cargamos,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv&quot;</span>)</code></pre></div>
 <p>y recordamos que sus variables son:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(atencion_ciudadano)</code></pre></div>
 <pre><code>## [1] &quot;PERIODO&quot;         &quot;RUBRO&quot;           &quot;TIPO_PRESTACION&quot; &quot;BARRIO&quot;         
@@ -434,8 +434,8 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 <p>Un ámbito donde es común utilizar toda la variedad de geometrías es el transporte: Polígonos para representar distritos, líneas para el recorrido de un sistema de transporte, y puntos para la ubicación de las estaciones.</p>
 <p>Una vez más, el portal de datos abiertos de la Ciudad de Buenos Aires nos provee los datos necesarios para practicar. De allí he descargado, y preparado para su uso, datos espaciales con</p>
 <pre><code>las líneas de transporte subterráneo (SUBTE) de la ciudad</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_lineas &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/subte_lineas.geojson&quot;</span>)</code></pre></div>
-<pre><code>## Reading layer `subte_lineas&#39; from data source `http://bitsandbricks.github.io/data/subte_lineas.geojson&#39; using driver `GeoJSON&#39;
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_lineas &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/199/resource/89fef3c6-c133-4eee-8612-510fad192e3a/download/subte_lineas-1.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `subte_lineas&#39; from data source `https://data.buenosaires.gob.ar/dataset/199/resource/89fef3c6-c133-4eee-8612-510fad192e3a/download/subte_lineas-1.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 80 features and 2 fields
 ## geometry type:  MULTILINESTRING
 ## dimension:      XY
@@ -443,8 +443,8 @@ Figura 6.2: La inescapable proyección Mercator (cortesía Jecowa)
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
 <pre><code>y los puntos con las ubicaciones de las estaciones de SUBTE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_estaciones &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/subte_estaciones.geojson&quot;</span>)</code></pre></div>
-<pre><code>## Reading layer `subte_estaciones&#39; from data source `http://bitsandbricks.github.io/data/subte_estaciones.geojson&#39; using driver `GeoJSON&#39;
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subte_estaciones &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/199/resource/bea83c40-9400-4fe4-865b-f0f0610a060c/download/subte_estaciones.geojson&quot;</span>)</code></pre></div>
+<pre><code>## Reading layer `subte_estaciones&#39; from data source `https://data.buenosaires.gob.ar/dataset/199/resource/bea83c40-9400-4fe4-865b-f0f0610a060c/download/subte_estaciones.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 86 features and 3 fields
 ## geometry type:  POINT
 ## dimension:      XY

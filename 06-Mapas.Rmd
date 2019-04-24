@@ -51,8 +51,7 @@ library(tidyverse)
 Y leemos los datos directo desde internet:
 
 ```{r}
-
-radios <- st_read("https://bitsandbricks.github.io/data/CABA_rc.geojson")
+radios <- st_read("http://cdn.buenosaires.gob.ar/datosabiertos/datasets/informacion-censal-por-radio/CABA_rc.geojson")
 
 ```
 
@@ -173,7 +172,7 @@ En el capítulo 2 aprendimos a usar la función `left_join()` para combinar tabl
 Lo cargamos,
 
 ```{r eval=FALSE}
-atencion_ciudadano <- read.csv("http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv")
+atencion_ciudadano <- read.csv("http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv")
 ```
 
 y recordamos que sus variables son:
@@ -298,13 +297,13 @@ Una vez más, el portal de datos abiertos de la Ciudad de Buenos Aires nos prove
     las líneas de transporte subterráneo (SUBTE) de la ciudad
     
 ```{r}
-subte_lineas <- st_read("http://bitsandbricks.github.io/data/subte_lineas.geojson")
+subte_lineas <- st_read("https://data.buenosaires.gob.ar/dataset/199/resource/89fef3c6-c133-4eee-8612-510fad192e3a/download/subte_lineas-1.geojson")
 ```
 
     y los puntos con las ubicaciones de las estaciones de SUBTE
     
 ```{r}
-subte_estaciones <- st_read("http://bitsandbricks.github.io/data/subte_estaciones.geojson")
+subte_estaciones <- st_read("https://data.buenosaires.gob.ar/dataset/199/resource/bea83c40-9400-4fe4-865b-f0f0610a060c/download/subte_estaciones.geojson")
 ```
 
 Combinar capas mostrado distintas geometrías es simple usando `sf()` y `ggplot()`. Sólo es cuestión de sumar capas de `geom_sf()` con cada fuente de datos:

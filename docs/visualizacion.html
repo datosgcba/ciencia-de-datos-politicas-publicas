@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -191,7 +191,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Activamos el paquete <code>tidyverse</code>, si aún no lo habíamos hecho.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
 <p>Y si no lo tenemos ya cargado, leemos de nuevo el dataframe con los registros de atención al ciudadano (esta versión incluye la columna “COMUNA”).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv&quot;</span>)</code></pre></div>
 <p>Usando los verbos de transformación que aprendimos, es fácil obtener un dataframe resumen con los totales anuales por comuna. Vamos a expresar los totales en miles de contactos, para evitar trabajar con números tan grandes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">contactos_por_comuna &lt;-<span class="st"> </span>atencion_ciudadano <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">group_by</span>(COMUNA) <span class="op">%&gt;%</span><span class="st"> </span>
@@ -218,7 +218,7 @@ contactos_por_comuna</code></pre></div>
 ## 15     15          107.  
 ## 16     NA            5.78</code></pre>
 <p>Lo que nos falta ahora es la cantidad de habitantes en cada comuna. <em>No problem</em>. El dato es fácil de conseguir, otra vez cortesía de la Dirección General de Estadística y Censos de la Ciudad de Buenos Aires. Traemos la proyección al año 2017 de la cantidad de habitantes por comuna.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">habitantes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_pob_comunas_17.csv&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">habitantes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/comunas/gcba_pob_comunas_17.csv&quot;</span>)
 
 habitantes</code></pre></div>
 <pre><code>##    COMUNA POBLACION

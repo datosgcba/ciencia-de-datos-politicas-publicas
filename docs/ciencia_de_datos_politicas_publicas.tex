@@ -126,7 +126,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-04-23}
+    \date{2019-04-24}
 
 \usepackage{booktabs}
 
@@ -1067,7 +1067,7 @@ descargado.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/gcba_suaci_barrios.csv"}\NormalTok{)}
+\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://data.buenosaires.gob.ar/dataset/195/resource/c8d978f5-d85c-4d37-95c9-faf96c6afbf5/download/gcba_suaci_barrios-1.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1231,7 +1231,7 @@ Manos a la obra. Descargamos el dataframe con barrios y comunas,
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{barrios_comunas <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/barrios_comunas.csv"}\NormalTok{)}
+\NormalTok{barrios_comunas <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://data.buenosaires.gob.ar/dataset/19/resource/7ac3ebfa-2f32-41d4-ae39-ae6f5ba15070/download/barrios_comunas-1.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2243,7 +2243,7 @@ registros de atención al ciudadano (esta versión incluye la columna
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv"}\NormalTok{)}
+\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2292,7 +2292,7 @@ por comuna.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{habitantes <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/gcba_pob_comunas_17.csv"}\NormalTok{)}
+\NormalTok{habitantes <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://cdn.buenosaires.gob.ar/datosabiertos/datasets/comunas/gcba_pob_comunas_17.csv"}\NormalTok{)}
 
 \NormalTok{habitantes}
 \end{Highlighting}
@@ -4344,12 +4344,12 @@ Y leemos los datos directo desde internet:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{radios <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"https://bitsandbricks.github.io/data/CABA_rc.geojson"}\NormalTok{)}
+\NormalTok{radios <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"http://cdn.buenosaires.gob.ar/datosabiertos/datasets/informacion-censal-por-radio/CABA_rc.geojson"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Reading layer `CABA_rc' from data source `https://bitsandbricks.github.io/data/CABA_rc.geojson' using driver `GeoJSON'
+## Reading layer `CABA_rc' from data source `http://cdn.buenosaires.gob.ar/datosabiertos/datasets/informacion-censal-por-radio/CABA_rc.geojson' using driver `GeoJSON'
 ## Simple feature collection with 3554 features and 8 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -4680,7 +4680,7 @@ Lo cargamos,
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/gcba_suaci_comunas.csv"}\NormalTok{)}
+\NormalTok{atencion_ciudadano <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_comunas%20(3).csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4951,12 +4951,12 @@ las líneas de transporte subterráneo (SUBTE) de la ciudad
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{subte_lineas <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/subte_lineas.geojson"}\NormalTok{)}
+\NormalTok{subte_lineas <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"https://data.buenosaires.gob.ar/dataset/199/resource/89fef3c6-c133-4eee-8612-510fad192e3a/download/subte_lineas-1.geojson"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Reading layer `subte_lineas' from data source `http://bitsandbricks.github.io/data/subte_lineas.geojson' using driver `GeoJSON'
+## Reading layer `subte_lineas' from data source `https://data.buenosaires.gob.ar/dataset/199/resource/89fef3c6-c133-4eee-8612-510fad192e3a/download/subte_lineas-1.geojson' using driver `GeoJSON'
 ## Simple feature collection with 80 features and 2 fields
 ## geometry type:  MULTILINESTRING
 ## dimension:      XY
@@ -4971,12 +4971,12 @@ y los puntos con las ubicaciones de las estaciones de SUBTE
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{subte_estaciones <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"http://bitsandbricks.github.io/data/subte_estaciones.geojson"}\NormalTok{)}
+\NormalTok{subte_estaciones <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"https://data.buenosaires.gob.ar/dataset/199/resource/bea83c40-9400-4fe4-865b-f0f0610a060c/download/subte_estaciones.geojson"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Reading layer `subte_estaciones' from data source `http://bitsandbricks.github.io/data/subte_estaciones.geojson' using driver `GeoJSON'
+## Reading layer `subte_estaciones' from data source `https://data.buenosaires.gob.ar/dataset/199/resource/bea83c40-9400-4fe4-865b-f0f0610a060c/download/subte_estaciones.geojson' using driver `GeoJSON'
 ## Simple feature collection with 86 features and 3 fields
 ## geometry type:  POINT
 ## dimension:      XY

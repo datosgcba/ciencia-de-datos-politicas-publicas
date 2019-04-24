@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-04-23">
+<meta name="date" content="2019-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -190,7 +190,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
 <p>Vamos a practicar usando los registros del Sistema Único de Atención Ciudadana (SUACI) de la Ciudad Autónoma de Buenos Aires. El SUACI es el repositorio donde se integran las solicitudes y reclamos que los ciudadanos presentan a la ciudad por distintos canales: en persona, por teléfono o usando la aplicación <a href="https://gestioncolaborativa.buenosaires.gob.ar/prestaciones">BA 147</a>. Vamos a trabajar con una versión de los datos que ha sido simplificada para hacer más ameno el trabajo con ella. Quién quiera acceder a los datos en su esplendor de complejidad original, puede encontrarlos en el portal de datos abiertos de la ciudad: <a href="https://data.buenosaires.gob.ar/" class="uri">https://data.buenosaires.gob.ar/</a></p>
 <p>Comenzamos por acceder al archivo con los registros para cargarlo en R como un dataframe. Tendremos que ejercitar un poco la paciencia porque es un archivo de varios megas, que podría tardar unos minutos en ser descargado.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/gcba_suaci_barrios.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">atencion_ciudadano &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/195/resource/c8d978f5-d85c-4d37-95c9-faf96c6afbf5/download/gcba_suaci_barrios-1.csv&quot;</span>)</code></pre></div>
 <p>Lo primero que deberíamos hacer con un dataframe que no conocemos es usar la función <code>str()</code>, que nos indica su estructura (por <em>structure</em> en inglés):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(atencion_ciudadano)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    57431 obs. of  5 variables:
@@ -246,7 +246,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Para expresarlo con un ejemplo concreto: hemos visto que los registros de atención al ciudadano incluyen una columna con el barrio, que es la única variable relacionada con la geografía. Si nuestra unidad de análisis fuera la columna en lugar del barrio, necesitaríamos agrega la columna correspondiente. En este caso, estamos de suerte porque una tabla con los barrios de la Ciudad de Buenos Aires y la comuna a la que pertenecen es fácil de conseguir. Con esa tabla en nuestro poder, ya tenemos las piezas necesarias para el cruce de datos. En cada registro en el dataframe de atención al ciudadano, tenemos un barrio; podemos buscarlo en la tabla de barrios y comunas, tomar nota de la comuna asociada, y copiarla en nuestro dataset original. Por supuesto, hacerlo a mano para cada uno de las 57.432 filas en nuestro dataframe tardaría una eternidad, amén de que quizás perderíamos la cordura antes de terminar. ¡Nada de eso! Vamos a resolverlo en meros instantes escriviendo unas pocas líneas de código. Antes de continuar hagamos una pausa para conmiserar a los investigadores de eras pasadas, antes de la popularización de la computadora personal, que realizaban tareas de esta escala con lápiz, papel y paciencia.</p>
 <p>Existe una gran variedad de funciones que permiten combinar tablas relacionadas entre sí por una o varias variables en común. Para nuestro propósito, alcanza con conocer una: <code>left_join()</code>. La funcion toma como parámetros dos dataframes (que son tablas al fin y al cabo) busca las variables que tengan el mismo nombre y usandolas como referencia completa la primera de ellas, la de la izquierda, con los datos nuevos que aporta la segunda. <code>left_join</code> devuelve un dataframe nuevo con los datos combinados.</p>
 <p>Manos a la obra. Descargamos el dataframe con barrios y comunas,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_comunas &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://bitsandbricks.github.io/data/barrios_comunas.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_comunas &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/19/resource/7ac3ebfa-2f32-41d4-ae39-ae6f5ba15070/download/barrios_comunas-1.csv&quot;</span>)</code></pre></div>
 <p>echamos un vistazo, comprobando que existe BARRIOS, una columna en común que lo relaciona con el dataframe de atención al ciudadano,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios_comunas</code></pre></div>
 <pre><code>##               BARRIO COMUNA
