@@ -356,8 +356,8 @@ ggplot() +
 
 Aquí se cumplen las expectativas: la cantidad de emergencias reportadas sigue en forma clara un patrón relacionado con la cantidad de estaciones ubicadas en cada barrio. Y como era de esperarse, en barrios donde el SUBTE no ofrece cobertura la cantidad de emergencias es nula.
 
-Con eso cerramos el capítulo, y el libro. Hemos llegado al brusco final... al menos brusco por ahora. Continuaré puliendo el texto, y más adelante quisiera agregar un breve capítulo de consideraciones finales.
+Con eso cerramos el capítulo, y el manual. 
 
-Mientras tanto, mi mensaje final es fácil de resumir. Espero que "Ciencia de Datos para Gente Sociable" haya sido una introducción satisfactoria al análisis, modelado y visualización de información, y tan sólo el inicio de un largo y gratificante recorrido.
+Mi mensaje final es fácil de resumir. Espero que "Ciencia de Datos y Políticas Públicas" haya sido una introducción satisfactoria al análisis, modelado y visualización de información, y tan sólo el inicio de un largo y gratificante recorrido.
 
 ¡Gracias por haber leído hasta aquí! 

@@ -18,8 +18,7 @@ Vamos a practicar usando los registros del Sistema Único de Atención Ciudadana
 Comenzamos por acceder al archivo con los registros para cargarlo en R como un dataframe. Tendremos que ejercitar un poco la paciencia porque es un archivo de varios megas, que podría tardar unos minutos en ser descargado.  
 
 ```{r}
-atencion_ciudadano <- read.csv("http://bitsandbricks.github.io/data/gcba_suaci_barrios.csv")
-
+atencion_ciudadano <- read.csv("https://data.buenosaires.gob.ar/dataset/195/resource/c8d978f5-d85c-4d37-95c9-faf96c6afbf5/download/gcba_suaci_barrios-1.csv")
 ```
 
 Lo primero que deberíamos hacer con un dataframe que no conocemos es usar la función `str()`, que nos indica su estructura (por _structure_ en inglés):
@@ -59,8 +58,7 @@ Existe una gran variedad de funciones que permiten combinar tablas relacionadas 
 Manos a la obra. Descargamos el dataframe con barrios y comunas,
 
 ```{r}
-barrios_comunas <- read.csv("http://bitsandbricks.github.io/data/barrios_comunas.csv")
-
+barrios_comunas <- read.csv("https://data.buenosaires.gob.ar/dataset/19/resource/7ac3ebfa-2f32-41d4-ae39-ae6f5ba15070/download/barrios_comunas-1.csv")
 ```
 
 echamos un vistazo, comprobando que existe BARRIOS, una columna en común que lo relaciona con el dataframe de atención al ciudadano,

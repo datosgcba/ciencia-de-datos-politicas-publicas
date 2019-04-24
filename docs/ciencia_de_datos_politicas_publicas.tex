@@ -126,7 +126,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-04-22}
+    \date{2019-04-23}
 
 \usepackage{booktabs}
 
@@ -519,16 +519,16 @@ incluye una función que lee archivos .csv, que se llama
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{suaci2018 <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://bitsandbricks.github.io/data/gcba_suaci_2018.csv'}\NormalTok{)}
+\NormalTok{suaci2018 <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'https://data.buenosaires.gob.ar/dataset/195/resource/47549a46-ce9e-4869-9895-448ee16775d1/download/gcba_suaci_2018-1.csv'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 Obsérvese que los datos están alojados en un servidor de internet
-(accesibles vía \textbf{\url{https://bitsandbricks}\ldots{}}). Eso no es
-problema para la función read.csv, que con la misma soltura lee archivos
-guardados en nuestra PC o publicados en un sitio web. Para ver el
-contenido de la variable donde guardamos el resultado de leer la data,
-\texttt{suaci2018}, sólo hace falta escribir su nombre:
+(accesibles vía \textbf{https}). Eso no es problema para la función
+read.csv, que con la misma soltura lee archivos guardados en nuestra PC
+o publicados en un sitio web. Para ver el contenido de la variable donde
+guardamos el resultado de leer la data, \texttt{suaci2018}, sólo hace
+falta escribir su nombre:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -785,16 +785,16 @@ estándar de representación de datos geográficos que es fácil de usar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{barrios <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{'https://bitsandbricks.github.io/data/CABA_barrios.geojson'}\NormalTok{)}
+\NormalTok{barrios <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{'https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Reading layer `CABA_barrios' from data source `https://bitsandbricks.github.io/data/CABA_barrios.geojson' using driver `GeoJSON'
+## Reading layer `barrios' from data source `https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson' using driver `GeoJSON'
 ## Simple feature collection with 48 features and 4 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -58.53152 ymin: -34.70529 xmax: -58.33514 ymax: -34.52754
+## bbox:           xmin: -58.53092 ymin: -34.70574 xmax: -58.33455 ymax: -34.52799
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
 \end{verbatim}
@@ -836,16 +836,23 @@ names() y head().
 ## Simple feature collection with 6 features and 4 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -58.50617 ymin: -34.63064 xmax: -58.41192 ymax: -34.57829
+## bbox:           xmin: -58.50557 ymin: -34.63109 xmax: -58.41132 ymax: -34.57874
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-##             BARRIO COMUNA PERIMETRO    AREA                       geometry
-## 1        CHACARITA     15  7725.695 3118101 POLYGON ((-58.45282 -34.595...
-## 2         PATERNAL     15  7087.513 2229829 POLYGON ((-58.46558 -34.596...
-## 3     VILLA CRESPO     15  8132.699 3613584 POLYGON ((-58.42375 -34.597...
-## 4 VILLA DEL PARQUE     11  7705.390 3399596 POLYGON ((-58.49461 -34.614...
-## 5          ALMAGRO      5  8537.901 4050752 POLYGON ((-58.41287 -34.614...
-## 6        CABALLITO      6 10990.964 6851029 POLYGON ((-58.43061 -34.607...
+##             BARRIO COMUNA         PERIMETRO              AREA
+## 1        CHACARITA     15  7725.69522770465 3118100.972396454
+## 2         PATERNAL     15  7087.51329532852 2229829.033627959
+## 3     VILLA CRESPO     15  8132.69934845057 3613583.690219133
+## 4 VILLA DEL PARQUE     11  7705.38979708046 3399595.641483838
+## 5          ALMAGRO      5 8537.901368491441 4050752.245238037
+## 6        CABALLITO      6 10990.96447148555 6851028.913569859
+##                         geometry
+## 1 POLYGON ((-58.45222 -34.596...
+## 2 POLYGON ((-58.46498 -34.597...
+## 3 POLYGON ((-58.42315 -34.598...
+## 4 POLYGON ((-58.49401 -34.615...
+## 5 POLYGON ((-58.41227 -34.614...
+## 6 POLYGON ((-58.43001 -34.607...
 \end{verbatim}
 
 Podemos ver que el dataframe contiene 48 filas y 5 columnas. Una fila
@@ -904,7 +911,7 @@ de 2010:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{poblacion <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://bitsandbricks.github.io/data/caba_pob_barrios_2010.csv"}\NormalTok{)}
+\NormalTok{poblacion <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://data.buenosaires.gob.ar/dataset/70436583-2123-466d-8a48-fbbee8cf8bf3/resource/c44be985-8d7f-4aa4-972e-a7f8f0b796dc/download/caba_pob_barrios_2010.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5053,15 +5060,12 @@ sigue en forma clara un patrón relacionado con la cantidad de estaciones
 ubicadas en cada barrio. Y como era de esperarse, en barrios donde el
 SUBTE no ofrece cobertura la cantidad de emergencias es nula.
 
-Con eso cerramos el capítulo, y el libro. Hemos llegado al brusco
-final\ldots{} al menos brusco por ahora. Continuaré puliendo el texto, y
-más adelante quisiera agregar un breve capítulo de consideraciones
-finales.
+Con eso cerramos el capítulo, y el manual.
 
-Mientras tanto, mi mensaje final es fácil de resumir. Espero que
-``Ciencia de Datos para Gente Sociable'' haya sido una introducción
-satisfactoria al análisis, modelado y visualización de información, y
-tan sólo el inicio de un largo y gratificante recorrido.
+Mi mensaje final es fácil de resumir. Espero que ``Ciencia de Datos y
+Políticas Públicas'' haya sido una introducción satisfactoria al
+análisis, modelado y visualización de información, y tan sólo el inicio
+de un largo y gratificante recorrido.
 
 ¡Gracias por haber leído hasta aquí!
 

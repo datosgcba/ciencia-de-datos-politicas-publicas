@@ -106,11 +106,11 @@ Disponiendo de los datos necesarios, podemos usar `R` para encontrar las respues
 Vamos a cargar datos provenientes de los registros del Sistema Único de Atención Ciudadana (o [SUACI](https://suaci.buenosaires.gob.ar)), la plataforma del Gobierno de la Ciudad que administra los contactos iniciados por ciudadanos. En el portal de datos abiertos de la Ciudad se publica [cada uno de los contactos recibidos por SUACI año a año](https://data.buenosaires.gob.ar/dataset/sistema-unico-atencion-ciudadana). El tipo de archivo con el que se publican es ".csv" (o "comma separated values") un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas. Es posible abrir un archivo .csv hasta con el [humilde block de notas](https://es.wikipedia.org/wiki/Bloc_de_notas). Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama  `read.csv`. La usamos así:
 
 ```{r}
-suaci2018 <- read.csv('https://bitsandbricks.github.io/data/gcba_suaci_2018.csv')
+suaci2018 <- read.csv('https://data.buenosaires.gob.ar/dataset/195/resource/47549a46-ce9e-4869-9895-448ee16775d1/download/gcba_suaci_2018-1.csv')
 ```
 
 
-Obsérvese que los datos están alojados en un servidor de internet (accesibles vía __https://bitsandbricks...__). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, `suaci2018`, sólo hace falta escribir su nombre:
+Obsérvese que los datos están alojados en un servidor de internet (accesibles vía __https__). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, `suaci2018`, sólo hace falta escribir su nombre:
 
 ```{r}
 suaci2018
@@ -191,7 +191,7 @@ library(sf)
 Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato [_geojson_](https://es.wikipedia.org/wiki/GeoJSON), un estándar de representación de datos geográficos que es fácil de usar:
 
 ```{r}
-barrios <- st_read('https://bitsandbricks.github.io/data/CABA_barrios.geojson')
+barrios <- st_read('https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson')
 ```
 
 Al igual que cuando usamos `read.csv()` para leer un archivo .csv y cargarlo como un dataframe, el comando `st_read()` hace lo propio con archivos de información geográfica, conocidos en la jerga como "shapefiles". El resultado también es un dataframe, por lo cual podemos practicar el uso de las funciones que ya aprendimos, como dim(), names() y head().
@@ -234,7 +234,7 @@ Cuando tenemos una identificador en común, `R` hace muy fácil cruzar datos de 
 
 
 ```{r}
-poblacion <- read.csv("https://bitsandbricks.github.io/data/caba_pob_barrios_2010.csv")
+poblacion <- read.csv("https://data.buenosaires.gob.ar/dataset/70436583-2123-466d-8a48-fbbee8cf8bf3/resource/c44be985-8d7f-4aa4-972e-a7f8f0b796dc/download/caba_pob_barrios_2010.csv")
 ```
 
 Veamos el contenido del dataframe:

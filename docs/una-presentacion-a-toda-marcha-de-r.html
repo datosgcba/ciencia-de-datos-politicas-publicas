@@ -25,7 +25,7 @@
 <meta name="author" content="Antonio Vazquez Brust">
 
 
-<meta name="date" content="2019-04-22">
+<meta name="date" content="2019-04-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -243,8 +243,8 @@ superficie_habitacion_m2</code></pre></div>
 <p>Imaginemos por un momento que trabajamos en un área del Gobierno de la Ciudad encargada de analizar los reclamos y solicitudes que realizan los vecinos. Para abordar el tema, algunas preguntas que de inmediato vienen a la mente son ¿Qué tipo de solicitudes hacen los ciudadanos, en qué cantidad, y en dónde?</p>
 <p>Disponiendo de los datos necesarios, podemos usar <code>R</code> para encontrar las respuestas.</p>
 <p>Vamos a cargar datos provenientes de los registros del Sistema Único de Atención Ciudadana (o <a href="https://suaci.buenosaires.gob.ar">SUACI</a>), la plataforma del Gobierno de la Ciudad que administra los contactos iniciados por ciudadanos. En el portal de datos abiertos de la Ciudad se publica <a href="https://data.buenosaires.gob.ar/dataset/sistema-unico-atencion-ciudadana">cada uno de los contactos recibidos por SUACI año a año</a>. El tipo de archivo con el que se publican es “.csv” (o “comma separated values”) un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas. Es posible abrir un archivo .csv hasta con el <a href="https://es.wikipedia.org/wiki/Bloc_de_notas">humilde block de notas</a>. Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama <code>read.csv</code>. La usamos así:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/gcba_suaci_2018.csv&#39;</span>)</code></pre></div>
-<p>Obsérvese que los datos están alojados en un servidor de internet (accesibles vía <strong><a href="https://bitsandbricks" class="uri">https://bitsandbricks</a>…</strong>). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, <code>suaci2018</code>, sólo hace falta escribir su nombre:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://data.buenosaires.gob.ar/dataset/195/resource/47549a46-ce9e-4869-9895-448ee16775d1/download/gcba_suaci_2018-1.csv&#39;</span>)</code></pre></div>
+<p>Obsérvese que los datos están alojados en un servidor de internet (accesibles vía <strong>https</strong>). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, <code>suaci2018</code>, sólo hace falta escribir su nombre:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018</code></pre></div>
 <pre><code>##               BARRIO CONTACTOS
 ## 1          AGRONOMIA      7378
@@ -340,12 +340,12 @@ superficie_habitacion_m2</code></pre></div>
 <p>Vale la pena insistir: Sólo es necesario instalar los paquetes una vez. De aquí en más, cada vez que querramos echar mano a las funciones incluidas en <code>sf</code>, sólo necesitamos activarlo pues ya estará listo en nuestro sistema. Pedimos a R que active el paquete así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
 <p>Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato <a href="https://es.wikipedia.org/wiki/GeoJSON"><em>geojson</em></a>, un estándar de representación de datos geográficos que es fácil de usar:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://bitsandbricks.github.io/data/CABA_barrios.geojson&#39;</span>)</code></pre></div>
-<pre><code>## Reading layer `CABA_barrios&#39; from data source `https://bitsandbricks.github.io/data/CABA_barrios.geojson&#39; using driver `GeoJSON&#39;
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson&#39;</span>)</code></pre></div>
+<pre><code>## Reading layer `barrios&#39; from data source `https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 48 features and 4 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -58.53152 ymin: -34.70529 xmax: -58.33514 ymax: -34.52754
+## bbox:           xmin: -58.53092 ymin: -34.70574 xmax: -58.33455 ymax: -34.52799
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
 <p>Al igual que cuando usamos <code>read.csv()</code> para leer un archivo .csv y cargarlo como un dataframe, el comando <code>st_read()</code> hace lo propio con archivos de información geográfica, conocidos en la jerga como “shapefiles”. El resultado también es un dataframe, por lo cual podemos practicar el uso de las funciones que ya aprendimos, como dim(), names() y head().</p>
@@ -357,16 +357,23 @@ superficie_habitacion_m2</code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 4 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -58.50617 ymin: -34.63064 xmax: -58.41192 ymax: -34.57829
+## bbox:           xmin: -58.50557 ymin: -34.63109 xmax: -58.41132 ymax: -34.57874
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-##             BARRIO COMUNA PERIMETRO    AREA                       geometry
-## 1        CHACARITA     15  7725.695 3118101 POLYGON ((-58.45282 -34.595...
-## 2         PATERNAL     15  7087.513 2229829 POLYGON ((-58.46558 -34.596...
-## 3     VILLA CRESPO     15  8132.699 3613584 POLYGON ((-58.42375 -34.597...
-## 4 VILLA DEL PARQUE     11  7705.390 3399596 POLYGON ((-58.49461 -34.614...
-## 5          ALMAGRO      5  8537.901 4050752 POLYGON ((-58.41287 -34.614...
-## 6        CABALLITO      6 10990.964 6851029 POLYGON ((-58.43061 -34.607...</code></pre>
+##             BARRIO COMUNA         PERIMETRO              AREA
+## 1        CHACARITA     15  7725.69522770465 3118100.972396454
+## 2         PATERNAL     15  7087.51329532852 2229829.033627959
+## 3     VILLA CRESPO     15  8132.69934845057 3613583.690219133
+## 4 VILLA DEL PARQUE     11  7705.38979708046 3399595.641483838
+## 5          ALMAGRO      5 8537.901368491441 4050752.245238037
+## 6        CABALLITO      6 10990.96447148555 6851028.913569859
+##                         geometry
+## 1 POLYGON ((-58.45222 -34.596...
+## 2 POLYGON ((-58.46498 -34.597...
+## 3 POLYGON ((-58.42315 -34.598...
+## 4 POLYGON ((-58.49401 -34.615...
+## 5 POLYGON ((-58.41227 -34.614...
+## 6 POLYGON ((-58.43001 -34.607...</code></pre>
 <p>Podemos ver que el dataframe contiene 48 filas y 5 columnas. Una fila por barrio, y una columnas por cada variable disponible: “BARRIO”, “COMUNA”, “PERIMETRO”, “AREA” y “geometry”. Nuestro vistazo mediante head() permite asumir que “BARRIO” contiene los nombres, COMUNA indica la unidad administrativa, y PERIMETRO y AREA informan sobre las dimensiones del polígono cubierto por cada barrio. La columna “geometry” aparece en todos los dataframes de tipo espacial, y es la que contiene los datos con sus coordenadas geográficas.</p>
 <p>Y hablando de coordenadas, generar un mapa a partir de un dataframe espacial creado por sf es muy fácil con la ayuda de <code>ggplot()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(barrios) <span class="op">+</span>
@@ -382,7 +389,7 @@ superficie_habitacion_m2</code></pre></div>
 <div id="agregando-datos" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Agregando datos</h3>
 <p>Cuando tenemos una identificador en común, <code>R</code> hace muy fácil cruzar datos de fuentes distintas. Traigamos los datos de población en cada barrio de la Ciudad de Buenos Aires, de acuerdo al censo nacional de 2010:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poblacion &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://bitsandbricks.github.io/data/caba_pob_barrios_2010.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poblacion &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/70436583-2123-466d-8a48-fbbee8cf8bf3/resource/c44be985-8d7f-4aa4-972e-a7f8f0b796dc/download/caba_pob_barrios_2010.csv&quot;</span>)</code></pre></div>
 <p>Veamos el contenido del dataframe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(poblacion)</code></pre></div>
 <pre><code>##      BARRIO POBLACION
