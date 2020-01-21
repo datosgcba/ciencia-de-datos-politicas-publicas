@@ -18,7 +18,7 @@ Vamos a practicar usando los registros del Sistema Único de Atención Ciudadana
 Comenzamos por acceder al archivo con los registros para cargarlo en R como un dataframe. Tendremos que ejercitar un poco la paciencia porque es un archivo de varios megas, que podría tardar unos minutos en ser descargado.  
 
 ```{r}
-atencion_ciudadano <- read.csv("https://data.buenosaires.gob.ar/dataset/195/resource/c8d978f5-d85c-4d37-95c9-faf96c6afbf5/download/gcba_suaci_barrios-1.csv")
+atencion_ciudadano <- read.csv("http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_2018-1.csv")
 ```
 
 Lo primero que deberíamos hacer con un dataframe que no conocemos es usar la función `str()`, que nos indica su estructura (por _structure_ en inglés):
