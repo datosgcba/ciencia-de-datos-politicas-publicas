@@ -9,6 +9,8 @@ En un mundo cada vez más digitalizado, los gobiernos se enfrentan a la necesida
 
 Esta iniciativa se enmarca en la Política de Datos Públicos diseñada por el Gobierno de la Ciudad Autónoma de Buenos Aires para impulsar la toma de decisiones basadas en evidencia y fortalecer las capacidades del Estado en materia de gestión y análisis de datos.
 
+El curso fue realizado por Antonio Vázquez Brust, dictado en conjunto con Natsumi Shokida.
+
 ### Herramientas
 * **[BA Data](https://data.buenosaires.gob.ar)**: Portal de datos abiertos de la Ciudad de Buenos Aires.
 * **[Guía de Datos](https://datosgcba.github.io/guia-datos)**: Conjunto de guías y herramientas desarrolladas para facilitar la gestión y apertura de datos en el ámbito del Gobierno de la Ciudad Autónoma de Buenos Aires.
