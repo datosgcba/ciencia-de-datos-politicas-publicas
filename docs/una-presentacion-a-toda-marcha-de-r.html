@@ -243,7 +243,7 @@ superficie_habitacion_m2</code></pre></div>
 <p>Imaginemos por un momento que trabajamos en un área del Gobierno de la Ciudad encargada de analizar los reclamos y solicitudes que realizan los vecinos. Para abordar el tema, algunas preguntas que de inmediato vienen a la mente son ¿Qué tipo de solicitudes hacen los ciudadanos, en qué cantidad, y en dónde?</p>
 <p>Disponiendo de los datos necesarios, podemos usar <code>R</code> para encontrar las respuestas.</p>
 <p>Vamos a cargar datos provenientes de los registros del Sistema Único de Atención Ciudadana (o <a href="https://suaci.buenosaires.gob.ar">SUACI</a>), la plataforma del Gobierno de la Ciudad que administra los contactos iniciados por ciudadanos. En el portal de datos abiertos de la Ciudad se publica <a href="https://data.buenosaires.gob.ar/dataset/sistema-unico-atencion-ciudadana">cada uno de los contactos recibidos por SUACI año a año</a>. El tipo de archivo con el que se publican es “.csv” (o “comma separated values”) un formato muy popular en el mundo de la ciencia de datos, ya que es muy fácil de manipular y compartir entre sistemas. Es posible abrir un archivo .csv hasta con el <a href="https://es.wikipedia.org/wiki/Bloc_de_notas">humilde block de notas</a>. Al igual que los archivos .xls, los .csv se utilizan para guardar información tabular: un rectángulo con filas y columnas. R incluye una función que lee archivos .csv, que se llama <code>read.csv</code>. La usamos así:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;https://data.buenosaires.gob.ar/dataset/195/resource/47549a46-ce9e-4869-9895-448ee16775d1/download/gcba_suaci_2018-1.csv&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018 &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/sistema-unico-de-atencion-ciudadana/gcba_suaci_2018-1.csv&#39;</span>)</code></pre></div>
 <p>Obsérvese que los datos están alojados en un servidor de internet (accesibles vía <strong>https</strong>). Eso no es problema para la función read.csv, que con la misma soltura lee archivos guardados en nuestra PC o publicados en un sitio web. Para ver el contenido de la variable donde guardamos el resultado de leer la data, <code>suaci2018</code>, sólo hace falta escribir su nombre:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">suaci2018</code></pre></div>
 <pre><code>##               BARRIO CONTACTOS
@@ -341,7 +341,7 @@ superficie_habitacion_m2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
 <p>Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato <a href="https://es.wikipedia.org/wiki/GeoJSON"><em>geojson</em></a>, un estándar de representación de datos geográficos que es fácil de usar:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson&#39;</span>)</code></pre></div>
-<pre><code>## Reading layer `barrios&#39; from data source `https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson&#39; using driver `GeoJSON&#39;
+<pre><code>## Reading layer `barrios&#39; from data source `http://cdn.buenosaires.gob.ar/datosabiertos/datasets/barrios/barrios.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 48 features and 4 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
@@ -389,7 +389,7 @@ superficie_habitacion_m2</code></pre></div>
 <div id="agregando-datos" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Agregando datos</h3>
 <p>Cuando tenemos una identificador en común, <code>R</code> hace muy fácil cruzar datos de fuentes distintas. Traigamos los datos de población en cada barrio de la Ciudad de Buenos Aires, de acuerdo al censo nacional de 2010:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poblacion &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://data.buenosaires.gob.ar/dataset/70436583-2123-466d-8a48-fbbee8cf8bf3/resource/c44be985-8d7f-4aa4-972e-a7f8f0b796dc/download/caba_pob_barrios_2010.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">poblacion &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/barrios/caba_pob_barrios_2010.csv&quot;</span>)</code></pre></div>
 <p>Veamos el contenido del dataframe:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(poblacion)</code></pre></div>
 <pre><code>##      BARRIO POBLACION
