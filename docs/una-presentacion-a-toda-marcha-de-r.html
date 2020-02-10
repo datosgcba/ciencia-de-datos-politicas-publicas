@@ -340,7 +340,7 @@ superficie_habitacion_m2</code></pre></div>
 <p>Vale la pena insistir: Sólo es necesario instalar los paquetes una vez. De aquí en más, cada vez que querramos echar mano a las funciones incluidas en <code>sf</code>, sólo necesitamos activarlo pues ya estará listo en nuestro sistema. Pedimos a R que active el paquete así:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)</code></pre></div>
 <p>Luego, cargamos un archivo georeferenciado con las comunas de la Ciudad Autónoma de Buenos Aires, disponible online en formato <a href="https://es.wikipedia.org/wiki/GeoJSON"><em>geojson</em></a>, un estándar de representación de datos geográficos que es fácil de usar:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;https://data.buenosaires.gob.ar/dataset/19/resource/1c3d185b-fdc9-474b-b41b-9bd960a3806e/download/barrios.geojson&#39;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">barrios &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;http://cdn.buenosaires.gob.ar/datosabiertos/datasets/barrios/barrios.geojson&#39;</span>)</code></pre></div>
 <pre><code>## Reading layer `barrios&#39; from data source `http://cdn.buenosaires.gob.ar/datosabiertos/datasets/barrios/barrios.geojson&#39; using driver `GeoJSON&#39;
 ## Simple feature collection with 48 features and 4 fields
 ## geometry type:  POLYGON
