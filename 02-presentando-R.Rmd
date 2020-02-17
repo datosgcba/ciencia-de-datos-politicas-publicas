@@ -88,8 +88,8 @@ x
 
 ```{r}
 ancho_habitacion_m <- 8
-profundiad_habitacion_m <- 6
-superficie_habitacion_m2 <- ancho_habitacion_m * profundiad_habitacion_m
+profundidad_habitacion_m <- 6
+superficie_habitacion_m2 <- ancho_habitacion_m * profundidad_habitacion_m
 
 superficie_habitacion_m2
 
